@@ -50,8 +50,30 @@ class MainMenuState extends MusicBeatState
 	var hubicationItems:Array<Int>=[];
 	var vcrShader:FlxRuntimeShader;
 
+	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
+	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
+	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
+
 	override function create():Void
 	{
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
+		#if LUA_ALLOWED
+		Paths.pushGlobalMods();
+		#end
+		// Just to load a mod on start up if ya got one. For mods that change the menu music and bg
+		WeekData.loadTheFirstEnabledMod();
+
+		
+		FlxG.game.focusLostFramerate = 60;
+		FlxG.sound.muteKeys = muteKeys;
+		FlxG.sound.volumeDownKeys = volumeDownKeys;
+		FlxG.sound.volumeUpKeys = volumeUpKeys;
+		FlxG.keys.preventDefaultKeys = [TAB];
+
+		PlayerSettings.init();
+
 		#if MODS_ALLOWED
 		Paths.pushGlobalMods();
 		#end
@@ -141,9 +163,11 @@ class MainMenuState extends MusicBeatState
 				changeItem();
 			}
 			changeCur();
-		}
-		if (controls.BACK){
-			MusicBeatState.switchState(new TitleState());
+			/*
+			if (controls.BACK){
+				MusicBeatState.switchState(new TitleState());
+			}
+			*/
 		}
 	}
 	function changeCur(){
