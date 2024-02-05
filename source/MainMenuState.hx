@@ -142,6 +142,9 @@ class MainMenuState extends MusicBeatState
 			}
 			changeCur();
 		}
+		if (controls.BACK){
+			MusicBeatState.switchState(new TitleState());
+		}
 	}
 	function changeCur(){
 		if (FlxG.mouse.overlaps(menuItems.members[0])){
