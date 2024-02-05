@@ -49,6 +49,7 @@ class MainMenuState extends MusicBeatState
 	var cursorImage:FlxSprite;
 	var hubicationItems:Array<Int>=[];
 	var vcrShader:FlxRuntimeShader;
+	var shader1:FlxRuntimeShader;
 	
 	override function create():Void
 	{		
@@ -110,7 +111,7 @@ class MainMenuState extends MusicBeatState
 
 		cursorImage = new FlxSprite();
 		cursorImage.loadGraphic(Paths.image('cursor'));
-		cursorImage.scale.set(0.02,0.02);
+		cursorImage.scale.set(0.018,0.018);
 		// jodete ptmre cursorImage.updateHitbox();
 		add(cursorImage);
 
@@ -118,13 +119,14 @@ class MainMenuState extends MusicBeatState
 		super.create();
 		// changeItem();
 
-		cursorImage.setPosition(FlxG.mouse.getPosition().x-340,FlxG.mouse.getPosition().y-540);//posicionInicial
+		cursorImage.setPosition(FlxG.mouse.getPosition().x-340,FlxG.mouse.getPosition().y-510);//posicionInicial
 
 		
 		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
+	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
 		if (ClientPrefs.shaders)
 		{
-		 FlxG.camera.setFilters([new ShaderFilter(vcrShader)]);
+		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
 		}
 	}
 	var selectedSomethin:Bool = false;
@@ -134,6 +136,7 @@ class MainMenuState extends MusicBeatState
 		super.update(elapsed);
 		iTime += elapsed;
 	    vcrShader.setFloat("iTime", iTime);
+		shader1.setFloat("iTime", iTime);
 		trace(curSelected);
 		if (!selectedSomethin){
 			cursorImage.setPosition(FlxG.mouse.getPosition().x-340,FlxG.mouse.getPosition().y-510);
