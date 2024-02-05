@@ -91,7 +91,7 @@ class TitleState extends MusicBeatState
 
 		var coso:FlxText = new FlxText(12, FlxG.height - 44, 0, "se Recomienda Activar \nShader Para mejor Experiencia o\nPodrias Desactivarlo En Configuraciones", 12);
 		coso.screenCenter();
-		coso.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		coso.setFormat("VCR OSD Mono", 50, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(coso);
 
 		if(!inicio)

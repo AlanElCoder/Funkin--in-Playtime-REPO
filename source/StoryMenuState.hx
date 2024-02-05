@@ -106,10 +106,6 @@ class StoryMenuState extends MusicBeatState
 		{
 		 FlxG.camera.setFilters([new ShaderFilter(vcrShader)]);
 		}
-
-		curDifficulty = Math.round(Math.max(0, CoolUtil.defaultDifficulties.indexOf(lastDifficultyName)));
-		var diff:String = CoolUtil.difficulties[curDifficulty];
-		lastDifficultyName = diff;
 	}
 	var iTime:Float;
 	override function update(elapsed:Float):Void
@@ -152,7 +148,8 @@ class StoryMenuState extends MusicBeatState
 		new FlxTimer().start(0.4, function(tmr:FlxTimer)
 		{
 			PlayState.storyPlaylist = weekJSON.songs[curSelected];
-		    PlayState.storyDifficulty = curDifficulty;
+		    PlayState.storyDifficulty = 1;
+			
 
 	     	PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase()+"-hard", PlayState.storyPlaylist[0].toLowerCase());
 	       	PlayState.storyWeek = weekJSON.numWeek;
@@ -166,5 +163,4 @@ class StoryMenuState extends MusicBeatState
 	   });
 	   }else{}
 	}
-
 }
