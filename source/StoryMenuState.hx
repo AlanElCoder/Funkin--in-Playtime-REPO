@@ -48,14 +48,22 @@ class StoryMenuState extends MusicBeatState
 	var textWeek:FlxText;
 	var text:FlxText;
 	var menuItems:FlxTypedGroup<FlxSprite>;
-	var weekJSON:WeekDataLEl;
+	public static var weekJSON:WeekDataLEl;
 	public static var weekCompleted:Map<String, Bool> = new Map<String, Bool>();
 	var curSelected:Int;
 	var cursorImage:FlxSprite;
 	var vcrShader:FlxRuntimeShader;
+
+
+	private static var lastDifficultyName:String = '';
+	var curDifficulty:Int = 1;
 	override function create():Void//ya Void xdxdxd
 	{
 		super.create();
+	
+
+		PlayState.isStoryMode = true;
+
 
 		weekJSON = Json.parse(Paths.getTextFromFile('weeks/chapter1.json'));
 
@@ -98,6 +106,10 @@ class StoryMenuState extends MusicBeatState
 		{
 		 FlxG.camera.setFilters([new ShaderFilter(vcrShader)]);
 		}
+
+		curDifficulty = Math.round(Math.max(0, CoolUtil.defaultDifficulties.indexOf(lastDifficultyName)));
+		var diff:String = CoolUtil.difficulties[curDifficulty];
+		lastDifficultyName = diff;
 	}
 	var iTime:Float;
 	override function update(elapsed:Float):Void
@@ -139,21 +151,18 @@ class StoryMenuState extends MusicBeatState
 		FlxG.sound.play(Paths.sound('confirmMenu'));
 		new FlxTimer().start(0.4, function(tmr:FlxTimer)
 		{
-			switch(curSelected){
-				case 0: 
+			PlayState.storyPlaylist = weekJSON.songs[curSelected];
+		    PlayState.storyDifficulty = curDifficulty;
 
-					PlayState.storyPlaylist = weekJSON.songs[curSelected];
-					PlayState.isStoryMode = true;
-					PlayState.storyDifficulty = 2;
-			
-					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + '-hard', PlayState.storyPlaylist[0].toLowerCase());
-					PlayState.storyWeek = weekJSON.numWeek;
-					PlayState.campaignScore = 0;
-					new FlxTimer().start(0.3, function(tmr:FlxTimer)
-					{
-					  LoadingState.loadAndSwitchState(new PlayState(), true);
-					});
-			}	
+	     	PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase()+"-hard", PlayState.storyPlaylist[0].toLowerCase());
+	       	PlayState.storyWeek = weekJSON.numWeek;
+	      	PlayState.campaignScore = 0;
+	    	new FlxTimer().start(0.4, function(tmr:FlxTimer)
+		   	{
+		     LoadingState.loadAndSwitchState(new PlayState(), true);
+			 FreeplayState.destroyFreeplayVocals();
+		    });
+
 	   });
 	   }else{}
 	}
