@@ -85,7 +85,16 @@ class StoryMenuState extends MusicBeatState
 			newItem.makeGraphic(weekJSON.widthL,weekJSON.heightL,FlxColor.WHITE);
             newItem.setPosition(weekJSON.ekis,weekJSON.eye);
 			newItem.updateHitbox();
+			newItem.alpha=0;
 			menuItems.add(newItem);
+
+			var newItem2:FlxSprite= new FlxSprite();
+			newItem2.loadGraphic(Paths.image('chapters/1'));
+            newItem2.setPosition(weekJSON.ekis,weekJSON.eye);
+			newItem2.scale.set(0.65,0.58);
+			newItem2.updateHitbox();
+			menuItems.add(newItem2);
+
 
 			textWeek = new FlxText(12, 0, 0, "CHAPTER "+weekJSON.numWeek+" "+weekJSON.descWeek, 12);
 			textWeek.setPosition(weekJSON.ekisT,weekJSON.eyeT);
@@ -142,7 +151,7 @@ class StoryMenuState extends MusicBeatState
 		}
 	}
 	function changeCur(){
-		if (FlxG.mouse.overlaps(menuItems.members[0])){
+		if (FlxG.mouse.overlaps(menuItems.members[1])){
 			curSelected=0;
 		}else{
 			curSelected=2;
