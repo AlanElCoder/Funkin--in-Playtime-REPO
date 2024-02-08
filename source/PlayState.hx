@@ -1,4 +1,4 @@
-package;
+package;//update
 import flixel.graphics.FlxGraphic;
 #if desktop
 import Discord.DiscordClient;
@@ -75,9 +75,16 @@ import vlc.MP4Handler;
 #end
 
 using StringTools;
-
+typedef CameraOffetsDATA =
+{ 
+	xx:Array<Int>,
+	yy:Array<Int>,
+	ofs:Array<Int>,
+	zooms:Array<Dynamic>
+}
 class PlayState extends MusicBeatState
 {
+	public static var offetsJSON:CameraOffetsDATA;
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
@@ -323,7 +330,8 @@ class PlayState extends MusicBeatState
 	public static var lastCombo:FlxSprite;
 	// stores the last combo score objects in an array
 	public static var lastScore:Array<FlxSprite> = [];
-
+	var vcrShader:FlxRuntimeShader;
+	var shader1:FlxRuntimeShader;
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -831,11 +839,36 @@ class PlayState extends MusicBeatState
 				foregroundSprites.add(new BGSprite('tank5', 1620, 700, 1.5, 1.5, ['fg']));
 				if(!ClientPrefs.lowQuality) foregroundSprites.add(new BGSprite('tank3', 1300, 1200, 3.5, 2.5, ['fg']));
 		}
+		offetsJSON = Json.parse(Paths.getTextFromFile('stages/'+curStage+'OffestCam.json'));
+		if(offetsJSON == null) { //Stage couldn't be found, create a dummy stage for preventing a crash
+			offetsJSON = {
+				xx:[
+				    0,0,0
+				],
+				yy:[
+					0,0,0
+				],
+				ofs:[
+				   15,15,15
+				],
+				zooms:[
+				   1,1,1
+				]
+			};
+		}
 
 		switch(Paths.formatToSongPath(SONG.song))
 		{
 			case 'stress':
 				GameOverSubstate.characterName = 'bf-holding-gf-dead';
+		}
+
+		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
+	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
+		if (ClientPrefs.shaders)
+		{
+		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
+		 camHUD.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
 		}
 
 		if(isPixelStage) {
@@ -2863,13 +2896,83 @@ class PlayState extends MusicBeatState
 		}
 		vocals.play();
 	}
+	var dadCameraX:Int;
+	var dadCameraY:Int;
+	var bfCameraX:Int;
+	var bfCameraY:Int;
+	var gfCameraX:Int;
+	var gfCameraY:Int;
+	function moveCameraLel(){
 
+		dadCameraX=0;
+		dadCameraY=0;
+		switch(dad.animation.curAnim.name)
+		{
+			case 'singLEFT' | 'singLEFT-alt':
+				dadCameraX-=offetsJSON.ofs[0];
+			case 'singRIGHT' | 'singRIGHT-alt':
+				dadCameraX+=offetsJSON.ofs[0];
+			case 'singUP' | 'singUP-alt':
+				dadCameraY-=offetsJSON.ofs[0];
+			case 'singDOWN' | 'singDOWN-alt':
+				dadCameraX+=offetsJSON.ofs[0];
+		}
+		bfCameraX=0;
+		bfCameraY=0;
+		switch(boyfriend.animation.curAnim.name)
+		{
+			case 'singLEFT' | 'singLEFT-alt':
+				bfCameraX-=offetsJSON.ofs[1];
+			case 'singRIGHT' | 'singRIGHT-alt':
+				bfCameraX+=offetsJSON.ofs[1];
+			case 'singUP' | 'singUP-alt':
+				bfCameraY-=offetsJSON.ofs[1];
+			case 'singDOWN' | 'singDOWN-alt':
+				bfCameraX+=offetsJSON.ofs[1];
+		}
+		gfCameraX=0;
+		gfCameraY=0;
+		switch(gf.animation.curAnim.name)
+		{
+			case 'singLEFT' | 'singLEFT-alt':
+				gfCameraX-=offetsJSON.ofs[2];
+			case 'singRIGHT' | 'singRIGHT-alt':
+				gfCameraX+=offetsJSON.ofs[2];
+			case 'singUP' | 'singUP-alt':
+				gfCameraY-=offetsJSON.ofs[2];
+			case 'singDOWN' | 'singDOWN-alt':
+				gfCameraY+=offetsJSON.ofs[2];
+		}
+		
+	  if (generatedMusic && !endingSong && !isCameraOnForcedPos && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
+	  {
+		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
+		{
+			camFollow.set(offetsJSON.xx[0]- 150 + dadCameraX,  offetsJSON.yy[0] - 150 + dadCameraY);
+			camFollow.x += dad.cameraPosition[0];
+			camFollow.y += dad.cameraPosition[1];
+			defaultCamZoom = offetsJSON.zooms[0];
+		}else
+		{
+			camFollow.set(offetsJSON.xx[1]- 150 + bfCameraX,  offetsJSON.yy[1] - 150 + bfCameraY);
+			camFollow.x += boyfriend.cameraPosition[0];
+			camFollow.y += boyfriend.cameraPosition[1];
+			defaultCamZoom = offetsJSON.zooms[1];
+		}
+		if (SONG.notes[curSection].gfSection){
+			camFollow.set(offetsJSON.xx[2]- 150 + gfCameraX,  offetsJSON.yy[2] - 150 + gfCameraY);
+			camFollow.x += gf.cameraPosition[0];
+			camFollow.y += gf.cameraPosition[1];
+			defaultCamZoom = offetsJSON.zooms[2];
+		}
+	  }
+	}
 	public var paused:Bool = false;
 	public var canReset:Bool = true;
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
 	var limoSpeed:Float = 0;
-
+	var iTime:Float;
 	override public function update(elapsed:Float)
 	{
 		/*if (FlxG.keys.justPressed.NINE)
@@ -2877,7 +2980,10 @@ class PlayState extends MusicBeatState
 			iconP1.swapOldIcon();
 		}*/
 		callOnLuas('onUpdate', [elapsed]);
-
+		iTime += elapsed;
+	    vcrShader.setFloat("iTime", iTime);
+		shader1.setFloat("iTime", iTime);
+		moveCameraLel();
 		switch (curStage)
 		{
 			case 'tank':
