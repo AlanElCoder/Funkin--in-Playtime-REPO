@@ -1,13 +1,13 @@
 {
 	"widthL":300,
 	"heightL":450,
-	"ekis":520,
-	"eye":150,
+	"ekis":410,
+	"eye":110,
 	"descWeek":"\n\n\n\n\n\n\n\n\n\n\n\n\nRemember?",
 	"songs":[
-		["test"]
+		["countdown"]
 	],
 	"numWeek":1,
-	"ekisT":540,
-	"eyeT":100
+	"ekisT":530,
+	"eyeT":90
 }
