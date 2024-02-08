@@ -58,6 +58,8 @@ class StoryMenuState extends MusicBeatState
 	var curDifficulty:Int = 1;
 	var shader1:FlxRuntimeShader;
 	var bgBlack:FlxSprite;
+	private var imageOffsets:Array<Float> = [0, 0];
+	private var char:String = 'pene';
 	override function create():Void//ya Void xdxdxd
 	{
 		super.create();
@@ -91,7 +93,7 @@ class StoryMenuState extends MusicBeatState
 			var newItem2:FlxSprite= new FlxSprite();
 			newItem2.loadGraphic(Paths.image('chapters/1'));
             newItem2.setPosition(weekJSON.ekis,weekJSON.eye);
-			newItem2.scale.set(0.65,0.58);
+			newItem2.scale.set(0.45,0.45);
 			newItem2.updateHitbox();
 			menuItems.add(newItem2);
 
@@ -107,12 +109,22 @@ class StoryMenuState extends MusicBeatState
 		add(quitar);
 		quitar.updateHitbox();
 
+	
 		cursorImage = new FlxSprite();
 		cursorImage.loadGraphic(Paths.image('cursor'));
-		cursorImage.scale.set(0.018,0.018);
-		// jodete ptmre cursorImage.updateHitbox();
+		cursorImage.loadGraphic(Paths.image('cursor'), true, Math.floor(cursorImage.width / 2), Math.floor(cursorImage.height));
+		imageOffsets[0] = (cursorImage.width - 150) / 2;
+		imageOffsets[1] = (cursorImage.height - 150) / 2;
+		// cursorImage.updateHitbox();
+		cursorImage.offset.x = imageOffsets[0];
+		cursorImage.offset.y = imageOffsets[1];
+		cursorImage.animation.add(char, [0, 1], 0, false,false);
+		cursorImage.animation.play(char);
+		cursorImage.scale.set(0.07,0.07);
 		add(cursorImage);
-		cursorImage.setPosition(FlxG.mouse.getPosition().x-340,FlxG.mouse.getPosition().y-510);//posicionInicial
+
+		cursorImage.setPosition(FlxG.mouse.getPosition().x-50,FlxG.mouse.getPosition().y-70);
+
 
 		FlxG.mouse.visible=false;
 		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
@@ -131,8 +143,7 @@ class StoryMenuState extends MusicBeatState
 		iTime += elapsed;
 	    vcrShader.setFloat("iTime", iTime);
 		shader1.setFloat("iTime", iTime);
-		cursorImage.setPosition(FlxG.mouse.getPosition().x-340,FlxG.mouse.getPosition().y-510);//posicionInicial
-
+		cursorImage.setPosition(FlxG.mouse.getPosition().x-50,FlxG.mouse.getPosition().y-70);
 		/*
 		menuItems.members[0].x = FlxMath.lerp(1, menuItems.members[0].x, 0.85);
 		menuItems.members[0].y = FlxMath.lerp(1, menuItems.members[0].y ,0.85);
@@ -153,12 +164,15 @@ class StoryMenuState extends MusicBeatState
 	function changeCur(){
 		if (FlxG.mouse.overlaps(menuItems.members[1])){
 			curSelected=0;
+			cursorImage.animation.curAnim.curFrame = 1;
 		}else{
+			cursorImage.animation.curAnim.curFrame = 0;
 			curSelected=2;
 			noPressed=false;
 		}
 		if (FlxG.mouse.overlaps(quitar)) {
 			curSelected=1;
+			cursorImage.animation.curAnim.curFrame = 1;
 		}
 		
 		/*

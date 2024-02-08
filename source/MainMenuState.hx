@@ -50,7 +50,8 @@ class MainMenuState extends MusicBeatState
 	var hubicationItems:Array<Int>=[];
 	var vcrShader:FlxRuntimeShader;
 	var shader1:FlxRuntimeShader;
-	
+	private var imageOffsets:Array<Float> = [0, 0];
+	private var char:String = 'pene';
 	override function create():Void
 	{		
 		#if MODS_ALLOWED
@@ -84,6 +85,12 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
+		var logoLEl:FlxSprite= new FlxSprite().loadGraphic(Paths.image('logoP'));
+		logoLEl.scale.set(0.23,0.23);
+		logoLEl.screenCenter();
+		logoLEl.y-=200;
+		add(logoLEl);
+
 		menuItems = new FlxTypedGroup<FlxText>();
 		add(menuItems);
 
@@ -111,15 +118,23 @@ class MainMenuState extends MusicBeatState
 
 		cursorImage = new FlxSprite();
 		cursorImage.loadGraphic(Paths.image('cursor'));
-		cursorImage.scale.set(0.018,0.018);
-		// jodete ptmre cursorImage.updateHitbox();
+		cursorImage.loadGraphic(Paths.image('cursor'), true, Math.floor(cursorImage.width / 2), Math.floor(cursorImage.height));
+		imageOffsets[0] = (cursorImage.width - 150) / 2;
+		imageOffsets[1] = (cursorImage.height - 150) / 2;
+		// cursorImage.updateHitbox();
+		cursorImage.offset.x = imageOffsets[0];
+		cursorImage.offset.y = imageOffsets[1];
+		cursorImage.animation.add(char, [0, 1], 0, false,false);
+		cursorImage.animation.play(char);
+		cursorImage.scale.set(0.07,0.07);
 		add(cursorImage);
 
+		
 		FlxG.mouse.visible=false;
 		super.create();
 		// changeItem();
 
-		cursorImage.setPosition(FlxG.mouse.getPosition().x-340,FlxG.mouse.getPosition().y-510);//posicionInicial
+		cursorImage.setPosition(FlxG.mouse.getPosition().x-50,FlxG.mouse.getPosition().y-70);
 
 		
 		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
@@ -128,18 +143,23 @@ class MainMenuState extends MusicBeatState
 		{
 		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
 		}
+		if(FlxG.sound.music == null) {
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+		}
 	}
 	var selectedSomethin:Bool = false;
 	var iTime:Float;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (FlxG.sound.music != null)
+			Conductor.songPosition = FlxG.sound.music.time;
 		iTime += elapsed;
 	    vcrShader.setFloat("iTime", iTime);
 		shader1.setFloat("iTime", iTime);
 		trace(curSelected);
 		if (!selectedSomethin){
-			cursorImage.setPosition(FlxG.mouse.getPosition().x-340,FlxG.mouse.getPosition().y-510);
+			cursorImage.setPosition(FlxG.mouse.getPosition().x-50,FlxG.mouse.getPosition().y-70);
 			if (FlxG.mouse.justPressed){
 				changeItem();
 			}
@@ -151,21 +171,38 @@ class MainMenuState extends MusicBeatState
 			*/
 		}
 	}
+	var beats:Int;
+	override function beatHit()
+	{
+		super.beatHit();
+		beats++;
+		switch(beats){
+			case 1:
+			
+		}
+	}
 	function changeCur(){
 		if (FlxG.mouse.overlaps(menuItems.members[0])){
 			curSelected=0;
+
 		 }
 		 if (FlxG.mouse.overlaps(menuItems.members[1])){
 			 curSelected=1;
+
 		 }
 		 if (FlxG.mouse.overlaps(menuItems.members[2])){
 			 curSelected=2;
+
 		 }
 		 if (FlxG.mouse.overlaps(menuItems.members[3])){
 			curSelected=3;
+		
 		 }
 		 if (!FlxG.mouse.overlaps(menuItems.members[0])&&!FlxG.mouse.overlaps(menuItems.members[1])&&!FlxG.mouse.overlaps(menuItems.members[2])&&!FlxG.mouse.overlaps(menuItems.members[3])){
 			curSelected=4;
+			cursorImage.animation.curAnim.curFrame = 0;
+		 }else{
+			cursorImage.animation.curAnim.curFrame = 1;
 		 }
 	}
 	function changeItem(){

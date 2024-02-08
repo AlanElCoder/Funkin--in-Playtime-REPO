@@ -38,6 +38,11 @@ import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
 import flixel.math.FlxRandom;
+import flixel.util.FlxTimer;
+#if !flash 
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.filters.ShaderFilter;
+#end
 
 using StringTools;
 
@@ -58,6 +63,9 @@ class TitleState extends MusicBeatState
 	var bars:FlxSprite;
 	var pressStartSprite:FlxSprite;
 	var inicio:Bool=false;
+
+	var vcrShader:FlxRuntimeShader;
+	var shader1:FlxRuntimeShader;
 	override public function create():Void
 	{
 		
@@ -89,11 +97,17 @@ class TitleState extends MusicBeatState
 		add(blackBG);
 		//
 
-		var coso:FlxText = new FlxText(12, FlxG.height - 44, 0, "It is recommended to activate \nShader for a better experience or\nyou could deactivate it in settings", 12);
-		coso.setFormat("VCR OSD Mono", 35, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		coso.screenCenter();
-		add(coso);
+		var logoLEl:FlxSprite= new FlxSprite().loadGraphic(Paths.image('logoP'));
+		logoLEl.scale.set(0.23,0.23);
+		logoLEl.screenCenter();
+		logoLEl.y-=200;
+		add(logoLEl);
 
+		var coso:FlxText = new FlxText(12, FlxG.height - 44, 0, "It is recommended to activate \nShader for a better experience or\nyou could deactivate it in settings\n      [Press enter to begin]", 12);
+		coso.setFormat("VCR OSD Mono", 40, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		coso.screenCenter();
+		coso.y+=150;
+		add(coso);
 		if(!inicio)
 		{
 			if(FlxG.save.data != null && FlxG.save.data.fullscreen)
@@ -103,7 +117,6 @@ class TitleState extends MusicBeatState
 			}
 			persistentUpdate = true;
 			persistentDraw = true;
-
 			#if desktop
 			if (!DiscordClient.isInitialized)
 			{
@@ -115,31 +128,37 @@ class TitleState extends MusicBeatState
 			#end
 		
 		}
-
 		if(FlxG.sound.music == null) {
 			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 		}
-		FlxG.mouse.visible=false;
+		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
+	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
+		if (ClientPrefs.shaders)
+		{
+		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
+		}
 		super.create();
+		FlxG.mouse.visible=false;
 	}	
 	var titleInicied:Bool=false;
-
+	var iTime:Float;
 	override function update(elapsed:Float)
 	{
+		iTime += elapsed;
+	    vcrShader.setFloat("iTime", iTime);
+		shader1.setFloat("iTime", iTime);
 		FlxG.camera.zoom= FlxMath.lerp(1, FlxG.camera.zoom,0.85);
-
-
-			if (controls.ACCEPT){
-			
+			if (controls.ACCEPT&&!titleInicied){
+				titleInicied=true;
 				FlxG.camera.zoom+=0.1;
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+				FlxG.sound.music.fadeIn(4, 0, 0.7);
 				new FlxTimer().start(1.2, function(tmr:FlxTimer)
 				{
-					
 					MusicBeatState.switchState(new MainMenuState());
 				});
-			}
-		
-	
+			}	
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 		super.update(elapsed);
