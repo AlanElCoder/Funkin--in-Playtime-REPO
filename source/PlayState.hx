@@ -839,8 +839,10 @@ class PlayState extends MusicBeatState
 				foregroundSprites.add(new BGSprite('tank5', 1620, 700, 1.5, 1.5, ['fg']));
 				if(!ClientPrefs.lowQuality) foregroundSprites.add(new BGSprite('tank3', 1300, 1200, 3.5, 2.5, ['fg']));
 		}
-		offetsJSON = Json.parse(Paths.getTextFromFile('stages/'+curStage+'OffestCam.json'));
-		if(offetsJSON == null) { //Stage couldn't be found, create a dummy stage for preventing a crash
+		var path:String = Paths.json('stages/'+curStage+'OffestCam.json');
+		if (FileSystem.exists(path)){
+			offetsJSON = Json.parse(Paths.getTextFromFile('stages/'+curStage+'OffestCam.json'));
+		}if(offetsJSON == null) {
 			offetsJSON = {
 				xx:[
 				    0,0,0
