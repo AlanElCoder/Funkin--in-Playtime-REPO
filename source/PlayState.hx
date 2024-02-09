@@ -77,9 +77,9 @@ import vlc.MP4Handler;
 using StringTools;
 typedef CameraOffetsDATA =
 { 
-	xx:Array<Int>,
-	yy:Array<Int>,
-	ofs:Array<Int>,
+	xx:Array<Dynamic>,
+	yy:Array<Dynamic>,
+	ofs:Array<Dynamic>,
 	zooms:Array<Dynamic>
 }
 class PlayState extends MusicBeatState
@@ -839,26 +839,14 @@ class PlayState extends MusicBeatState
 				foregroundSprites.add(new BGSprite('tank5', 1620, 700, 1.5, 1.5, ['fg']));
 				if(!ClientPrefs.lowQuality) foregroundSprites.add(new BGSprite('tank3', 1300, 1200, 3.5, 2.5, ['fg']));
 		}
-		var path:String = Paths.json('stages/'+curStage+'OffestCam.json');
-		if (FileSystem.exists(path)){
-			offetsJSON = Json.parse(Paths.getTextFromFile('stages/'+curStage+'OffestCam.json'));
-		}if(offetsJSON == null) {
-			offetsJSON = {
-				xx:[
-				    0,0,0
-				],
-				yy:[
-					0,0,0
-				],
-				ofs:[
-				   15,15,15
-				],
-				zooms:[
-				   1,1,1
-				]
-			};
+		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
+		if (!FileSystem.exists(path)){
+			offetsJSON = Json.parse(Paths.getTextFromFile('stages/offest-stages/'+curStage+'-OffestCam.json'));
+			trace("cargo lets Fuckin Go");
+		}else{
+			trace("matense");
 		}
-
+	
 		switch(Paths.formatToSongPath(SONG.song))
 		{
 			case 'stress':
@@ -1026,6 +1014,23 @@ class PlayState extends MusicBeatState
 			if(gf != null)
 				gf.visible = false;
 		}
+		if(offetsJSON == null) {
+			offetsJSON = {
+				xx:[
+				   dad.getMidpoint().x,boyfriend.getMidpoint().x,gf.getMidpoint().x,
+				],
+				yy:[
+					dad.getMidpoint().y,boyfriend.getMidpoint().y,gf.getMidpoint().y,
+				],
+				ofs:[
+				   0,0,0
+				],
+				zooms:[
+				 1,1,1
+				]
+			};
+		}else{}
+
 
 		switch(curStage)
 		{
@@ -2898,12 +2903,12 @@ class PlayState extends MusicBeatState
 		}
 		vocals.play();
 	}
-	var dadCameraX:Int;
-	var dadCameraY:Int;
-	var bfCameraX:Int;
-	var bfCameraY:Int;
-	var gfCameraX:Int;
-	var gfCameraY:Int;
+	var dadCameraX:Dynamic;
+	var dadCameraY:Dynamic;
+	var bfCameraX:Dynamic;
+	var bfCameraY:Dynamic;
+	var gfCameraX:Dynamic;
+	var gfCameraY:Dynamic;
 	function moveCameraLel(){
 
 		dadCameraX=0;
@@ -2932,19 +2937,23 @@ class PlayState extends MusicBeatState
 			case 'singDOWN' | 'singDOWN-alt':
 				bfCameraX+=offetsJSON.ofs[1];
 		}
-		gfCameraX=0;
-		gfCameraY=0;
-		switch(gf.animation.curAnim.name)
-		{
-			case 'singLEFT' | 'singLEFT-alt':
-				gfCameraX-=offetsJSON.ofs[2];
-			case 'singRIGHT' | 'singRIGHT-alt':
-				gfCameraX+=offetsJSON.ofs[2];
-			case 'singUP' | 'singUP-alt':
-				gfCameraY-=offetsJSON.ofs[2];
-			case 'singDOWN' | 'singDOWN-alt':
-				gfCameraY+=offetsJSON.ofs[2];
-		}
+	
+	
+			gfCameraX=0;
+			gfCameraY=0;
+			switch(gf.animation.curAnim.name)
+			{
+				case 'singLEFT' | 'singLEFT-alt':
+					gfCameraX-=offetsJSON.ofs[2];
+				case 'singRIGHT' | 'singRIGHT-alt':
+					gfCameraX+=offetsJSON.ofs[2];
+				case 'singUP' | 'singUP-alt':
+					gfCameraY-=offetsJSON.ofs[2];
+				case 'singDOWN' | 'singDOWN-alt':
+					gfCameraY+=offetsJSON.ofs[2];
+			}
+		
+		
 		
 	  if (generatedMusic && !endingSong && !isCameraOnForcedPos && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
 	  {
@@ -2961,13 +2970,15 @@ class PlayState extends MusicBeatState
 			camFollow.y += boyfriend.cameraPosition[1];
 			defaultCamZoom = offetsJSON.zooms[1];
 		}
+		
 		if (SONG.notes[curSection].gfSection){
 			camFollow.set(offetsJSON.xx[2]- 150 + gfCameraX,  offetsJSON.yy[2] - 150 + gfCameraY);
 			camFollow.x += gf.cameraPosition[0];
 			camFollow.y += gf.cameraPosition[1];
 			defaultCamZoom = offetsJSON.zooms[2];
 		}
-	  }
+	  
+	  } 
 	}
 	public var paused:Bool = false;
 	public var canReset:Bool = true;
