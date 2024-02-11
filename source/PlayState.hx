@@ -332,6 +332,11 @@ class PlayState extends MusicBeatState
 	public static var lastScore:Array<FlxSprite> = [];
 	var vcrShader:FlxRuntimeShader;
 	var shader1:FlxRuntimeShader;
+
+	var vidaBG:FlxSprite;
+	var framesVida:Array<String>=[];
+	var vidalel:Int=6;
+	var vidaItems:FlxTypedGroup<FlxSprite>;
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -1160,7 +1165,7 @@ class PlayState extends MusicBeatState
 		healthBarBG.visible = !ClientPrefs.hideHud;
 		healthBarBG.xAdd = -4;
 		healthBarBG.yAdd = -4;
-		add(healthBarBG);
+		//add(healthBarBG);
 		if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
@@ -1169,20 +1174,77 @@ class PlayState extends MusicBeatState
 		// healthBar
 		healthBar.visible = !ClientPrefs.hideHud;
 		healthBar.alpha = ClientPrefs.healthBarAlpha;
-		add(healthBar);
+		//add(healthBar);
 		healthBarBG.sprTracker = healthBar;
 
+
+        //beatHit
+		vidaBG = new FlxSprite();
+		vidaBG.frames=Paths.getSparrowAtlas('vida');
+		vidaBG.animation.addByPrefix('idle2','vida but roja0');
+		vidaBG.animation.addByPrefix('idle','vida nose0');
+		vidaBG.animation.play('idle');
+		vidaBG.screenCenter();
+		vidaBG.x-=620;
+		if (!ClientPrefs.downScroll){
+			vidaBG.y+=50;
+		}else{
+
+		}
+		
+		vidaBG.cameras=[camHUD];
+		add(vidaBG);
+
+		vidaItems = new FlxTypedGroup<FlxSprite>();
+		vidaItems.cameras=[camHUD];
+		add(vidaItems);
+
+		for (i in 0...vidalel){
+			var vidas:FlxSprite = new FlxSprite();
+			vidas.frames=Paths.getSparrowAtlas('vida');
+			vidas.animation.addByPrefix('idle2','corashon perdido 0');
+			vidas.animation.addByPrefix('idle','corashon0');
+			vidas.ID=i;
+			vidas.screenCenter();
+			vidas.updateHitbox();
+			if (!ClientPrefs.downScroll){
+				switch(i){
+					case 0:
+						vidas.x=200;
+						vidas.y=620;
+					case 1:
+						vidas.x=240;
+						vidas.y=620;
+					case 2:
+						vidas.x=280;	
+						vidas.y=620;	
+					case 3:
+						vidas.x=320;
+						vidas.y=620;	
+					case 4:
+						vidas.x=360;
+						vidas.y=620;
+					case 5:
+						vidas.x=400;
+						vidas.y=620;							
+				}
+			}else{
+
+			}
+		
+			vidaItems.add(vidas);
+		}
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - 75;
 		iconP1.visible = !ClientPrefs.hideHud;
 		iconP1.alpha = ClientPrefs.healthBarAlpha;
-		add(iconP1);
+		//add(iconP1);
 
 		iconP2 = new HealthIcon(dad.healthIcon, false);
 		iconP2.y = healthBar.y - 75;
 		iconP2.visible = !ClientPrefs.hideHud;
 		iconP2.alpha = ClientPrefs.healthBarAlpha;
-		add(iconP2);
+		//add(iconP2);
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
@@ -2959,15 +3021,14 @@ class PlayState extends MusicBeatState
 	  {
 		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
 		{
-			camFollow.set(offetsJSON.xx[0]- 150 + dadCameraX,  offetsJSON.yy[0] - 150 + dadCameraY);
-			camFollow.x += dad.cameraPosition[0];
-			camFollow.y += dad.cameraPosition[1];
+			camFollow.set(offetsJSON.xx[0]+ 150 + dadCameraX+dad.cameraPosition[0]+dad.cameraPosition[0]+offetsJSON.ofs[0] , offetsJSON.yy[0]+ 150 + dadCameraY+dad.cameraPosition[1]+dad.cameraPosition[1]+offetsJSON.ofs[0]);
+	
+        
+
 			defaultCamZoom = offetsJSON.zooms[0];
 		}else
 		{
-			camFollow.set(offetsJSON.xx[1]- 150 + bfCameraX,  offetsJSON.yy[1] - 150 + bfCameraY);
-			camFollow.x += boyfriend.cameraPosition[0];
-			camFollow.y += boyfriend.cameraPosition[1];
+			camFollow.set(offetsJSON.xx[1]+ 150 + bfCameraX+boyfriend.cameraPosition[0]+boyfriend.cameraPosition[0]+offetsJSON.ofs[1] , offetsJSON.yy[1]+ 150 + bfCameraY+boyfriend.cameraPosition[1]+boyfriend.cameraPosition[1]+offetsJSON.ofs[1]);    
 			defaultCamZoom = offetsJSON.zooms[1];
 		}
 		
@@ -2986,6 +3047,7 @@ class PlayState extends MusicBeatState
 	var canPause:Bool = true;
 	var limoSpeed:Float = 0;
 	var iTime:Float;
+	var si:Bool=false;	
 	override public function update(elapsed:Float)
 	{
 		/*if (FlxG.keys.justPressed.NINE)
@@ -3141,6 +3203,184 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
+
+		for (i in 0...vidalel){
+			switch(songMisses){
+				case 0:
+					vidaItems.members[0].animation.play('idle');
+					vidaItems.members[1].animation.play('idle');
+					vidaItems.members[2].animation.play('idle');
+					vidaItems.members[3].animation.play('idle');
+					vidaItems.members[4].animation.play('idle');
+					vidaItems.members[5].animation.play('idle');
+				case 1:	
+					vidaItems.members[0].animation.play('idle');
+					vidaItems.members[1].animation.play('idle');
+					vidaItems.members[2].animation.play('idle');
+					vidaItems.members[3].animation.play('idle');
+					vidaItems.members[4].animation.play('idle');
+					vidaItems.members[5].animation.play('idle2');
+				case 2:	
+					vidaItems.members[0].animation.play('idle');
+					vidaItems.members[1].animation.play('idle');
+					vidaItems.members[2].animation.play('idle');
+					vidaItems.members[3].animation.play('idle');
+					vidaItems.members[4].animation.play('idle2');
+					vidaItems.members[5].animation.play('idle2');	
+				case 3:	
+					vidaItems.members[0].animation.play('idle');
+					vidaItems.members[1].animation.play('idle');
+					vidaItems.members[2].animation.play('idle');
+					vidaItems.members[3].animation.play('idle2');
+					vidaItems.members[4].animation.play('idle2');
+					vidaItems.members[5].animation.play('idle2');
+
+				
+					vidaItems.members[0].colorTransform.redOffset = 233;
+					vidaItems.members[0].colorTransform.greenOffset = 36;
+					vidaItems.members[0].colorTransform.blueOffset = 36;
+
+
+					vidaItems.members[1].colorTransform.redOffset = 233;
+					vidaItems.members[1].colorTransform.greenOffset = 36;
+					vidaItems.members[1].colorTransform.blueOffset = 36;
+
+
+					vidaItems.members[2].colorTransform.redOffset = 233;
+					vidaItems.members[2].colorTransform.greenOffset = 36;
+					vidaItems.members[2].colorTransform.blueOffset = 36;
+
+					vidaItems.members[3].colorTransform.redOffset = 131;
+					vidaItems.members[3].colorTransform.greenOffset = 0;
+					vidaItems.members[3].colorTransform.blueOffset = 0;
+
+					vidaItems.members[4].colorTransform.redOffset = 131;
+					vidaItems.members[4].colorTransform.greenOffset = 0;
+					vidaItems.members[4].colorTransform.blueOffset = 0;
+
+					vidaItems.members[5].colorTransform.redOffset = 131;
+					vidaItems.members[5].colorTransform.greenOffset = 0;
+					vidaItems.members[5].colorTransform.blueOffset = 0;
+
+					if (!si){
+						new FlxTimer().start(0.1, function(tmr:FlxTimer)
+							{
+								FlxG.camera.fade(FlxColor.RED, 0.7, true,false);
+								FlxG.camera.shake(0.015,0.4);
+								si=true;
+							});	
+					}
+
+					//vidaBG.animation.play('idle2');
+			
+				case 4:	
+				    vidaItems.members[0].animation.play('idle');
+				    vidaItems.members[1].animation.play('idle');
+					vidaItems.members[2].animation.play('idle2');
+					vidaItems.members[3].animation.play('idle2');
+					vidaItems.members[4].animation.play('idle2');
+					vidaItems.members[5].animation.play('idle2');
+					
+
+					vidaItems.members[0].colorTransform.redOffset = 233;
+					vidaItems.members[0].colorTransform.greenOffset = 36;
+					vidaItems.members[0].colorTransform.blueOffset = 36;
+
+
+					vidaItems.members[1].colorTransform.redOffset = 233;
+					vidaItems.members[1].colorTransform.greenOffset = 36;
+					vidaItems.members[1].colorTransform.blueOffset = 36;
+
+
+					vidaItems.members[2].colorTransform.redOffset = 131;
+					vidaItems.members[2].colorTransform.greenOffset = 0;
+					vidaItems.members[2].colorTransform.blueOffset = 0;
+
+					vidaItems.members[3].colorTransform.redOffset = 131;
+					vidaItems.members[3].colorTransform.greenOffset = 0;
+					vidaItems.members[3].colorTransform.blueOffset = 0;
+
+					vidaItems.members[4].colorTransform.redOffset = 131;
+					vidaItems.members[4].colorTransform.greenOffset = 0;
+					vidaItems.members[4].colorTransform.blueOffset = 0;
+
+					vidaItems.members[5].colorTransform.redOffset = 131;
+					vidaItems.members[5].colorTransform.greenOffset = 0;
+					vidaItems.members[5].colorTransform.blueOffset = 0;
+				case 5:	
+					vidaItems.members[0].animation.play('idle');
+					vidaItems.members[1].animation.play('idle2');
+					vidaItems.members[2].animation.play('idle2');
+					vidaItems.members[3].animation.play('idle2');
+					vidaItems.members[4].animation.play('idle2');
+					vidaItems.members[5].animation.play('idle2');	
+					
+					vidaItems.members[0].colorTransform.redOffset = 233;
+					vidaItems.members[0].colorTransform.greenOffset = 36;
+					vidaItems.members[0].colorTransform.blueOffset = 36;
+
+
+					vidaItems.members[1].colorTransform.redOffset = 133;
+					vidaItems.members[1].colorTransform.greenOffset = 36;
+					vidaItems.members[1].colorTransform.blueOffset = 36;
+
+
+					vidaItems.members[2].colorTransform.redOffset = 131;
+					vidaItems.members[2].colorTransform.greenOffset = 0;
+					vidaItems.members[2].colorTransform.blueOffset = 0;
+
+					vidaItems.members[3].colorTransform.redOffset = 131;
+					vidaItems.members[3].colorTransform.greenOffset = 0;
+					vidaItems.members[3].colorTransform.blueOffset = 0;
+
+					vidaItems.members[4].colorTransform.redOffset = 131;
+					vidaItems.members[4].colorTransform.greenOffset = 0;
+					vidaItems.members[4].colorTransform.blueOffset = 0;
+
+					vidaItems.members[5].colorTransform.redOffset = 131;
+					vidaItems.members[5].colorTransform.greenOffset = 0;
+					vidaItems.members[5].colorTransform.blueOffset = 0;
+				case 6:	
+					vidaItems.members[0].animation.play('idle2');
+					vidaItems.members[1].animation.play('idle2');
+					vidaItems.members[2].animation.play('idle2');
+					vidaItems.members[3].animation.play('idle2');
+					vidaItems.members[4].animation.play('idle2');
+					vidaItems.members[5].animation.play('idle2');
+
+					vidaItems.members[0].colorTransform.redOffset = 131;
+					vidaItems.members[0].colorTransform.greenOffset = 0;
+					vidaItems.members[0].colorTransform.blueOffset = 0;
+
+
+					vidaItems.members[1].colorTransform.redOffset = 131;
+					vidaItems.members[1].colorTransform.greenOffset = 0;
+					vidaItems.members[1].colorTransform.blueOffset = 0;
+
+
+					vidaItems.members[2].colorTransform.redOffset = 131;
+					vidaItems.members[2].colorTransform.greenOffset = 0;
+					vidaItems.members[2].colorTransform.blueOffset = 0;
+
+					vidaItems.members[3].colorTransform.redOffset = 131;
+					vidaItems.members[3].colorTransform.greenOffset = 0;
+					vidaItems.members[3].colorTransform.blueOffset = 0;
+
+					vidaItems.members[4].colorTransform.redOffset = 131;
+					vidaItems.members[4].colorTransform.greenOffset = 0;
+					vidaItems.members[4].colorTransform.blueOffset = 0;
+
+					vidaItems.members[5].colorTransform.redOffset = 131;
+					vidaItems.members[5].colorTransform.greenOffset = 0;
+					vidaItems.members[5].colorTransform.blueOffset = 0;
+					new FlxTimer().start(0.4, function(tmr:FlxTimer)
+					{
+						health=0;
+					});							
+			}
+			
+		
+		}	
 
 		setOnLuas('curDecStep', curDecStep);
 		setOnLuas('curDecBeat', curDecBeat);
@@ -5153,6 +5393,14 @@ class PlayState extends MusicBeatState
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
+		if (songMisses>2){
+			vidaBG.animation.play('idle2');
+			vidaBG.y=500;
+		}else{
+			vidaBG.animation.play('idle');
+		}
+		
+
 
 		if (gf != null && curBeat % Math.round(gfSpeed * gf.danceEveryNumBeats) == 0 && gf.animation.curAnim != null && !gf.animation.curAnim.name.startsWith("sing") && !gf.stunned)
 		{

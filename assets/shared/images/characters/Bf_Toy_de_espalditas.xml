@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Bf Toy de espalditas.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Bf Toy de Espalda DOWN0000" x="27" y="27" width="392" height="444" frameX="0" frameY="-9" frameWidth="396" frameHeight="453"/>
+	<SubTexture name="Bf Toy de Espalda DOWN0001" x="27" y="27" width="392" height="444" frameX="0" frameY="-9" frameWidth="396" frameHeight="453"/>
+	<SubTexture name="Bf Toy de Espalda DOWN0002" x="446" y="27" width="391" height="415" frameX="-5" frameY="-1" frameWidth="396" frameHeight="453"/>
+	<SubTexture name="Bf Toy de Espalda DOWN0003" x="864" y="27" width="391" height="415" frameX="-5" frameY="-1" frameWidth="396" frameHeight="453"/>
+	<SubTexture name="Bf Toy de Espalda DOWN0004" x="1282" y="27" width="379" height="417" frameX="-16" frameY="0" frameWidth="396" frameHeight="453"/>
+	<SubTexture name="Bf Toy de Espalda DOWN0005" x="1688" y="27" width="379" height="417" frameX="-16" frameY="0" frameWidth="396" frameHeight="453"/>
+	<SubTexture name="Bf Toy de Espalda DOWN0006" x="2094" y="27" width="379" height="417" frameX="-16" frameY="0" frameWidth="396" frameHeight="453"/>
+	<SubTexture name="Bf Toy de Espalda DOWN0007" x="2500" y="27" width="379" height="417" frameX="-16" frameY="0" frameWidth="396" frameHeight="453"/>
+	<SubTexture name="Bf Toy de Espalda DOWN0008" x="2500" y="27" width="379" height="417" frameX="-16" frameY="0" frameWidth="396" frameHeight="453"/>
+	<SubTexture name="Bf Toy de Espalda DOWN0009" x="2906" y="27" width="379" height="417" frameX="-16" frameY="0" frameWidth="396" frameHeight="453"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0000" x="3312" y="27" width="366" height="432" frameX="0" frameY="-10" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0001" x="3312" y="27" width="366" height="432" frameX="0" frameY="-10" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0002" x="27" y="498" width="366" height="436" frameX="0" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0003" x="420" y="498" width="366" height="436" frameX="0" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0004" x="813" y="498" width="348" height="426" frameX="-24" frameY="0" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0005" x="1188" y="498" width="348" height="426" frameX="-24" frameY="0" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0006" x="1563" y="498" width="354" height="428" frameX="-27" frameY="-4" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0007" x="1944" y="498" width="354" height="428" frameX="-27" frameY="-4" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0008" x="2325" y="498" width="354" height="427" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0009" x="2706" y="498" width="354" height="427" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0010" x="3087" y="498" width="354" height="427" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0011" x="3087" y="498" width="354" height="427" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0012" x="3087" y="498" width="354" height="427" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0013" x="3087" y="498" width="354" height="427" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0014" x="3468" y="498" width="354" height="427" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0015" x="27" y="961" width="354" height="427" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0016" x="27" y="961" width="354" height="427" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0017" x="408" y="961" width="354" height="427" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0018" x="789" y="961" width="354" height="426" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda IDLE0019" x="789" y="961" width="354" height="426" frameX="-28" frameY="-5" frameWidth="382" frameHeight="442"/>
+	<SubTexture name="Bf Toy de Espalda LEFT0000" x="1170" y="961" width="328" height="437" frameX="0" frameY="-1" frameWidth="339" frameHeight="448"/>
+	<SubTexture name="Bf Toy de Espalda LEFT0001" x="1170" y="961" width="328" height="437" frameX="0" frameY="-1" frameWidth="339" frameHeight="448"/>
+	<SubTexture name="Bf Toy de Espalda LEFT0002" x="1525" y="961" width="321" height="444" frameX="-15" frameY="0" frameWidth="339" frameHeight="448"/>
+	<SubTexture name="Bf Toy de Espalda LEFT0003" x="1873" y="961" width="321" height="444" frameX="-15" frameY="0" frameWidth="339" frameHeight="448"/>
+	<SubTexture name="Bf Toy de Espalda LEFT0004" x="2221" y="961" width="322" height="448" frameX="-16" frameY="0" frameWidth="339" frameHeight="448"/>
+	<SubTexture name="Bf Toy de Espalda LEFT0005" x="2570" y="961" width="322" height="448" frameX="-16" frameY="0" frameWidth="339" frameHeight="448"/>
+	<SubTexture name="Bf Toy de Espalda LEFT0006" x="2919" y="961" width="323" height="439" frameX="-16" frameY="-1" frameWidth="339" frameHeight="448"/>
+	<SubTexture name="Bf Toy de Espalda LEFT0007" x="3269" y="961" width="323" height="439" frameX="-16" frameY="-1" frameWidth="339" frameHeight="448"/>
+	<SubTexture name="Bf Toy de Espalda LEFT0008" x="3269" y="961" width="323" height="439" frameX="-16" frameY="-1" frameWidth="339" frameHeight="448"/>
+	<SubTexture name="Bf Toy de Espalda LEFT0009" x="3619" y="961" width="323" height="439" frameX="-16" frameY="-1" frameWidth="339" frameHeight="448"/>
+	<SubTexture name="Bf Toy de Espalda RIGHT0000" x="27" y="1436" width="367" height="420" frameX="-22" frameY="0" frameWidth="389" frameHeight="429"/>
+	<SubTexture name="Bf Toy de Espalda RIGHT0001" x="27" y="1436" width="367" height="420" frameX="-22" frameY="0" frameWidth="389" frameHeight="429"/>
+	<SubTexture name="Bf Toy de Espalda RIGHT0002" x="421" y="1436" width="372" height="419" frameX="-3" frameY="-2" frameWidth="389" frameHeight="429"/>
+	<SubTexture name="Bf Toy de Espalda RIGHT0003" x="820" y="1436" width="372" height="419" frameX="-3" frameY="-2" frameWidth="389" frameHeight="429"/>
+	<SubTexture name="Bf Toy de Espalda RIGHT0004" x="1219" y="1436" width="376" height="427" frameX="0" frameY="-2" frameWidth="389" frameHeight="429"/>
+	<SubTexture name="Bf Toy de Espalda RIGHT0005" x="1622" y="1436" width="376" height="427" frameX="0" frameY="-2" frameWidth="389" frameHeight="429"/>
+	<SubTexture name="Bf Toy de Espalda RIGHT0006" x="2025" y="1436" width="372" height="428" frameX="-2" frameY="-1" frameWidth="389" frameHeight="429"/>
+	<SubTexture name="Bf Toy de Espalda RIGHT0007" x="2424" y="1436" width="372" height="428" frameX="-2" frameY="-1" frameWidth="389" frameHeight="429"/>
+	<SubTexture name="Bf Toy de Espalda RIGHT0008" x="2424" y="1436" width="372" height="428" frameX="-2" frameY="-1" frameWidth="389" frameHeight="429"/>
+	<SubTexture name="Bf Toy de Espalda RIGHT0009" x="2823" y="1436" width="372" height="428" frameX="-2" frameY="-1" frameWidth="389" frameHeight="429"/>
+	<SubTexture name="Bf Toy de Espalda UP0000" x="3222" y="1436" width="352" height="455" frameX="-5" frameY="0" frameWidth="361" frameHeight="466"/>
+	<SubTexture name="Bf Toy de Espalda UP0001" x="3222" y="1436" width="352" height="455" frameX="-5" frameY="0" frameWidth="361" frameHeight="466"/>
+	<SubTexture name="Bf Toy de Espalda UP0002" x="3601" y="1436" width="360" height="429" frameX="-1" frameY="-9" frameWidth="361" frameHeight="466"/>
+	<SubTexture name="Bf Toy de Espalda UP0003" x="27" y="1918" width="360" height="429" frameX="-1" frameY="-9" frameWidth="361" frameHeight="466"/>
+	<SubTexture name="Bf Toy de Espalda UP0004" x="414" y="1918" width="361" height="456" frameX="0" frameY="-10" frameWidth="361" frameHeight="466"/>
+	<SubTexture name="Bf Toy de Espalda UP0005" x="802" y="1918" width="361" height="456" frameX="0" frameY="-10" frameWidth="361" frameHeight="466"/>
+	<SubTexture name="Bf Toy de Espalda UP0006" x="1190" y="1918" width="361" height="457" frameX="0" frameY="-9" frameWidth="361" frameHeight="466"/>
+	<SubTexture name="Bf Toy de Espalda UP0007" x="1578" y="1918" width="361" height="457" frameX="0" frameY="-9" frameWidth="361" frameHeight="466"/>
+	<SubTexture name="Bf Toy de Espalda UP0008" x="1578" y="1918" width="361" height="457" frameX="0" frameY="-9" frameWidth="361" frameHeight="466"/>
+	<SubTexture name="Bf Toy de Espalda UP0009" x="1966" y="1918" width="361" height="457" frameX="0" frameY="-9" frameWidth="361" frameHeight="466"/>
+</TextureAtlas>

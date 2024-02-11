@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="vida.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="corashon0000" x="25" y="25" width="30" height="29"/>
+	<SubTexture name="corashon perdido 0000" x="80" y="25" width="26" height="25"/>
+	<SubTexture name="vida but roja0000" x="131" y="25" width="470" height="194" frameX="0" frameY="0" frameWidth="475" frameHeight="194"/>
+	<SubTexture name="vida but roja0001" x="626" y="25" width="475" height="194"/>
+	<SubTexture name="vida but roja0002" x="1126" y="25" width="470" height="194" frameX="0" frameY="0" frameWidth="475" frameHeight="194"/>
+	<SubTexture name="vida but roja0003" x="1621" y="25" width="470" height="194" frameX="0" frameY="0" frameWidth="475" frameHeight="194"/>
+	<SubTexture name="vida nose0000" x="2116" y="25" width="479" height="419" frameX="0" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0001" x="2620" y="25" width="477" height="419" frameX="-2" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0002" x="3122" y="25" width="470" height="419" frameX="-9" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0003" x="25" y="469" width="470" height="419" frameX="-9" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0004" x="520" y="469" width="494" height="419" frameX="-9" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0005" x="1039" y="469" width="507" height="419" frameX="-9" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0006" x="1571" y="469" width="537" height="419" frameX="-9" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0007" x="2133" y="469" width="580" height="419" frameX="-9" frameY="-15" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0008" x="2738" y="469" width="597" height="419" frameX="-9" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0009" x="3360" y="469" width="610" height="419" frameX="-9" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0010" x="25" y="913" width="638" height="419" frameX="-9" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0011" x="688" y="913" width="645" height="419" frameX="-9" frameY="-10" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0012" x="1358" y="913" width="650" height="419" frameX="-9" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0013" x="2033" y="913" width="680" height="419" frameX="-9" frameY="0" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0014" x="2738" y="913" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0015" x="2738" y="913" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0016" x="3233" y="913" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0017" x="3233" y="913" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0018" x="25" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0019" x="25" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0020" x="520" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0021" x="520" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0022" x="1015" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0023" x="1015" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0024" x="1510" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0025" x="1510" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0026" x="2005" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0027" x="2005" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0028" x="2500" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0029" x="2500" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+	<SubTexture name="vida nose0030" x="2500" y="1357" width="470" height="194" frameX="-9" frameY="-110" frameWidth="689" frameHeight="434"/>
+</TextureAtlas>
