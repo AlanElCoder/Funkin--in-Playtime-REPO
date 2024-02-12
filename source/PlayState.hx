@@ -59,6 +59,8 @@ import StageData;
 import FunkinLua;
 import DialogueBoxPsych;
 import Conductor.Rating;
+import Shaders;
+
 
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
@@ -333,10 +335,13 @@ class PlayState extends MusicBeatState
 	var vcrShader:FlxRuntimeShader;
 	var shader1:FlxRuntimeShader;
 	var vignette:FlxRuntimeShader;
+	var chrom:ChromaticAberrationEffect;
 	var vidaBG:FlxSprite;
 	var framesVida:Array<String>=[];
 	var vidalel:Int=6;
 	var vidaItems:FlxTypedGroup<FlxSprite>;
+	var bg:FlxSprite;
+	var bg1:BGSprite;
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -843,6 +848,26 @@ class PlayState extends MusicBeatState
 				if(!ClientPrefs.lowQuality) foregroundSprites.add(new BGSprite('tank4', 1300, 900, 1.5, 1.5, ['fg']));
 				foregroundSprites.add(new BGSprite('tank5', 1620, 700, 1.5, 1.5, ['fg']));
 				if(!ClientPrefs.lowQuality) foregroundSprites.add(new BGSprite('tank3', 1300, 1200, 3.5, 2.5, ['fg']));
+			case 'nightmareBG':	
+				//background First Person
+				 bg = new FlxSprite();
+				 bg.makeGraphic(FlxG.width,FlxG.height,FlxColor.BLACK);
+				 bg.screenCenter();
+				 bg.visible=true;
+				 add(bg);
+
+				 
+				//background1
+			
+				bg1 = new BGSprite('BG',0,0,1,1);
+				bg1.scale.set(0.65,0.65);
+				bg1.screenCenter();
+				bg1.visible=false;
+				add(bg1);
+				//
+				//background2
+
+				//
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
 		if (!FileSystem.exists(path)){
@@ -857,15 +882,16 @@ class PlayState extends MusicBeatState
 			case 'stress':
 				GameOverSubstate.characterName = 'bf-holding-gf-dead';
 		}
-
+		chrom  = new ChromaticAberrationEffect(0.0);
+		//chrom = new ChromaticAberrationEffect(0.0015);
 		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
 	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
 		vignette = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("vignette")));
 		
 		if (ClientPrefs.shaders)
 		{
-		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
-		 camHUD.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
+		 FlxG.camera.setFilters([new ShaderFilter(vignette),new ShaderFilter(chrom.shader),new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
+		 camHUD.setFilters([new ShaderFilter(chrom.shader),new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
 		}
 
 		if(isPixelStage) {
@@ -1041,6 +1067,8 @@ class PlayState extends MusicBeatState
 
 		switch(curStage)
 		{
+			case 'nightmareBG':
+				boyfriend.visible=false;
 			case 'limo':
 				resetFastCar();
 				addBehindGF(fastCar);
@@ -2996,6 +3024,9 @@ class PlayState extends MusicBeatState
 	var bfCameraY:Dynamic;
 	var gfCameraX:Dynamic;
 	var gfCameraY:Dynamic;
+	var cambiarOffets:Int=10;
+	var shakeCoso:Bool=false;
+	var sining:Bool=false;
 	function moveCameraLel(){
 
 		dadCameraX=0;
@@ -3047,9 +3078,6 @@ class PlayState extends MusicBeatState
 		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
 		{
 			camFollow.set(offetsJSON.xx[0]+ 150 + dadCameraX+dad.cameraPosition[0]+dad.cameraPosition[0]+offetsJSON.ofs[0] , offetsJSON.yy[0]+ 150 + dadCameraY+dad.cameraPosition[1]+dad.cameraPosition[1]+offetsJSON.ofs[0]);
-	
-        
-
 			defaultCamZoom = offetsJSON.zooms[0];
 		}else
 		{
@@ -3065,6 +3093,34 @@ class PlayState extends MusicBeatState
 		}
 	  
 	  } 
+
+	  if (SONG.song=='countdown' || curStep==cambiarOffets){
+		bg.visible=false;
+		bg1.visible=true;
+	
+		shakeCoso=true;
+		offetsJSON = {
+			xx:[
+			   dad.getMidpoint().x,boyfriend.getMidpoint().x,gf.getMidpoint().x,
+			],
+			yy:[
+				dad.getMidpoint().y,boyfriend.getMidpoint().y,gf.getMidpoint().y,
+			],
+			ofs:[
+			   15,15,0
+			],
+			zooms:[
+			 0.8,0.9,1
+			]
+		};
+		switch(dad.animation.curAnim.name){
+			case 'singLEFT' | 'singLEFT-alt'|'singRIGHT' | 'singRIGHT-alt'|'singUP' | 'singUP-alt'|'singDOWN' | 'singDOWN-alt':
+				sining=true;
+		}
+	  }
+	
+	
+	
 	}
 	public var paused:Bool = false;
 	public var canReset:Bool = true;
@@ -3073,6 +3129,8 @@ class PlayState extends MusicBeatState
 	var limoSpeed:Float = 0;
 	var iTime:Float;
 	var si:Bool=false;	
+	var intensity:Float=1.5;
+	
 	override public function update(elapsed:Float)
 	{
 		/*if (FlxG.keys.justPressed.NINE)
@@ -3084,7 +3142,11 @@ class PlayState extends MusicBeatState
 	    vcrShader.setFloat("iTime", iTime);
 		shader1.setFloat("iTime", iTime);
 		vignette.setFloat("iTime",iTime);
-		vignette.setFloat("vignetteStrength",1.4);
+		if (curStep==cambiarOffets||SONG.song=='countdown'){
+			vignette.setFloat("vignetteStrength",1.4);
+			chrom.setChrome(sining ? (camHUD.zoom - 1) * intensity : 0);
+		}
+		
 		moveCameraLel();
 		switch (curStage)
 		{
