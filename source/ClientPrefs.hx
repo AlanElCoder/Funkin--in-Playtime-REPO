@@ -8,7 +8,7 @@ import Controls;
 
 class ClientPrefs {
 	public static var downScroll:Bool = false;
-	public static var middleScroll:Bool = false;
+	public static var middleScroll:Bool = true;
 	public static var opponentStrums:Bool = true;
 	public static var showFPS:Bool = true;
 	public static var flashing:Bool = true;
@@ -95,7 +95,7 @@ class ClientPrefs {
 
 	public static function saveSettings() {
 		FlxG.save.data.downScroll = downScroll;
-		FlxG.save.data.middleScroll = middleScroll;
+		FlxG.save.data.middleScroll = true;
 		FlxG.save.data.opponentStrums = opponentStrums;
 		FlxG.save.data.showFPS = showFPS;
 		FlxG.save.data.flashing = flashing;
@@ -145,7 +145,7 @@ class ClientPrefs {
 			downScroll = FlxG.save.data.downScroll;
 		}
 		if(FlxG.save.data.middleScroll != null) {
-			middleScroll = FlxG.save.data.middleScroll;
+			middleScroll =true;
 		}
 		if(FlxG.save.data.opponentStrums != null) {
 			opponentStrums = FlxG.save.data.opponentStrums;
