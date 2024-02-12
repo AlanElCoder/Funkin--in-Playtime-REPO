@@ -1191,8 +1191,8 @@ class PlayState extends MusicBeatState
 		if (!ClientPrefs.downScroll){
 			vidaBG.y+=50;
 		}else{
-
-		}
+			vidaBG.y-=450;
+		}//middleScroll
 		
 		vidaBG.cameras=[camHUD];
 		add(vidaBG);
@@ -1213,24 +1213,44 @@ class PlayState extends MusicBeatState
 				switch(i){
 					case 0:
 						vidas.x=200;
-						vidas.y=620;
+						vidas.y=660;
 					case 1:
 						vidas.x=240;
-						vidas.y=620;
+						vidas.y=660;
 					case 2:
 						vidas.x=280;	
-						vidas.y=620;	
+						vidas.y=660;	
 					case 3:
 						vidas.x=320;
-						vidas.y=620;	
+						vidas.y=660;	
 					case 4:
 						vidas.x=360;
-						vidas.y=620;
+						vidas.y=660;
 					case 5:
 						vidas.x=400;
-						vidas.y=620;							
+						vidas.y=660;							
 				}
 			}else{
+				switch(i){
+					case 0:
+						vidas.x=200;
+						vidas.y=170;
+					case 1:
+						vidas.x=240;
+						vidas.y=170;
+					case 2:
+						vidas.x=280;	
+						vidas.y=170;	
+					case 3:
+						vidas.x=320;
+						vidas.y=170;	
+					case 4:
+						vidas.x=360;
+						vidas.y=170;
+					case 5:
+						vidas.x=400;
+						vidas.y=170;							
+				}
 
 			}
 		
@@ -5397,11 +5417,20 @@ class PlayState extends MusicBeatState
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
+		if (!ClientPrefs.downScroll){
 		if (songMisses>2){
 			vidaBG.animation.play('idle2');
 			vidaBG.y=500;
 		}else{
 			vidaBG.animation.play('idle');
+		}}else{
+			if (songMisses>2){
+				vidaBG.animation.play('idle2');
+				vidaBG.y=0;
+			}else{
+				vidaBG.animation.play('idle');
+			}
+
 		}
 		
 
