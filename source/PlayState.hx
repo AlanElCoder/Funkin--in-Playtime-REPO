@@ -332,7 +332,7 @@ class PlayState extends MusicBeatState
 	public static var lastScore:Array<FlxSprite> = [];
 	var vcrShader:FlxRuntimeShader;
 	var shader1:FlxRuntimeShader;
-
+	var vignette:FlxRuntimeShader;
 	var vidaBG:FlxSprite;
 	var framesVida:Array<String>=[];
 	var vidalel:Int=6;
@@ -860,6 +860,8 @@ class PlayState extends MusicBeatState
 
 		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
 	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
+		vignette = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("vignette")));
+		
 		if (ClientPrefs.shaders)
 		{
 		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
@@ -3058,6 +3060,8 @@ class PlayState extends MusicBeatState
 		iTime += elapsed;
 	    vcrShader.setFloat("iTime", iTime);
 		shader1.setFloat("iTime", iTime);
+		vignette.setFloat("iTime",iTime);
+		vignette.setFloat("vignetteStrength",1.4);
 		moveCameraLel();
 		switch (curStage)
 		{
