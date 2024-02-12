@@ -890,8 +890,8 @@ class PlayState extends MusicBeatState
 		
 		if (ClientPrefs.shaders)
 		{
-		 FlxG.camera.setFilters([new ShaderFilter(vignette),new ShaderFilter(chrom.shader),new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
-		 camHUD.setFilters([new ShaderFilter(chrom.shader),new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
+		 FlxG.camera.setFilters([new ShaderFilter(vignette),new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
+		 camHUD.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
 		}
 
 		if(isPixelStage) {
@@ -1029,6 +1029,7 @@ class PlayState extends MusicBeatState
 		startCharacterPos(dad, true);
 		dadGroup.add(dad);
 		startCharacterLua(dad.curCharacter);
+	
 
 		boyfriend = new Boyfriend(0, 0, SONG.player1);
 		startCharacterPos(boyfriend);
@@ -3093,30 +3094,33 @@ class PlayState extends MusicBeatState
 		}
 	  
 	  } 
-
-	  if (SONG.song=='countdown' || curStep==cambiarOffets){
+	  if (SONG.song=='countdown'){
+		if (curStep==cambiarOffets){
 		bg.visible=false;
 		bg1.visible=true;
-	
-		shakeCoso=true;
+	    boyfriend.visible=true;
 		offetsJSON = {
 			xx:[
-			   dad.getMidpoint().x,boyfriend.getMidpoint().x,gf.getMidpoint().x,
+			   400,800,gf.getMidpoint().x,
 			],
 			yy:[
-				dad.getMidpoint().y,boyfriend.getMidpoint().y,gf.getMidpoint().y,
+			   -100,420,gf.getMidpoint().y,
 			],
 			ofs:[
 			   15,15,0
 			],
 			zooms:[
-			 0.8,0.9,1
+			 0.7,0.9,1
 			]
 		};
-		switch(dad.animation.curAnim.name){
-			case 'singLEFT' | 'singLEFT-alt'|'singRIGHT' | 'singRIGHT-alt'|'singUP' | 'singUP-alt'|'singDOWN' | 'singDOWN-alt':
-				sining=true;
-		}
+		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
+		{
+		    sining=true;
+		}else{
+			sining=false;
+		}	 
+		dad.shader=chrom.shader;
+    	}
 	  }
 	
 	
@@ -3129,7 +3133,7 @@ class PlayState extends MusicBeatState
 	var limoSpeed:Float = 0;
 	var iTime:Float;
 	var si:Bool=false;	
-	var intensity:Float=1.5;
+	var intensity:Float=0.2;
 	
 	override public function update(elapsed:Float)
 	{
@@ -3146,6 +3150,7 @@ class PlayState extends MusicBeatState
 			vignette.setFloat("vignetteStrength",1.4);
 			chrom.setChrome(sining ? (camHUD.zoom - 1) * intensity : 0);
 		}
+		
 		
 		moveCameraLel();
 		switch (curStage)
@@ -3292,7 +3297,7 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
-
+	
 		for (i in 0...vidalel){
 			switch(songMisses){
 				case 0:
