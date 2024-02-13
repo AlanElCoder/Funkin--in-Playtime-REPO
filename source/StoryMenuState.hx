@@ -103,8 +103,7 @@ class StoryMenuState extends MusicBeatState
 			textWeek.setFormat("VCR OSD Mono", 40, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			add(textWeek);
 		}	
-		quitar = new FlxText(12, 0, 0, "Quit", 12);
-		quitar.setPosition(weekJSON.ekisT+45,weekJSON.eyeT+550);
+		quitar = new FlxText(1182, 0, 0, "Quit", 12);
 		quitar.setFormat("VCR OSD Mono", 35, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(quitar);
 		quitar.updateHitbox();
@@ -144,14 +143,6 @@ class StoryMenuState extends MusicBeatState
 	    vcrShader.setFloat("iTime", iTime);
 		shader1.setFloat("iTime", iTime);
 		cursorImage.setPosition(FlxG.mouse.getPosition().x-50,FlxG.mouse.getPosition().y-70);
-		/*
-		menuItems.members[0].x = FlxMath.lerp(1, menuItems.members[0].x, 0.85);
-		menuItems.members[0].y = FlxMath.lerp(1, menuItems.members[0].y ,0.85);
-
-		textWeek.x=menuItems.members[0].x/2;
-		textWeek.y=menuItems.members[0].y/2-200; 
-		  Esto no va a funcionar xd
-		*/
 
 		if (controls.BACK){
 			MusicBeatState.switchState(new MainMenuState());
@@ -160,28 +151,27 @@ class StoryMenuState extends MusicBeatState
 		if (FlxG.mouse.justPressed &&!noPressed){
 			changeItem();
 		}
+		if(controls.ACCEPT && !noPressed) {
+			curSelected = 0;
+			changeItem();
+		}
 	}
 	function changeCur(){
-		if (FlxG.mouse.overlaps(menuItems.members[1])){
-			curSelected=0;
-			cursorImage.animation.curAnim.curFrame = 1;
-		}else{
-			cursorImage.animation.curAnim.curFrame = 0;
-			curSelected=2;
-			noPressed=false;
+		if(!noPressed) {
+			if (FlxG.mouse.overlaps(menuItems.members[1])){
+				curSelected=0;
+				cursorImage.animation.curAnim.curFrame = 1;
+			}else{
+				cursorImage.animation.curAnim.curFrame = 0;
+				curSelected=2;
+				noPressed=false;
+			}
+			if (FlxG.mouse.overlaps(quitar)) {
+				curSelected=1;
+				cursorImage.animation.curAnim.curFrame = 1;
+			}
+			// no alan ya no 😡
 		}
-		if (FlxG.mouse.overlaps(quitar)) {
-			curSelected=1;
-			cursorImage.animation.curAnim.curFrame = 1;
-		}
-		
-		/*
-		if (FlxG.mouse.overlaps(bgBlack)) {
-			curSelected=2;
-		}No sirve :vvv
-		*/
-	
-		trace("curSelected: "+curSelected);
 	}
 	function changeItem(){
 		noPressed=true;
@@ -191,7 +181,6 @@ class StoryMenuState extends MusicBeatState
 		{
 			PlayState.storyPlaylist = weekJSON.songs[curSelected];
 		    PlayState.storyDifficulty = 1;
-			
 
 	     	PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase()+"-hard", PlayState.storyPlaylist[0].toLowerCase());
 	       	PlayState.storyWeek = weekJSON.numWeek;
