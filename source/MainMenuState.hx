@@ -50,6 +50,7 @@ class MainMenuState extends MusicBeatState
 	var hubicationItems:Array<Int>=[];
 	var vcrShader:FlxRuntimeShader;
 	var shader1:FlxRuntimeShader;
+	var alanpuntoecse:Bool = false;
 	private var imageOffsets:Array<Float> = [0, 0];
 	private var char:String = 'pene';
 	override function create():Void
@@ -160,7 +161,7 @@ class MainMenuState extends MusicBeatState
 		trace(curSelected);
 		if (!selectedSomethin){
 			cursorImage.setPosition(FlxG.mouse.getPosition().x-50,FlxG.mouse.getPosition().y-70);
-			if (FlxG.mouse.justPressed){
+			if (FlxG.mouse.justPressed && alanpuntoecse == false){
 				changeItem();
 			}
 			changeCur();
@@ -169,6 +170,15 @@ class MainMenuState extends MusicBeatState
 				MusicBeatState.switchState(new TitleState());
 			}
 			*/
+		}
+		if(controls.ACCEPT && curSelected <= 3 && alanpuntoecse == false) {
+			alanpuntoecse = true;
+			changeItem();
+		}
+		if(controls.ACCEPT && curSelected == 4 && alanpuntoecse == false) {
+			curSelected = 0;
+			alanpuntoecse = true;
+			changeItem();
 		}
 	}
 	var beats:Int;
@@ -182,23 +192,23 @@ class MainMenuState extends MusicBeatState
 		}
 	}
 	function changeCur(){
-		if (FlxG.mouse.overlaps(menuItems.members[0])){
+		if (FlxG.mouse.overlaps(menuItems.members[0]) && alanpuntoecse == false){
 			curSelected=0;
 
 		 }
-		 if (FlxG.mouse.overlaps(menuItems.members[1])){
+		 if (FlxG.mouse.overlaps(menuItems.members[1]) && alanpuntoecse == false){
 			 curSelected=1;
 
 		 }
-		 if (FlxG.mouse.overlaps(menuItems.members[2])){
+		 if (FlxG.mouse.overlaps(menuItems.members[2]) && alanpuntoecse == false){
 			 curSelected=2;
 
 		 }
-		 if (FlxG.mouse.overlaps(menuItems.members[3])){
+		 if (FlxG.mouse.overlaps(menuItems.members[3]) && alanpuntoecse == false){
 			curSelected=3;
 		
 		 }
-		 if (!FlxG.mouse.overlaps(menuItems.members[0])&&!FlxG.mouse.overlaps(menuItems.members[1])&&!FlxG.mouse.overlaps(menuItems.members[2])&&!FlxG.mouse.overlaps(menuItems.members[3])){
+		 if (!FlxG.mouse.overlaps(menuItems.members[0])&&!FlxG.mouse.overlaps(menuItems.members[1])&&!FlxG.mouse.overlaps(menuItems.members[2])&&!FlxG.mouse.overlaps(menuItems.members[3]) && alanpuntoecse == false){
 			curSelected=4;
 			cursorImage.animation.curAnim.curFrame = 0;
 		 }else{
@@ -206,7 +216,8 @@ class MainMenuState extends MusicBeatState
 		 }
 	}
 	function changeItem(){
-		if (curSelected==0 || curSelected==1 || curSelected==2 || curSelected==3){
+		if (curSelected<=3){
+		alanpuntoecse = true;
 		FlxG.sound.play(Paths.sound('confirmMenu'));
 		new FlxTimer().start(0.4, function(tmr:FlxTimer)
 		{
