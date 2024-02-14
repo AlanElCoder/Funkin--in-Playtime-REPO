@@ -975,7 +975,7 @@ class PlayState extends MusicBeatState
 		}
 		reloadHealthBarColors();
 
-		scoreTxt = new FlxText(1100, healthBarBG.y - 40, FlxG.width, "", 20);
+		scoreTxt = new FlxText(40, healthBarBG.y - 200, FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("PhantomMuff Full Letters 1.1.5.ttf"), 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
@@ -2128,7 +2128,7 @@ class PlayState extends MusicBeatState
 			ratingName='?';
 		}
 		scoreTxt.text = 
-		   'Score: ' + songScore
+		  '\nScore: ' + songScore
 		+ '\nMisses: ' + songMisses
 		+ '\nRating: ' + ratingName;
 
@@ -2137,8 +2137,8 @@ class PlayState extends MusicBeatState
 			if(scoreTxtTween != null) {
 				scoreTxtTween.cancel();
 			}
-			scoreTxt.scale.x = 1.05;
-			scoreTxt.scale.y = 1.09;
+			scoreTxt.scale.x += 0.03;
+			//scoreTxt.scale.y += 0.05;
 			scoreTxtTween = FlxTween.tween(scoreTxt.scale, {x: 1, y: 1}, 0.2, {
 				onComplete: function(twn:FlxTween) {
 					scoreTxtTween = null;
