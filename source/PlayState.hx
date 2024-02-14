@@ -907,7 +907,7 @@ class PlayState extends MusicBeatState
 		if (!ClientPrefs.downScroll){
 			vidaBG.y+=100;
 		}else{
-			vidaBG.y-=450;
+			vidaBG.y-=440;
 		}//middleScroll
 		
 		vidaBG.cameras=[camHUD];
@@ -950,22 +950,22 @@ class PlayState extends MusicBeatState
 				switch(i){
 					case 0:
 						vidas.x=152;
-						vidas.y=180;
+						vidas.y=140;
 					case 1:
 						vidas.x=192;
-						vidas.y=180;
+						vidas.y=140;
 					case 2:
 						vidas.x=232;	
-						vidas.y=180;	
+						vidas.y=140;	
 					case 3:
 						vidas.x=272;
-						vidas.y=180;	
+						vidas.y=140;	
 					case 4:
 						vidas.x=312;
-						vidas.y=180;
+						vidas.y=140;
 					case 5:
 						vidas.x=352;
-						vidas.y=180;							
+						vidas.y=140;							
 				}
 
 			}
@@ -2992,14 +2992,7 @@ class PlayState extends MusicBeatState
 					vidaItems.members[5].colorTransform.greenOffset = 0;
 					vidaItems.members[5].colorTransform.blueOffset = 0;
 
-					if (!si){
-						vidaBG.animation.play('idle2');
-						vidaBG.y += 86;
-						vidaBG.x += 8;
-						FlxG.camera.fade(FlxColor.RED, 0.6, true,false);
-						FlxG.camera.shake(0.012,0.2);
-						si=true;
-					}
+				
 
 				case 5:	
 					vidaItems.members[0].animation.play('idle');
@@ -3035,7 +3028,25 @@ class PlayState extends MusicBeatState
 					vidaItems.members[5].colorTransform.greenOffset = 0;
 					vidaItems.members[5].colorTransform.blueOffset = 0;
 				case 6:	
-					health=0;
+					new FlxTimer().start(0.4, function(tmr:FlxTimer)
+					{
+						health=0;		
+					});
+				
+					if (!si){
+						vidaBG.animation.play('idle2');
+						if (!ClientPrefs.downScroll){
+							vidaBG.y += 86;
+							vidaBG.x += 8;
+						}else{
+							vidaBG.y = 0;
+							vidaBG.x += 8;
+						}
+					
+						FlxG.camera.fade(FlxColor.RED, 0.6, true,false);
+						FlxG.camera.shake(0.012,0.2);
+						si=true;
+					}
 		    }
 		}
 		super.update(elapsed);
@@ -4999,12 +5010,12 @@ class PlayState extends MusicBeatState
 		}
 
 		if (!ClientPrefs.downScroll){
-		if (songMisses>3){
+		if (songMisses>5){
 			vidaBG.animation.play('idle2');
 		}else{
 			vidaBG.animation.play('idle');
 		}}else{
-			if (songMisses>3){
+			if (songMisses>5){
 				vidaBG.animation.play('idle2');
 				vidaBG.y=0;
 			}else{
