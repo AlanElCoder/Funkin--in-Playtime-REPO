@@ -2658,7 +2658,7 @@ class PlayState extends MusicBeatState
 	var bfCameraY:Dynamic;
 	var gfCameraX:Dynamic;
 	var gfCameraY:Dynamic;
-	var cambiarOffets:Int=10;
+	var cambiarOffets:Int=551;
 	var shakeCoso:Bool=false;
 	var sining:Bool=false;
 	function moveCameraLel(){
@@ -2729,6 +2729,7 @@ class PlayState extends MusicBeatState
 	  } 
 	  if (SONG.song=='countdown'){
 		if (curStep==cambiarOffets){
+			FlxG.camera.fade(FlxColor.BLACK, 0.7, true,false);
 		bg.visible=false;
 		bg1.visible=true;
 	    boyfriend.visible=true;
@@ -2737,7 +2738,7 @@ class PlayState extends MusicBeatState
 			   400,800,gf.getMidpoint().x,
 			],
 			yy:[
-			   -100,420,gf.getMidpoint().y,
+			   200,420,gf.getMidpoint().y,
 			],
 			ofs:[
 			   15,15,0
