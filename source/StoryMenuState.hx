@@ -148,7 +148,7 @@ class StoryMenuState extends MusicBeatState
 			MusicBeatState.switchState(new MainMenuState());
 		}
 		changeCur();
-		if (FlxG.mouse.justPressed &&!noPressed){
+		if (FlxG.mouse.justPressed && !noPressed && cursorImage.animation.curAnim.curFrame == 1){
 			changeItem();
 		}
 		if(controls.ACCEPT && !noPressed) {

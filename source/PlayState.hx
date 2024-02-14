@@ -905,7 +905,7 @@ class PlayState extends MusicBeatState
 		vidaBG.x-=620;
 		vidaBG.scale.set(0.8, 0.8);
 		if (!ClientPrefs.downScroll){
-			vidaBG.y+=80;
+			vidaBG.y+=100;
 		}else{
 			vidaBG.y-=450;
 		}//middleScroll
@@ -928,44 +928,44 @@ class PlayState extends MusicBeatState
 			if (!ClientPrefs.downScroll){
 				switch(i){
 					case 0:
-						vidas.x=200;
-						vidas.y=660;
+						vidas.x=152;
+						vidas.y=664;
 					case 1:
-						vidas.x=240;
-						vidas.y=660;
+						vidas.x=192;
+						vidas.y=664;
 					case 2:
-						vidas.x=280;	
-						vidas.y=660;	
+						vidas.x=232;	
+						vidas.y=664;
 					case 3:
-						vidas.x=320;
-						vidas.y=660;	
+						vidas.x=272;
+						vidas.y=664;
 					case 4:
-						vidas.x=360;
-						vidas.y=660;
+						vidas.x=312;
+						vidas.y=664;
 					case 5:
-						vidas.x=400;
-						vidas.y=660;							
+						vidas.x=352;
+						vidas.y=664;
 				}
 			}else{
 				switch(i){
 					case 0:
-						vidas.x=200;
-						vidas.y=170;
+						vidas.x=152;
+						vidas.y=180;
 					case 1:
-						vidas.x=240;
-						vidas.y=170;
+						vidas.x=192;
+						vidas.y=180;
 					case 2:
-						vidas.x=280;	
-						vidas.y=170;	
+						vidas.x=232;	
+						vidas.y=180;	
 					case 3:
-						vidas.x=320;
-						vidas.y=170;	
+						vidas.x=272;
+						vidas.y=180;	
 					case 4:
-						vidas.x=360;
-						vidas.y=170;
+						vidas.x=312;
+						vidas.y=180;
 					case 5:
-						vidas.x=400;
-						vidas.y=170;							
+						vidas.x=352;
+						vidas.y=180;							
 				}
 
 			}
@@ -2925,8 +2925,6 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		super.update(elapsed);
-	
 		for (i in 0...vidalel){
 			switch(songMisses){
 				case 0:
@@ -2957,44 +2955,6 @@ class PlayState extends MusicBeatState
 					vidaItems.members[3].animation.play('idle2');
 					vidaItems.members[4].animation.play('idle2');
 					vidaItems.members[5].animation.play('idle2');
-
-				
-					vidaItems.members[0].colorTransform.redOffset = 233;
-					vidaItems.members[0].colorTransform.greenOffset = 36;
-					vidaItems.members[0].colorTransform.blueOffset = 36;
-
-
-					vidaItems.members[1].colorTransform.redOffset = 233;
-					vidaItems.members[1].colorTransform.greenOffset = 36;
-					vidaItems.members[1].colorTransform.blueOffset = 36;
-
-
-					vidaItems.members[2].colorTransform.redOffset = 233;
-					vidaItems.members[2].colorTransform.greenOffset = 36;
-					vidaItems.members[2].colorTransform.blueOffset = 36;
-
-					vidaItems.members[3].colorTransform.redOffset = 131;
-					vidaItems.members[3].colorTransform.greenOffset = 0;
-					vidaItems.members[3].colorTransform.blueOffset = 0;
-
-					vidaItems.members[4].colorTransform.redOffset = 131;
-					vidaItems.members[4].colorTransform.greenOffset = 0;
-					vidaItems.members[4].colorTransform.blueOffset = 0;
-
-					vidaItems.members[5].colorTransform.redOffset = 131;
-					vidaItems.members[5].colorTransform.greenOffset = 0;
-					vidaItems.members[5].colorTransform.blueOffset = 0;
-
-					if (!si){
-						new FlxTimer().start(0.1, function(tmr:FlxTimer)
-							{
-								FlxG.camera.fade(FlxColor.RED, 0.7, true,false);
-								FlxG.camera.shake(0.015,0.4);
-								si=true;
-							});	
-					}
-
-					//vidaBG.animation.play('idle2');
 			
 				case 4:	
 				    vidaItems.members[0].animation.play('idle');
@@ -3030,6 +2990,16 @@ class PlayState extends MusicBeatState
 					vidaItems.members[5].colorTransform.redOffset = 131;
 					vidaItems.members[5].colorTransform.greenOffset = 0;
 					vidaItems.members[5].colorTransform.blueOffset = 0;
+
+					if (!si){
+						vidaBG.animation.play('idle2');
+						vidaBG.y += 86;
+						vidaBG.x += 8;
+						FlxG.camera.fade(FlxColor.RED, 0.6, true,false);
+						FlxG.camera.shake(0.012,0.2);
+						si=true;
+					}
+
 				case 5:	
 					vidaItems.members[0].animation.play('idle');
 					vidaItems.members[1].animation.play('idle2');
@@ -3041,39 +3011,6 @@ class PlayState extends MusicBeatState
 					vidaItems.members[0].colorTransform.redOffset = 233;
 					vidaItems.members[0].colorTransform.greenOffset = 36;
 					vidaItems.members[0].colorTransform.blueOffset = 36;
-
-
-					vidaItems.members[1].colorTransform.redOffset = 133;
-					vidaItems.members[1].colorTransform.greenOffset = 36;
-					vidaItems.members[1].colorTransform.blueOffset = 36;
-
-
-					vidaItems.members[2].colorTransform.redOffset = 131;
-					vidaItems.members[2].colorTransform.greenOffset = 0;
-					vidaItems.members[2].colorTransform.blueOffset = 0;
-
-					vidaItems.members[3].colorTransform.redOffset = 131;
-					vidaItems.members[3].colorTransform.greenOffset = 0;
-					vidaItems.members[3].colorTransform.blueOffset = 0;
-
-					vidaItems.members[4].colorTransform.redOffset = 131;
-					vidaItems.members[4].colorTransform.greenOffset = 0;
-					vidaItems.members[4].colorTransform.blueOffset = 0;
-
-					vidaItems.members[5].colorTransform.redOffset = 131;
-					vidaItems.members[5].colorTransform.greenOffset = 0;
-					vidaItems.members[5].colorTransform.blueOffset = 0;
-				case 6:	
-					vidaItems.members[0].animation.play('idle2');
-					vidaItems.members[1].animation.play('idle2');
-					vidaItems.members[2].animation.play('idle2');
-					vidaItems.members[3].animation.play('idle2');
-					vidaItems.members[4].animation.play('idle2');
-					vidaItems.members[5].animation.play('idle2');
-
-					vidaItems.members[0].colorTransform.redOffset = 131;
-					vidaItems.members[0].colorTransform.greenOffset = 0;
-					vidaItems.members[0].colorTransform.blueOffset = 0;
 
 
 					vidaItems.members[1].colorTransform.redOffset = 131;
@@ -3096,14 +3033,11 @@ class PlayState extends MusicBeatState
 					vidaItems.members[5].colorTransform.redOffset = 131;
 					vidaItems.members[5].colorTransform.greenOffset = 0;
 					vidaItems.members[5].colorTransform.blueOffset = 0;
-					new FlxTimer().start(0.4, function(tmr:FlxTimer)
-					{
-						health=0;
-					});							
-			}
-			
-		
-		}	
+				case 6:	
+					health=0;
+		    }
+		}
+		super.update(elapsed);
 
 		setOnLuas('curDecStep', curDecStep);
 		setOnLuas('curDecBeat', curDecBeat);
@@ -5064,9 +4998,8 @@ class PlayState extends MusicBeatState
 		}
 
 		if (!ClientPrefs.downScroll){
-		if (songMisses>2){
+		if (songMisses>3){
 			vidaBG.animation.play('idle2');
-			vidaBG.y=520;
 		}else{
 			vidaBG.animation.play('idle');
 		}}else{
@@ -5076,7 +5009,6 @@ class PlayState extends MusicBeatState
 			}else{
 				vidaBG.animation.play('idle');
 			}
-
 		}
 		
 
@@ -5092,61 +5024,6 @@ class PlayState extends MusicBeatState
 		if (curBeat % dad.danceEveryNumBeats == 0 && dad.animation.curAnim != null && !dad.animation.curAnim.name.startsWith('sing') && !dad.stunned)
 		{
 			dad.dance();
-		}
-
-		switch (curStage)
-		{
-			case 'tank':
-				if(!ClientPrefs.lowQuality) tankWatchtower.dance();
-				foregroundSprites.forEach(function(spr:BGSprite)
-				{
-					spr.dance();
-				});
-
-			case 'school':
-				if(!ClientPrefs.lowQuality) {
-					bgGirls.dance();
-				}
-
-			case 'mall':
-				if(!ClientPrefs.lowQuality) {
-					upperBoppers.dance(true);
-				}
-
-				if(heyTimer <= 0) bottomBoppers.dance(true);
-				santa.dance(true);
-
-			case 'limo':
-				if(!ClientPrefs.lowQuality) {
-					grpLimoDancers.forEach(function(dancer:BackgroundDancer)
-					{
-						dancer.dance();
-					});
-				}
-
-				if (FlxG.random.bool(10) && fastCarCanDrive)
-					fastCarDrive();
-			case "philly":
-				if (!trainMoving)
-					trainCooldown += 1;
-
-				if (curBeat % 4 == 0)
-				{
-					curLight = FlxG.random.int(0, phillyLightsColors.length - 1, [curLight]);
-					phillyWindow.color = phillyLightsColors[curLight];
-					phillyWindow.alpha = 1;
-				}
-
-				if (curBeat % 8 == 4 && FlxG.random.bool(30) && !trainMoving && trainCooldown > 8)
-				{
-					trainCooldown = FlxG.random.int(-4, 0);
-					trainStart();
-				}
-		}
-
-		if (curStage == 'spooky' && FlxG.random.bool(10) && curBeat > lightningStrikeBeat + lightningOffset)
-		{
-			lightningStrikeShit();
 		}
 		lastBeatHit = curBeat;
 
