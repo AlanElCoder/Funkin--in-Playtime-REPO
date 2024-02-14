@@ -26,7 +26,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
     //Curve
     vec2 uv = fragCoord.xy / iResolution.xy;
-	uv = curve( uv );
+	uv = uv;
     
     vec3 col;
 
