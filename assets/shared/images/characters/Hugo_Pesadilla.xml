@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Hugo Pesadilla.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Hugo Pesadilla DOWN0000" x="27" y="27" width="734" height="578" frameX="0" frameY="-13" frameWidth="734" frameHeight="591"/>
+	<SubTexture name="Hugo Pesadilla DOWN0001" x="27" y="27" width="734" height="578" frameX="0" frameY="-13" frameWidth="734" frameHeight="591"/>
+	<SubTexture name="Hugo Pesadilla DOWN0002" x="788" y="27" width="725" height="590" frameX="-9" frameY="-1" frameWidth="734" frameHeight="591"/>
+	<SubTexture name="Hugo Pesadilla DOWN0003" x="788" y="27" width="725" height="590" frameX="-9" frameY="-1" frameWidth="734" frameHeight="591"/>
+	<SubTexture name="Hugo Pesadilla DOWN0004" x="1540" y="27" width="721" height="591" frameX="-11" frameY="0" frameWidth="734" frameHeight="591"/>
+	<SubTexture name="Hugo Pesadilla DOWN0005" x="1540" y="27" width="721" height="591" frameX="-11" frameY="0" frameWidth="734" frameHeight="591"/>
+	<SubTexture name="Hugo Pesadilla DOWN0006" x="2288" y="27" width="721" height="591" frameX="-11" frameY="0" frameWidth="734" frameHeight="591"/>
+	<SubTexture name="Hugo Pesadilla DOWN0007" x="2288" y="27" width="721" height="591" frameX="-11" frameY="0" frameWidth="734" frameHeight="591"/>
+	<SubTexture name="Hugo Pesadilla DOWN0008" x="2288" y="27" width="721" height="591" frameX="-11" frameY="0" frameWidth="734" frameHeight="591"/>
+	<SubTexture name="Hugo Pesadilla DOWN0009" x="2288" y="27" width="721" height="591" frameX="-11" frameY="0" frameWidth="734" frameHeight="591"/>
+	<SubTexture name="Hugo Pesadilla IDLE0000" x="3036" y="27" width="860" height="748" frameX="0" frameY="-17" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0001" x="3036" y="27" width="860" height="748" frameX="0" frameY="-17" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0002" x="3923" y="27" width="857" height="749" frameX="-2" frameY="-16" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0003" x="3923" y="27" width="857" height="749" frameX="-2" frameY="-16" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0004" x="4807" y="27" width="849" height="752" frameX="-9" frameY="-13" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0005" x="4807" y="27" width="849" height="752" frameX="-9" frameY="-13" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0006" x="5683" y="27" width="847" height="764" frameX="-10" frameY="-1" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0007" x="5683" y="27" width="847" height="764" frameX="-10" frameY="-1" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0008" x="6557" y="27" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0009" x="6557" y="27" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0010" x="27" y="819" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0011" x="27" y="819" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0012" x="901" y="819" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0013" x="901" y="819" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0014" x="901" y="819" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0015" x="901" y="819" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0016" x="901" y="819" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0017" x="901" y="819" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0018" x="901" y="819" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla IDLE0019" x="901" y="819" width="847" height="765" frameX="-10" frameY="0" frameWidth="860" frameHeight="765"/>
+	<SubTexture name="Hugo Pesadilla LEFT0000" x="1775" y="819" width="861" height="773" frameX="0" frameY="-2" frameWidth="867" frameHeight="775"/>
+	<SubTexture name="Hugo Pesadilla LEFT0001" x="1775" y="819" width="861" height="773" frameX="0" frameY="-2" frameWidth="867" frameHeight="775"/>
+	<SubTexture name="Hugo Pesadilla LEFT0002" x="2663" y="819" width="863" height="775" frameX="-2" frameY="0" frameWidth="867" frameHeight="775"/>
+	<SubTexture name="Hugo Pesadilla LEFT0003" x="2663" y="819" width="863" height="775" frameX="-2" frameY="0" frameWidth="867" frameHeight="775"/>
+	<SubTexture name="Hugo Pesadilla LEFT0004" x="3553" y="819" width="865" height="775" frameX="-2" frameY="0" frameWidth="867" frameHeight="775"/>
+	<SubTexture name="Hugo Pesadilla LEFT0005" x="3553" y="819" width="865" height="775" frameX="-2" frameY="0" frameWidth="867" frameHeight="775"/>
+	<SubTexture name="Hugo Pesadilla LEFT0006" x="4445" y="819" width="865" height="775" frameX="-2" frameY="0" frameWidth="867" frameHeight="775"/>
+	<SubTexture name="Hugo Pesadilla LEFT0007" x="4445" y="819" width="865" height="775" frameX="-2" frameY="0" frameWidth="867" frameHeight="775"/>
+	<SubTexture name="Hugo Pesadilla LEFT0008" x="4445" y="819" width="865" height="775" frameX="-2" frameY="0" frameWidth="867" frameHeight="775"/>
+	<SubTexture name="Hugo Pesadilla LEFT0009" x="4445" y="819" width="865" height="775" frameX="-2" frameY="0" frameWidth="867" frameHeight="775"/>
+	<SubTexture name="Hugo Pesadilla RIGHT0000" x="5337" y="819" width="756" height="687" frameX="-2" frameY="-13" frameWidth="758" frameHeight="700"/>
+	<SubTexture name="Hugo Pesadilla RIGHT0001" x="5337" y="819" width="756" height="687" frameX="-2" frameY="-13" frameWidth="758" frameHeight="700"/>
+	<SubTexture name="Hugo Pesadilla RIGHT0002" x="6120" y="819" width="755" height="699" frameX="0" frameY="-1" frameWidth="758" frameHeight="700"/>
+	<SubTexture name="Hugo Pesadilla RIGHT0003" x="6120" y="819" width="755" height="699" frameX="0" frameY="-1" frameWidth="758" frameHeight="700"/>
+	<SubTexture name="Hugo Pesadilla RIGHT0004" x="6902" y="819" width="755" height="700" frameX="0" frameY="0" frameWidth="758" frameHeight="700"/>
+	<SubTexture name="Hugo Pesadilla RIGHT0005" x="6902" y="819" width="755" height="700" frameX="0" frameY="0" frameWidth="758" frameHeight="700"/>
+	<SubTexture name="Hugo Pesadilla RIGHT0006" x="27" y="1621" width="755" height="700" frameX="0" frameY="0" frameWidth="758" frameHeight="700"/>
+	<SubTexture name="Hugo Pesadilla RIGHT0007" x="27" y="1621" width="755" height="700" frameX="0" frameY="0" frameWidth="758" frameHeight="700"/>
+	<SubTexture name="Hugo Pesadilla RIGHT0008" x="27" y="1621" width="755" height="700" frameX="0" frameY="0" frameWidth="758" frameHeight="700"/>
+	<SubTexture name="Hugo Pesadilla RIGHT0009" x="27" y="1621" width="755" height="700" frameX="0" frameY="0" frameWidth="758" frameHeight="700"/>
+	<SubTexture name="Hugo Pesadilla UP0000" x="809" y="1621" width="619" height="849" frameX="-21" frameY="0" frameWidth="641" frameHeight="849"/>
+	<SubTexture name="Hugo Pesadilla UP0001" x="809" y="1621" width="619" height="849" frameX="-21" frameY="0" frameWidth="641" frameHeight="849"/>
+	<SubTexture name="Hugo Pesadilla UP0002" x="1455" y="1621" width="636" height="818" frameX="-4" frameY="-31" frameWidth="641" frameHeight="849"/>
+	<SubTexture name="Hugo Pesadilla UP0003" x="1455" y="1621" width="636" height="818" frameX="-4" frameY="-31" frameWidth="641" frameHeight="849"/>
+	<SubTexture name="Hugo Pesadilla UP0004" x="2118" y="1621" width="641" height="810" frameX="0" frameY="-39" frameWidth="641" frameHeight="849"/>
+	<SubTexture name="Hugo Pesadilla UP0005" x="2118" y="1621" width="641" height="810" frameX="0" frameY="-39" frameWidth="641" frameHeight="849"/>
+	<SubTexture name="Hugo Pesadilla UP0006" x="2786" y="1621" width="641" height="812" frameX="0" frameY="-37" frameWidth="641" frameHeight="849"/>
+	<SubTexture name="Hugo Pesadilla UP0007" x="2786" y="1621" width="641" height="812" frameX="0" frameY="-37" frameWidth="641" frameHeight="849"/>
+	<SubTexture name="Hugo Pesadilla UP0008" x="2786" y="1621" width="641" height="812" frameX="0" frameY="-37" frameWidth="641" frameHeight="849"/>
+	<SubTexture name="Hugo Pesadilla UP0009" x="2786" y="1621" width="641" height="812" frameX="0" frameY="-37" frameWidth="641" frameHeight="849"/>
+</TextureAtlas>

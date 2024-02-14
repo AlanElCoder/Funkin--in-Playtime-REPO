@@ -1,66 +1,66 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": true,
 			"fps": 24,
-			"name": "Bf Toy de Espalda IDLE",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Bf Toy de Espalda IDLE"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				6,
 				6
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "Bf Toy de Espalda LEFT",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Bf Toy de Espalda LEFT"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				-6
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "Bf Toy de Espalda DOWN",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Bf Toy de Espalda DOWN"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				17
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "Bf Toy de Espalda UP",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Bf Toy de Espalda UP"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-11,
 				-2
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "Bf Toy de Espalda RIGHT",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Bf Toy de Espalda RIGHT"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/Bf_Toy_de_espalditas",
 	"position": [
-		220,
-		300
+		130,
+		170
 	],
 	"healthicon": "face",
 	"flip_x": true,
@@ -74,5 +74,5 @@
 		0
 	],
 	"sing_duration": 6.1,
-	"scale": 1
+	"scale": 1.1
 }

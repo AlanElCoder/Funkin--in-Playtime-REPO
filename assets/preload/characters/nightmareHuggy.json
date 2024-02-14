@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Hugo Pesadilla IDLE",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				79,
+				50
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Hugo Pesadilla LEFT",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				11,
+				-170
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Hugo Pesadilla DOWN",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-72,
+				130
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Hugo Pesadilla UP",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-46,
+				-53
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Hugo Pesadilla RIGHT",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/Hugo_Pesadilla",
+	"position": [
+		330,
+		-160
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		120,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}
