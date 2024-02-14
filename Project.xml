@@ -78,8 +78,7 @@
 		<library name="shared"        preload="false" />
 
 	</section>
-	
-	<assets path="assets/videos"        library="videos"        if="VIDEOS_ALLOWED"/>
+
 	<assets path="assets/songs"         library="songs"         exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"         library="songs"         exclude="*.mp3" unless="web"/>
 	<assets path="assets/shared"        library="shared"        exclude="*.ogg" if="web"/>
