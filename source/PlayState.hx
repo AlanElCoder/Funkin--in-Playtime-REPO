@@ -2813,8 +2813,8 @@ class PlayState extends MusicBeatState
 	  
 	  } 
 	  if (SONG.song=='Remember'){
-		if (curStep==cambiarOffets){
-		if (curStep<1153){
+		if (curStep==cambiarOffets&&!hPatas.visible){
+	
 			FlxG.camera.fade(FlxColor.BLACK, 0.7, true,false);
 	      	bg.visible=false;
 			if (!ClientPrefs.lowQuality){
@@ -2847,14 +2847,13 @@ class PlayState extends MusicBeatState
 		}else{
 			sining=false;
 		}	 
-		if (ClientPrefs.shaders){
-			dad.shader=chrom.shader;		
-		}
+	
 	    }
-    	}
 	  }
 	
-	
+	  if (ClientPrefs.shaders&&!hPatas.visible){
+		dad.shader=chrom.shader;		
+	  }
 	
 	}
 	public var paused:Bool = false;
