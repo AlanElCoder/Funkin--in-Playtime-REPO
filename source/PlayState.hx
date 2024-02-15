@@ -568,7 +568,7 @@ class PlayState extends MusicBeatState
 						var bg1:BGSprite;
 						bg1 = new BGSprite(images[i],0,0,1,1);
 						bg1.scale.set(0.65,0.65);
-						bg1:screenCenter();
+						bg1.screenCenter();
 						bg1.visible=false;
 						bg1.antialiasing = ClientPrefs.globalAntialiasing;
 						bg1.ID=i;
