@@ -4883,7 +4883,6 @@ class PlayState extends MusicBeatState
 		lastStepHit = curStep;
 		setOnLuas('curStep', curStep);
 		callOnLuas('onStepHit', []);
-
 		if (SONG.song=='Remember'){
 			switch(curStep){
 			   case 6:
@@ -4899,12 +4898,13 @@ class PlayState extends MusicBeatState
 				    FlxTween.tween(camGame,{alpha: 0}, 1.2,{ease:FlxEase.quadInOut,});
 	            case 768:
 					FlxTween.tween(camGame,{alpha: 1}, 1.2,{ease:FlxEase.quadInOut,});
+				case 770:
 					offetsJSON = {
 						xx:[
-						   400,800,gf.getMidpoint().x,
+						   600,850,600,
 						],
 						yy:[
-						   200,420,gf.getMidpoint().y,
+						   200,500,0,
 						],
 						ofs:[
 						   15,15,0
@@ -4912,7 +4912,7 @@ class PlayState extends MusicBeatState
 						zooms:[
 						 0.7,0.9,1
 						]
-					};
+					};	
 				case 1153:
 			       trace('ahi void moment');
 				   correBG.visible=true;
@@ -4933,10 +4933,10 @@ class PlayState extends MusicBeatState
 						   800,400,gf.getMidpoint().x,
 						],
 						yy:[
-						   250,150,gf.getMidpoint().y,
+						   250,200,gf.getMidpoint().y,
 						],
 						ofs:[
-						   15,15,0
+						   25,25,0
 						],
 						zooms:[
 						 0.8,0.8,1
@@ -4944,8 +4944,8 @@ class PlayState extends MusicBeatState
 					};
 
 
-					//FlxTween.tween(upBarr,{y: 450}, 1.2,{ease:FlxEase.quadInOut,});
-					//FlxTween.tween(downBarr,{y: 700}, 1.2,{ease:FlxEase.quadInOut,});
+					//FlxTween.tween(upBarr,{y: -400}, 1.2,{ease:FlxEase.quadInOut,});
+					//FlxTween.tween(downBarr,{y: 630}, 1.2,{ease:FlxEase.quadInOut,});
 			}
 		}
 
