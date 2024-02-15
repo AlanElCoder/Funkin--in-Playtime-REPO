@@ -601,7 +601,7 @@ class PlayState extends MusicBeatState
 				correBG.screenCenter(X); 
 				correBG.velocity.set(2000, 0);
 				correBG.scale.set(0.58,0.58);
-				correBG.y-=100;
+				correBG.y-=250;
 				correBG.antialiasing = ClientPrefs.globalAntialiasing;
 				correBG.visible=false;
 				add(correBG);
@@ -5129,13 +5129,13 @@ class PlayState extends MusicBeatState
 						   800,400,gf.getMidpoint().x,
 						],
 						yy:[
-						   220,60,gf.getMidpoint().y,
+						   250,250,gf.getMidpoint().y,
 						],
 						ofs:[
 						   15,15,0
 						],
 						zooms:[
-						 0.7,0.9,1
+						 0.7,0.7,1
 						]
 					};
 				
