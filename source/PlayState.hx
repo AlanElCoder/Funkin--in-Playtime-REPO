@@ -5171,12 +5171,12 @@ class PlayState extends MusicBeatState
 		{
 			dad.dance();
 		}
-		if (curBeat % boyfriend.danceEveryNumBeats == 0 && boyfriend.animation.curAnim != nul){
+		if (curBeat % boyfriend.danceEveryNumBeats == 0 && boyfriend.animation.curAnim != null){
 			if (bfPatas.visible){
 				bfPatas.dance();
 			}
 		}
-		if (curBeat % dad.danceEveryNumBeats == 0 && boyfriend.animation.curAnim != nul){
+		if (curBeat % dad.danceEveryNumBeats == 0 && boyfriend.animation.curAnim != null){
 			if (hPatas.visible){
 				hPatas.dance();
 			}
