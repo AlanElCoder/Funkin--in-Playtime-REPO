@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bf corriendo descuartizado rah.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Bf Toy corriendose DOWN0000" x="27" y="27" width="299" height="350" frameX="-1" frameY="-4" frameWidth="302" frameHeight="354"/>
+	<SubTexture name="Bf Toy corriendose DOWN0001" x="27" y="27" width="299" height="350" frameX="-1" frameY="-4" frameWidth="302" frameHeight="354"/>
+	<SubTexture name="Bf Toy corriendose DOWN0002" x="353" y="27" width="301" height="348" frameX="0" frameY="-1" frameWidth="302" frameHeight="354"/>
+	<SubTexture name="Bf Toy corriendose DOWN0003" x="353" y="27" width="301" height="348" frameX="0" frameY="-1" frameWidth="302" frameHeight="354"/>
+	<SubTexture name="Bf Toy corriendose DOWN0004" x="681" y="27" width="300" height="349" frameX="-2" frameY="0" frameWidth="302" frameHeight="354"/>
+	<SubTexture name="Bf Toy corriendose DOWN0005" x="681" y="27" width="300" height="349" frameX="-2" frameY="0" frameWidth="302" frameHeight="354"/>
+	<SubTexture name="Bf Toy corriendose DOWN0006" x="681" y="27" width="300" height="349" frameX="-2" frameY="0" frameWidth="302" frameHeight="354"/>
+	<SubTexture name="Bf Toy corriendose DOWN0007" x="681" y="27" width="300" height="349" frameX="-2" frameY="0" frameWidth="302" frameHeight="354"/>
+	<SubTexture name="Bf Toy corriendose DOWN0008" x="681" y="27" width="300" height="349" frameX="-2" frameY="0" frameWidth="302" frameHeight="354"/>
+	<SubTexture name="Bf Toy corriendose DOWN0009" x="681" y="27" width="300" height="349" frameX="-2" frameY="0" frameWidth="302" frameHeight="354"/>
+	<SubTexture name="Bf Toy corriendose LEFT0000" x="1008" y="27" width="330" height="348" frameX="0" frameY="-1" frameWidth="333" frameHeight="349"/>
+	<SubTexture name="Bf Toy corriendose LEFT0001" x="1008" y="27" width="330" height="348" frameX="0" frameY="-1" frameWidth="333" frameHeight="349"/>
+	<SubTexture name="Bf Toy corriendose LEFT0002" x="1365" y="27" width="324" height="347" frameX="-8" frameY="0" frameWidth="333" frameHeight="349"/>
+	<SubTexture name="Bf Toy corriendose LEFT0003" x="1365" y="27" width="324" height="347" frameX="-8" frameY="0" frameWidth="333" frameHeight="349"/>
+	<SubTexture name="Bf Toy corriendose LEFT0004" x="1716" y="27" width="327" height="347" frameX="-6" frameY="0" frameWidth="333" frameHeight="349"/>
+	<SubTexture name="Bf Toy corriendose LEFT0005" x="1716" y="27" width="327" height="347" frameX="-6" frameY="0" frameWidth="333" frameHeight="349"/>
+	<SubTexture name="Bf Toy corriendose LEFT0006" x="2070" y="27" width="324" height="347" frameX="-9" frameY="0" frameWidth="333" frameHeight="349"/>
+	<SubTexture name="Bf Toy corriendose LEFT0007" x="2070" y="27" width="324" height="347" frameX="-9" frameY="0" frameWidth="333" frameHeight="349"/>
+	<SubTexture name="Bf Toy corriendose LEFT0008" x="2421" y="27" width="324" height="347" frameX="-9" frameY="0" frameWidth="333" frameHeight="349"/>
+	<SubTexture name="Bf Toy corriendose LEFT0009" x="2421" y="27" width="324" height="347" frameX="-9" frameY="0" frameWidth="333" frameHeight="349"/>
+	<SubTexture name="Bf Toy corriendose RIGHT0000" x="2772" y="27" width="320" height="346" frameX="-7" frameY="0" frameWidth="327" frameHeight="346"/>
+	<SubTexture name="Bf Toy corriendose RIGHT0001" x="2772" y="27" width="320" height="346" frameX="-7" frameY="0" frameWidth="327" frameHeight="346"/>
+	<SubTexture name="Bf Toy corriendose RIGHT0002" x="3119" y="27" width="321" height="345" frameX="0" frameY="0" frameWidth="327" frameHeight="346"/>
+	<SubTexture name="Bf Toy corriendose RIGHT0003" x="3119" y="27" width="321" height="345" frameX="0" frameY="0" frameWidth="327" frameHeight="346"/>
+	<SubTexture name="Bf Toy corriendose RIGHT0004" x="3467" y="27" width="318" height="345" frameX="-1" frameY="0" frameWidth="327" frameHeight="346"/>
+	<SubTexture name="Bf Toy corriendose RIGHT0005" x="3467" y="27" width="318" height="345" frameX="-1" frameY="0" frameWidth="327" frameHeight="346"/>
+	<SubTexture name="Bf Toy corriendose RIGHT0006" x="27" y="404" width="318" height="345" frameX="-1" frameY="0" frameWidth="327" frameHeight="346"/>
+	<SubTexture name="Bf Toy corriendose RIGHT0007" x="27" y="404" width="318" height="345" frameX="-1" frameY="0" frameWidth="327" frameHeight="346"/>
+	<SubTexture name="Bf Toy corriendose RIGHT0008" x="372" y="404" width="318" height="345" frameX="-1" frameY="0" frameWidth="327" frameHeight="346"/>
+	<SubTexture name="Bf Toy corriendose RIGHT0009" x="372" y="404" width="318" height="345" frameX="-1" frameY="0" frameWidth="327" frameHeight="346"/>
+	<SubTexture name="Bf Toy corriendose UP0000" x="717" y="404" width="298" height="356" frameX="0" frameY="0" frameWidth="300" frameHeight="361"/>
+	<SubTexture name="Bf Toy corriendose UP0001" x="717" y="404" width="298" height="356" frameX="0" frameY="0" frameWidth="300" frameHeight="361"/>
+	<SubTexture name="Bf Toy corriendose UP0002" x="1042" y="404" width="299" height="353" frameX="0" frameY="-7" frameWidth="300" frameHeight="361"/>
+	<SubTexture name="Bf Toy corriendose UP0003" x="1042" y="404" width="299" height="353" frameX="0" frameY="-7" frameWidth="300" frameHeight="361"/>
+	<SubTexture name="Bf Toy corriendose UP0004" x="1368" y="404" width="300" height="354" frameX="0" frameY="-7" frameWidth="300" frameHeight="361"/>
+	<SubTexture name="Bf Toy corriendose UP0005" x="1368" y="404" width="300" height="354" frameX="0" frameY="-7" frameWidth="300" frameHeight="361"/>
+	<SubTexture name="Bf Toy corriendose UP0006" x="1695" y="404" width="300" height="352" frameX="0" frameY="-7" frameWidth="300" frameHeight="361"/>
+	<SubTexture name="Bf Toy corriendose UP0007" x="1695" y="404" width="300" height="352" frameX="0" frameY="-7" frameWidth="300" frameHeight="361"/>
+	<SubTexture name="Bf Toy corriendose UP0008" x="2022" y="404" width="300" height="352" frameX="0" frameY="-7" frameWidth="300" frameHeight="361"/>
+	<SubTexture name="Bf Toy corriendose UP0009" x="2022" y="404" width="300" height="352" frameX="0" frameY="-7" frameWidth="300" frameHeight="361"/>
+	<SubTexture name="Bf Toy corriendose idle0000" x="2349" y="404" width="308" height="351" frameX="0" frameY="0" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0001" x="2349" y="404" width="308" height="351" frameX="0" frameY="0" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0002" x="2684" y="404" width="308" height="349" frameX="0" frameY="-5" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0003" x="2684" y="404" width="308" height="349" frameX="0" frameY="-5" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0004" x="3019" y="404" width="294" height="351" frameX="-14" frameY="0" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0005" x="3019" y="404" width="294" height="351" frameX="-14" frameY="0" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0006" x="3340" y="404" width="277" height="353" frameX="-31" frameY="-5" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0007" x="3340" y="404" width="277" height="353" frameX="-31" frameY="-5" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0008" x="3644" y="404" width="269" height="351" frameX="-39" frameY="0" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0009" x="27" y="787" width="268" height="351" frameX="-40" frameY="0" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0010" x="322" y="787" width="308" height="349" frameX="0" frameY="-5" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0011" x="322" y="787" width="308" height="349" frameX="0" frameY="-5" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0012" x="657" y="787" width="308" height="351" frameX="0" frameY="0" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0013" x="657" y="787" width="308" height="351" frameX="0" frameY="0" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0014" x="992" y="787" width="294" height="353" frameX="-14" frameY="-5" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0015" x="992" y="787" width="294" height="353" frameX="-14" frameY="-5" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0016" x="1313" y="787" width="277" height="351" frameX="-31" frameY="0" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0017" x="1313" y="787" width="277" height="351" frameX="-31" frameY="0" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0018" x="1617" y="787" width="269" height="351" frameX="-39" frameY="-5" frameWidth="308" frameHeight="358"/>
+	<SubTexture name="Bf Toy corriendose idle0019" x="1913" y="787" width="267" height="351" frameX="-41" frameY="-5" frameWidth="308" frameHeight="358"/>
+</TextureAtlas>

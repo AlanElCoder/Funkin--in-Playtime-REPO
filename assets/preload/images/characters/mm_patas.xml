@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="mm patas.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="piernas corriendo raaahh0000" x="27" y="27" width="585" height="195" frameX="0" frameY="-1" frameWidth="585" frameHeight="203"/>
+	<SubTexture name="piernas corriendo raaahh0001" x="639" y="27" width="576" height="198" frameX="-9" frameY="-2" frameWidth="585" frameHeight="203"/>
+	<SubTexture name="piernas corriendo raaahh0002" x="1242" y="27" width="440" height="197" frameX="-144" frameY="-6" frameWidth="585" frameHeight="203"/>
+	<SubTexture name="piernas corriendo raaahh0003" x="1242" y="27" width="440" height="197" frameX="-144" frameY="-6" frameWidth="585" frameHeight="203"/>
+	<SubTexture name="piernas corriendo raaahh0004" x="27" y="252" width="552" height="185" frameX="-30" frameY="0" frameWidth="585" frameHeight="203"/>
+	<SubTexture name="piernas corriendo raaahh0005" x="606" y="252" width="552" height="189" frameX="-30" frameY="0" frameWidth="585" frameHeight="203"/>
+	<SubTexture name="piernas corriendo raaahh0006" x="1185" y="252" width="554" height="183" frameX="-30" frameY="-6" frameWidth="585" frameHeight="203"/>
+	<SubTexture name="piernas corriendo raaahh0007" x="27" y="468" width="549" height="191" frameX="-35" frameY="-6" frameWidth="585" frameHeight="203"/>
+	<SubTexture name="piernas corriendo raaahh0008" x="603" y="468" width="584" height="200" frameX="0" frameY="0" frameWidth="585" frameHeight="203"/>
+	<SubTexture name="piernas corriendo raaahh0009" x="1214" y="468" width="584" height="196" frameX="0" frameY="0" frameWidth="585" frameHeight="203"/>
+</TextureAtlas>

@@ -354,6 +354,8 @@ class PlayState extends MusicBeatState
 		'ana'
 	];
 	var brilloBG:BGSprite;
+	var bfPatas:Character;
+	var hPatas:Character;
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -594,6 +596,22 @@ class PlayState extends MusicBeatState
 				//
 				//background2
 
+			
+				bfPatas=new Character(0,0,'patastoy',true);
+				bfPatas.visible=false;
+				bfPatas.antialiasing = ClientPrefs.globalAntialiasing;
+				startCharacterPos(bfPatas);
+				add(bfPatas);
+
+
+				hPatas=new Character(0,0,'patasH',true);
+				hPatas.visible=false;
+				hPatas.antialiasing = ClientPrefs.globalAntialiasing;
+				startCharacterPos(hPatas);
+				add(hPatas);
+
+
+				
 				//
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
@@ -2795,7 +2813,7 @@ class PlayState extends MusicBeatState
 	  
 	  } 
 	  if (SONG.song=='Remember'){
-		if (curStep==cambiarOffets){
+		if (curStep==cambiarOffets&&curStep<1153){
 			FlxG.camera.fade(FlxColor.BLACK, 0.7, true,false);
 	      	bg.visible=false;
 			if (!ClientPrefs.lowQuality){
@@ -5085,6 +5103,16 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(camGame,{alpha: 1}, 1.2,{ease:FlxEase.quadInOut,});
 				case 1153:
 			       trace('hay void moment');
+				   bfPatas.visible=true;
+			       hPatas.visible=true;
+				   if (!ClientPrefs.lowQuality){
+					for (i in 0 ...images.length){
+						bgItemsL.members[i].visible=false;
+					}
+					 brilloBG.visible=false;
+			    	}else{
+					 bg1.visible=false;
+				    }
 				
 				
 			}
@@ -5135,10 +5163,21 @@ class PlayState extends MusicBeatState
 		if (curBeat % boyfriend.danceEveryNumBeats == 0 && boyfriend.animation.curAnim != null && !boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.stunned)
 		{
 			boyfriend.dance();
+			
 		}
 		if (curBeat % dad.danceEveryNumBeats == 0 && dad.animation.curAnim != null && !dad.animation.curAnim.name.startsWith('sing') && !dad.stunned)
 		{
 			dad.dance();
+		}
+		if (curBeat % boyfriend.danceEveryNumBeats == 0 ){
+			if (bfPatas.visible){
+				bfPatas.dance();
+			}
+		}
+		if (curBeat % dad.danceEveryNumBeats == 0 ){
+			if (hPatas.visible){
+				hPatas.dance();
+			}
 		}
 		lastBeatHit = curBeat;
 

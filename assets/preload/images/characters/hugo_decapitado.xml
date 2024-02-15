@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hugo decapitado.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cabeza DOWN0000" x="27" y="27" width="202" height="343" frameX="-1" frameY="-9" frameWidth="204" frameHeight="352"/>
+	<SubTexture name="cabeza DOWN0001" x="27" y="27" width="202" height="343" frameX="-1" frameY="-9" frameWidth="204" frameHeight="352"/>
+	<SubTexture name="cabeza DOWN0002" x="256" y="27" width="203" height="345" frameX="0" frameY="-2" frameWidth="204" frameHeight="352"/>
+	<SubTexture name="cabeza DOWN0003" x="256" y="27" width="203" height="345" frameX="0" frameY="-2" frameWidth="204" frameHeight="352"/>
+	<SubTexture name="cabeza DOWN0004" x="486" y="27" width="203" height="337" frameX="-1" frameY="0" frameWidth="204" frameHeight="352"/>
+	<SubTexture name="cabeza DOWN0005" x="486" y="27" width="203" height="337" frameX="-1" frameY="0" frameWidth="204" frameHeight="352"/>
+	<SubTexture name="cabeza DOWN0006" x="486" y="27" width="203" height="337" frameX="-1" frameY="0" frameWidth="204" frameHeight="352"/>
+	<SubTexture name="cabeza DOWN0007" x="486" y="27" width="203" height="337" frameX="-1" frameY="0" frameWidth="204" frameHeight="352"/>
+	<SubTexture name="cabeza DOWN0008" x="486" y="27" width="203" height="337" frameX="-1" frameY="0" frameWidth="204" frameHeight="352"/>
+	<SubTexture name="cabeza DOWN0009" x="486" y="27" width="203" height="337" frameX="-1" frameY="0" frameWidth="204" frameHeight="352"/>
+	<SubTexture name="cabeza LEFT0000" x="716" y="27" width="215" height="339" frameX="0" frameY="0" frameWidth="217" frameHeight="339"/>
+	<SubTexture name="cabeza LEFT0001" x="716" y="27" width="215" height="339" frameX="0" frameY="0" frameWidth="217" frameHeight="339"/>
+	<SubTexture name="cabeza LEFT0002" x="958" y="27" width="211" height="330" frameX="-5" frameY="0" frameWidth="217" frameHeight="339"/>
+	<SubTexture name="cabeza LEFT0003" x="958" y="27" width="211" height="330" frameX="-5" frameY="0" frameWidth="217" frameHeight="339"/>
+	<SubTexture name="cabeza LEFT0004" x="1196" y="27" width="211" height="330" frameX="-6" frameY="0" frameWidth="217" frameHeight="339"/>
+	<SubTexture name="cabeza LEFT0005" x="1196" y="27" width="211" height="330" frameX="-6" frameY="0" frameWidth="217" frameHeight="339"/>
+	<SubTexture name="cabeza LEFT0006" x="1196" y="27" width="211" height="330" frameX="-6" frameY="0" frameWidth="217" frameHeight="339"/>
+	<SubTexture name="cabeza LEFT0007" x="1196" y="27" width="211" height="330" frameX="-6" frameY="0" frameWidth="217" frameHeight="339"/>
+	<SubTexture name="cabeza LEFT0008" x="1196" y="27" width="211" height="330" frameX="-6" frameY="0" frameWidth="217" frameHeight="339"/>
+	<SubTexture name="cabeza LEFT0009" x="1196" y="27" width="211" height="330" frameX="-6" frameY="0" frameWidth="217" frameHeight="339"/>
+	<SubTexture name="cabeza RIGHT0000" x="1434" y="27" width="231" height="325" frameX="-8" frameY="0" frameWidth="239" frameHeight="325"/>
+	<SubTexture name="cabeza RIGHT0001" x="1434" y="27" width="231" height="325" frameX="-8" frameY="0" frameWidth="239" frameHeight="325"/>
+	<SubTexture name="cabeza RIGHT0002" x="1692" y="27" width="230" height="322" frameX="-3" frameY="0" frameWidth="239" frameHeight="325"/>
+	<SubTexture name="cabeza RIGHT0003" x="1692" y="27" width="230" height="322" frameX="-3" frameY="0" frameWidth="239" frameHeight="325"/>
+	<SubTexture name="cabeza RIGHT0004" x="27" y="399" width="232" height="322" frameX="0" frameY="0" frameWidth="239" frameHeight="325"/>
+	<SubTexture name="cabeza RIGHT0005" x="27" y="399" width="232" height="322" frameX="0" frameY="0" frameWidth="239" frameHeight="325"/>
+	<SubTexture name="cabeza RIGHT0006" x="27" y="399" width="232" height="322" frameX="0" frameY="0" frameWidth="239" frameHeight="325"/>
+	<SubTexture name="cabeza RIGHT0007" x="27" y="399" width="232" height="322" frameX="0" frameY="0" frameWidth="239" frameHeight="325"/>
+	<SubTexture name="cabeza RIGHT0008" x="27" y="399" width="232" height="322" frameX="0" frameY="0" frameWidth="239" frameHeight="325"/>
+	<SubTexture name="cabeza RIGHT0009" x="27" y="399" width="232" height="322" frameX="0" frameY="0" frameWidth="239" frameHeight="325"/>
+	<SubTexture name="cabeza UP0000" x="286" y="399" width="208" height="341" frameX="-4" frameY="0" frameWidth="213" frameHeight="349"/>
+	<SubTexture name="cabeza UP0001" x="286" y="399" width="208" height="341" frameX="-4" frameY="0" frameWidth="213" frameHeight="349"/>
+	<SubTexture name="cabeza UP0002" x="521" y="399" width="211" height="344" frameX="-2" frameY="-5" frameWidth="213" frameHeight="349"/>
+	<SubTexture name="cabeza UP0003" x="521" y="399" width="211" height="344" frameX="-2" frameY="-5" frameWidth="213" frameHeight="349"/>
+	<SubTexture name="cabeza UP0004" x="759" y="399" width="213" height="335" frameX="0" frameY="-7" frameWidth="213" frameHeight="349"/>
+	<SubTexture name="cabeza UP0005" x="759" y="399" width="213" height="335" frameX="0" frameY="-7" frameWidth="213" frameHeight="349"/>
+	<SubTexture name="cabeza UP0006" x="759" y="399" width="213" height="335" frameX="0" frameY="-7" frameWidth="213" frameHeight="349"/>
+	<SubTexture name="cabeza UP0007" x="759" y="399" width="213" height="335" frameX="0" frameY="-7" frameWidth="213" frameHeight="349"/>
+	<SubTexture name="cabeza UP0008" x="759" y="399" width="213" height="335" frameX="0" frameY="-7" frameWidth="213" frameHeight="349"/>
+	<SubTexture name="cabeza UP0009" x="759" y="399" width="213" height="335" frameX="0" frameY="-7" frameWidth="213" frameHeight="349"/>
+	<SubTexture name="hugo pesadillas cabeza0000" x="999" y="399" width="206" height="341" frameX="-3" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0001" x="999" y="399" width="206" height="341" frameX="-3" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0002" x="999" y="399" width="206" height="341" frameX="-3" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0003" x="1232" y="399" width="206" height="341" frameX="0" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0004" x="1232" y="399" width="206" height="341" frameX="0" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0005" x="999" y="399" width="206" height="341" frameX="-3" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0006" x="999" y="399" width="206" height="341" frameX="-3" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0007" x="999" y="399" width="206" height="341" frameX="-2" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0008" x="999" y="399" width="206" height="341" frameX="-2" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0009" x="999" y="399" width="206" height="341" frameX="-2" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0010" x="999" y="399" width="206" height="341" frameX="-2" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0011" x="999" y="399" width="206" height="341" frameX="-3" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0012" x="999" y="399" width="206" height="341" frameX="-3" frameY="0" frameWidth="212" frameHeight="341"/>
+	<SubTexture name="hugo pesadillas cabeza0013" x="999" y="399" width="206" height="341" frameX="-6" frameY="0" frameWidth="212" frameHeight="341"/>
+</TextureAtlas>
