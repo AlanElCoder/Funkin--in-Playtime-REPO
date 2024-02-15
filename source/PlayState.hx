@@ -357,6 +357,8 @@ class PlayState extends MusicBeatState
 	var bfPatas:Character;
 	var hPatas:Character;
 	var correBG:FlxBackdrop;
+	var upBarr:FlxSprite;
+	var downBarr:FlxSprite;
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -601,6 +603,7 @@ class PlayState extends MusicBeatState
 				correBG.screenCenter(X); 
 				correBG.velocity.set(2000, 0);
 				correBG.scale.set(0.58,0.58);
+				correBG.x-=250;
 				correBG.y-=250;
 				correBG.antialiasing = ClientPrefs.globalAntialiasing;
 				correBG.visible=false;
@@ -619,6 +622,17 @@ class PlayState extends MusicBeatState
 				startCharacterPos(hPatas);
 				add(hPatas);
 				//
+					upBarr = new FlxSprite().makeGraphic(FlxG.width,250,FlxColor.BLACK);
+                    upBarr.screenCenter();
+					upBarr.y+=900;
+					upBarr.cameras=[camHUD];
+					add(upBarr);
+
+					downBarr = new FlxSprite().makeGraphic(FlxG.width,250,FlxColor.BLACK);
+                    downBarr.screenCenter();
+					downBarr.y+=900;
+					downBarr.cameras=[camHUD];
+					add(downBarr);
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
 		if (!FileSystem.exists(path)){
@@ -5094,7 +5108,6 @@ class PlayState extends MusicBeatState
 				    FlxTween.tween(camGame,{alpha: 0}, 1.2,{ease:FlxEase.quadInOut,});
 	            case 768:
 					FlxTween.tween(camGame,{alpha: 1}, 1.2,{ease:FlxEase.quadInOut,});
-				case 768:
 					offetsJSON = {
 						xx:[
 						   400,800,gf.getMidpoint().x,
@@ -5129,17 +5142,19 @@ class PlayState extends MusicBeatState
 						   800,400,gf.getMidpoint().x,
 						],
 						yy:[
-						   250,250,gf.getMidpoint().y,
+						   250,150,gf.getMidpoint().y,
 						],
 						ofs:[
 						   15,15,0
 						],
 						zooms:[
-						 0.7,0.7,1
+						 0.8,0.8,1
 						]
 					};
-				
-				
+
+
+					//FlxTween.tween(upBarr,{y: 450}, 1.2,{ease:FlxEase.quadInOut,});
+					//FlxTween.tween(downBarr,{y: 700}, 1.2,{ease:FlxEase.quadInOut,});
 			}
 		}
 
