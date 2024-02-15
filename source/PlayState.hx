@@ -603,8 +603,8 @@ class PlayState extends MusicBeatState
 				correBG.screenCenter(X); 
 				correBG.velocity.set(2000, 0);
 				correBG.scale.set(0.58,0.58);
-				correBG.x-=250;
-				correBG.y-=250;
+				correBG.x-=350;
+				correBG.y-=350;
 				correBG.antialiasing = ClientPrefs.globalAntialiasing;
 				correBG.visible=false;
 				add(correBG);
@@ -621,18 +621,6 @@ class PlayState extends MusicBeatState
 				hPatas.antialiasing = ClientPrefs.globalAntialiasing;
 				startCharacterPos(hPatas);
 				add(hPatas);
-				//
-					upBarr = new FlxSprite().makeGraphic(FlxG.width,250,FlxColor.BLACK);
-                    upBarr.screenCenter();
-					upBarr.y+=900;
-					upBarr.cameras=[camHUD];
-					add(upBarr);
-
-					downBarr = new FlxSprite().makeGraphic(FlxG.width,250,FlxColor.BLACK);
-                    downBarr.screenCenter();
-					downBarr.y+=900;
-					downBarr.cameras=[camHUD];
-					add(downBarr);
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
 		if (!FileSystem.exists(path)){
@@ -4933,7 +4921,7 @@ class PlayState extends MusicBeatState
 						   800,400,gf.getMidpoint().x,
 						],
 						yy:[
-						   250,200,gf.getMidpoint().y,
+						   350,200,gf.getMidpoint().y,
 						],
 						ofs:[
 						   25,25,0
