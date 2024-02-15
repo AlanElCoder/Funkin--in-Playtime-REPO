@@ -1,70 +1,87 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				0,
-				0
-			],
 			"loop": true,
-			"fps": 24,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "idle",
-			"indices": [],
-			"name": "Huggy wuggy TV IDLE"
+			"fps": 24,
+			"name": "Huggy wuggy TV IDLE",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "anim",
-			"indices": [],
-			"name": "Huggy wuggy TV Transformacion"
+			"fps": 24,
+			"name": "Huggy wuggy TV Transformacion",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "Huggy wuggy TV LEFT",
-			"indices": []
+			"indices": [],
+			"name": "Huggy wuggy TV LEFT"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Huggy wuggy TV DOWN",
-			"indices": []
+			"indices": [],
+			"name": "Huggy wuggy TV DOWN"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "Huggy wuggy TV UP",
-			"indices": []
+			"indices": [],
+			"name": "Huggy wuggy TV UP"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "Huggy wuggy TV RIGHT",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Huggy wuggy TV RIGHT"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [
+				74,
+				75,
+				76,
+				78,
+				79
+			],
+			"fps": 24,
+			"anim": "idle-alt",
+			"loop": true,
+			"name": "Huggy wuggy TV Transformacion0"
 		}
 	],
 	"no_antialiasing": false,

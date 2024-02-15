@@ -1,66 +1,66 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": true,
-			"name": "hugo pesadillas cabeza"
+			"fps": 24,
+			"name": "hugo pesadillas cabeza",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				30,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "cabeza LEFT"
+			"fps": 24,
+			"name": "cabeza LEFT",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				10,
 				-11
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "cabeza DOWN"
+			"fps": 24,
+			"name": "cabeza DOWN",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-11,
 				10
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "cabeza UP"
+			"fps": 24,
+			"name": "cabeza UP",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "cabeza RIGHT"
+			"fps": 24,
+			"name": "cabeza RIGHT",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/hugo_decapitado",
 	"position": [
-		70,
-		-40
+		810,
+		-100
 	],
 	"healthicon": "face",
 	"flip_x": false,

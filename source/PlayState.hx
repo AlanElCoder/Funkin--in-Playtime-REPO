@@ -62,7 +62,7 @@ import DialogueBoxPsych;
 import Conductor.Rating;
 import Shaders;
 
-
+import flixel.addons.display.FlxBackdrop;
 
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
@@ -356,6 +356,7 @@ class PlayState extends MusicBeatState
 	var brilloBG:BGSprite;
 	var bfPatas:Character;
 	var hPatas:Character;
+	var correBG:FlxBackdrop;
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -595,7 +596,15 @@ class PlayState extends MusicBeatState
 				}
 				//
 				//background2
-
+				correBG= new FlxBackdrop(Paths.image('CORRE'),0.2, 0.2, true, true);
+			    correBG.scrollFactor.set(1,1);
+				correBG.screenCenter(X); 
+				correBG.velocity.set(2000, 0);
+				correBG.scale.set(0.58,0.58);
+				correBG.y-=100;
+				correBG.antialiasing = ClientPrefs.globalAntialiasing;
+				correBG.visible=false;
+				add(correBG);
 			
 				bfPatas=new Character(0,0,'patastoy',true);
 				bfPatas.visible=false;
@@ -609,9 +618,6 @@ class PlayState extends MusicBeatState
 				hPatas.antialiasing = ClientPrefs.globalAntialiasing;
 				startCharacterPos(hPatas);
 				add(hPatas);
-
-
-				
 				//
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
@@ -2815,6 +2821,7 @@ class PlayState extends MusicBeatState
 	  if (SONG.song=='Remember'){
 		if (curStep==cambiarOffets&&!hPatas.visible){
 	
+			
 			FlxG.camera.fade(FlxColor.BLACK, 0.7, true,false);
 	      	bg.visible=false;
 			if (!ClientPrefs.lowQuality){
@@ -2827,20 +2834,6 @@ class PlayState extends MusicBeatState
 			}
 	     
 	    boyfriend.visible=true;
-		offetsJSON = {
-			xx:[
-			   400,800,gf.getMidpoint().x,
-			],
-			yy:[
-			   200,420,gf.getMidpoint().y,
-			],
-			ofs:[
-			   15,15,0
-			],
-			zooms:[
-			 0.7,0.9,1
-			]
-		};
 		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
 		{
 		    sining=true;
@@ -2850,11 +2843,7 @@ class PlayState extends MusicBeatState
 	
 	    }
 	  }
-	
-	  if (ClientPrefs.shaders&&!hPatas.visible){
-		dad.shader=chrom.shader;		
-	  }
-	
+
 	}
 	public var paused:Bool = false;
 	public var canReset:Bool = true;
@@ -2868,6 +2857,7 @@ class PlayState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 		callOnLuas('onUpdate', [elapsed]);
+		//correBG.x+=.5*(elapsed/(1/120));
 		iTime += elapsed;
 	    vcrShader.setFloat("iTime", iTime);
 		shader1.setFloat("iTime", iTime);
@@ -2876,7 +2866,9 @@ class PlayState extends MusicBeatState
 			vignette.setFloat("vignetteStrength",1.4);
 			chrom.setChrome(sining ? (camHUD.zoom - 1) * intensity : 0);
 		}
+		if (ClientPrefs.shaders&&!hPatas.visible){
 		chromacrap =FlxMath.lerp(chromacrap, 0, CoolUtil.boundTo(elapsed * 1, 0, 1));
+		}
 		chromO.setChrome(chromacrap);
 		
 		moveCameraLel();
@@ -5102,8 +5094,24 @@ class PlayState extends MusicBeatState
 				    FlxTween.tween(camGame,{alpha: 0}, 1.2,{ease:FlxEase.quadInOut,});
 	            case 768:
 					FlxTween.tween(camGame,{alpha: 1}, 1.2,{ease:FlxEase.quadInOut,});
+				case 768:
+					offetsJSON = {
+						xx:[
+						   400,800,gf.getMidpoint().x,
+						],
+						yy:[
+						   200,420,gf.getMidpoint().y,
+						],
+						ofs:[
+						   15,15,0
+						],
+						zooms:[
+						 0.7,0.9,1
+						]
+					};
 				case 1153:
 			       trace('hay void moment');
+				   correBG.visible=true;
 				   bfPatas.visible=true;
 			       hPatas.visible=true;
 				   if (!ClientPrefs.lowQuality){
@@ -5114,6 +5122,22 @@ class PlayState extends MusicBeatState
 			    	}else{
 					 bg1.visible=false;
 				    }
+
+
+					offetsJSON = {
+						xx:[
+						   800,400,gf.getMidpoint().x,
+						],
+						yy:[
+						   220,60,gf.getMidpoint().y,
+						],
+						ofs:[
+						   15,15,0
+						],
+						zooms:[
+						 0.7,0.9,1
+						]
+					};
 				
 				
 			}

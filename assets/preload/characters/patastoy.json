@@ -8,7 +8,7 @@
 			"indices": [],
 			"fps": 24,
 			"anim": "idle",
-			"loop": false,
+			"loop": true,
 			"name": "piernas corriendo raaahh"
 		}
 	],
@@ -19,7 +19,7 @@
 		500
 	],
 	"healthicon": "face",
-	"flip_x": false,
+	"flip_x": true,
 	"healthbar_colors": [
 		161,
 		161,
