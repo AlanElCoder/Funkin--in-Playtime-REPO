@@ -1,0 +1,4 @@
+Value 1: Speed of tween
+Value 2: Alpha, 0 to desactivate
+
+Set value 1 to 0 or null to instant blackscreen

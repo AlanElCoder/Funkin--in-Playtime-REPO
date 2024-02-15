@@ -161,18 +161,12 @@ class MainMenuState extends MusicBeatState
 		iTime += elapsed;
 	    vcrShader.setFloat("iTime", iTime);
 		shader1.setFloat("iTime", iTime);
-		trace(curSelected);
 		if (!selectedSomethin){
 			cursorImage.setPosition(FlxG.mouse.getPosition().x-50,FlxG.mouse.getPosition().y-70);
 			if (FlxG.mouse.justPressed && alanpuntoecse == false){
 				changeItem();
 			}
 			changeCur();
-			/*
-			if (controls.BACK){
-				MusicBeatState.switchState(new TitleState());
-			}
-			*/
 		}
 		if(controls.ACCEPT && curSelected <= 3 && alanpuntoecse == false) {
 			alanpuntoecse = true;
