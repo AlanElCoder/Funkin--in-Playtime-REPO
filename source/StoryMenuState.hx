@@ -73,12 +73,14 @@ class StoryMenuState extends MusicBeatState
 
 		
 		bgBlack= new FlxSprite().makeGraphic(FlxG.width,FlxG.height,FlxColor.BLACK);
+		bgBlack.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bgBlack);
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
 		text = new FlxText(450, 0, 0, "| select Chapter |", 12);
 		text.setFormat("VCR OSD Mono", 35, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		text.antialiasing = ClientPrefs.globalAntialiasing;
 		add(text);
 
 		for (i in 0...1){
@@ -88,6 +90,7 @@ class StoryMenuState extends MusicBeatState
             newItem.setPosition(weekJSON.ekis,weekJSON.eye);
 			newItem.updateHitbox();
 			newItem.alpha=0;
+			newItem.antialiasing = ClientPrefs.globalAntialiasing;
 			menuItems.add(newItem);
 
 			var newItem2:FlxSprite= new FlxSprite();
@@ -95,16 +98,20 @@ class StoryMenuState extends MusicBeatState
             newItem2.setPosition(weekJSON.ekis,weekJSON.eye);
 			newItem2.scale.set(0.45,0.45);
 			newItem2.updateHitbox();
+			newItem2.antialiasing = ClientPrefs.globalAntialiasing;
 			menuItems.add(newItem2);
+
 
 
 			textWeek = new FlxText(12, 0, 0, "CHAPTER "+weekJSON.numWeek+" "+weekJSON.descWeek, 12);
 			textWeek.setPosition(weekJSON.ekisT,weekJSON.eyeT);
 			textWeek.setFormat("VCR OSD Mono", 40, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			textWeek.antialiasing = ClientPrefs.globalAntialiasing;
 			add(textWeek);
 		}	
 		quitar = new FlxText(1182, 0, 0, "Quit", 12);
 		quitar.setFormat("VCR OSD Mono", 35, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		quitar.antialiasing = ClientPrefs.globalAntialiasing;
 		add(quitar);
 		quitar.updateHitbox();
 
@@ -120,6 +127,7 @@ class StoryMenuState extends MusicBeatState
 		cursorImage.animation.add(char, [0, 1], 0, false,false);
 		cursorImage.animation.play(char);
 		cursorImage.scale.set(0.07,0.07);
+		cursorImage.antialiasing = ClientPrefs.globalAntialiasing;
 		add(cursorImage);
 
 		cursorImage.setPosition(FlxG.mouse.getPosition().x-50,FlxG.mouse.getPosition().y-70);

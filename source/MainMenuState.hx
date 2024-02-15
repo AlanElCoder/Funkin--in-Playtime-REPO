@@ -80,7 +80,7 @@ class MainMenuState extends MusicBeatState
 		persistentUpdate = persistentDraw = true;
 
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('bgPlayTime'));
-		bg.scale.set(0.662,0.662);
+		bg.scale.set(0.68,0.68);
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
@@ -90,6 +90,7 @@ class MainMenuState extends MusicBeatState
 		logoLEl.scale.set(0.23,0.23);
 		logoLEl.screenCenter();
 		logoLEl.y-=200;
+		logoLEl.antialiasing =ClientPrefs.globalAntialiasing;
 		add(logoLEl);
 
 		menuItems = new FlxTypedGroup<FlxText>();
@@ -104,6 +105,7 @@ class MainMenuState extends MusicBeatState
 			var textItem:FlxText= new FlxText(12,0,0,optionShit[i],12);
 			textItem.setFormat("VCR OSD Mono", 46, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			textItem.ID=i;
+			textItem.antialiasing =ClientPrefs.globalAntialiasing;
 		    menuItems.add(textItem);
 			textItem.setPosition(hubicationItems[i],620);
 		}
@@ -128,6 +130,7 @@ class MainMenuState extends MusicBeatState
 		cursorImage.animation.add(char, [0, 1], 0, false,false);
 		cursorImage.animation.play(char);
 		cursorImage.scale.set(0.07,0.07);
+		cursorImage.antialiasing =ClientPrefs.globalAntialiasing;
 		add(cursorImage);
 
 		

@@ -98,6 +98,7 @@ class TitleState extends MusicBeatState
 		blackBG = new FlxSprite();
 		blackBG.makeGraphic(FlxG.width,FlxG.height,FlxColor.BLACK);
 		blackBG.screenCenter();
+		blackBG.antialiasing = ClientPrefs.globalAntialiasing;
 		add(blackBG);
 		//
 
@@ -106,12 +107,14 @@ class TitleState extends MusicBeatState
 			logoLEl.scale.set(0.23,0.23);
 			logoLEl.screenCenter();
 			logoLEl.y-=200;
+			logoLEl.antialiasing = ClientPrefs.globalAntialiasing;
 			add(logoLEl);
 	
 			var coso:FlxText = new FlxText(12, FlxG.height - 44, 0, "It is recommended to activate \nShader for a better experience or\nyou could deactivate it in settings\n      [Press enter to begin]", 12);
 			coso.setFormat("VCR OSD Mono", 40, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			coso.screenCenter();
 			coso.y+=150;
+			coso.antialiasing = ClientPrefs.globalAntialiasing;
 			add(coso);
 		}
 		if(!inicio)

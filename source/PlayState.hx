@@ -345,6 +345,14 @@ class PlayState extends MusicBeatState
 	var bg1:BGSprite;
 	var blackBG:FlxSprite;
 	var intro:FlxText;
+	var bgItemsL:FlxTypedGroup<BGSprite>;
+	var images:Array<String>=[
+		'esta_cosa_',
+		'esta_otras_cosas_',
+		'esta_cortina_',
+		'ana'
+	];
+	var brilloBG:BGSprite;
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -514,8 +522,8 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{
 			case 'stage': //Week 1
-				var bg:BGSprite = new BGSprite('stageback', -600, -200, 0.9, 0.9);
-				add(bg);
+				var bg1:BGSprite = new BGSprite('stageback', -600, -200, 0.9, 0.9);
+				add(bg1);
 
 				var stageFront:BGSprite = new BGSprite('stagefront', -650, 600, 0.9, 0.9);
 				stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
@@ -544,17 +552,43 @@ class PlayState extends MusicBeatState
 				 bg = new FlxSprite();
 				 bg.makeGraphic(FlxG.width,FlxG.height,FlxColor.BLACK);
 				 bg.screenCenter();
+				 bg.antialiasing = ClientPrefs.globalAntialiasing;
 				 bg.visible=true;
 				 add(bg);
 
-				 
+				
 				//background1
-			
-				bg1 = new BGSprite('BG',0,0,1,1);
-				bg1.scale.set(0.65,0.65);
-				bg1.screenCenter();
-				bg1.visible=false;
-				add(bg1);
+				
+				if (!ClientPrefs.lowQuality){
+
+					bgItemsL = new FlxTypedGroup<BGSprite>();
+				    add(bgItemsL);
+					for(i in 0...images.length){
+
+						var bg1:BGSprite;
+						bg1 = new BGSprite(images[i],0,0,1,1);
+						bg1.scale.set(0.65,0.65);
+						bg1:screenCenter();
+						bg1.visible=false;
+						bg1.antialiasing = ClientPrefs.globalAntialiasing;
+						bg1.ID=i;
+						bgItemsL.add(bg1);
+					
+					}
+					brilloBG = new BGSprite('brillo',0,0,1,1);
+					brilloBG.scale.set(0.65,0.65);
+					brilloBG.visible=false;
+					brilloBG.antialiasing=ClientPrefs.globalAntialiasing;
+				
+
+				}else{
+					bg1 = new BGSprite('BG',0,0,1,1);
+					bg1.scale.set(0.65,0.65);
+					bg1.screenCenter();
+					bg1.visible=false;
+					bg1.antialiasing = ClientPrefs.globalAntialiasing;
+					add(bg1);
+				}
 				//
 				//background2
 
@@ -762,6 +796,9 @@ class PlayState extends MusicBeatState
 		switch(curStage)
 		{
 			case 'nightmareBG':
+				if (!ClientPrefs.lowQuality){
+					add(brilloBG);
+				}
 				boyfriend.visible=false;
 			case 'limo':
 				resetFastCar();
@@ -2004,7 +2041,7 @@ class PlayState extends MusicBeatState
 					antialias = false;
 				}
 
-				// head bopping for bg characters on Mall
+				// head bopping for bg1 characters on Mall
 				if(curStage == 'mall') {
 					if(!ClientPrefs.lowQuality)
 						upperBoppers.dance(true);
@@ -2758,8 +2795,16 @@ class PlayState extends MusicBeatState
 	  if (SONG.song=='Remember'){
 		if (curStep==cambiarOffets){
 			FlxG.camera.fade(FlxColor.BLACK, 0.7, true,false);
-		bg.visible=false;
-		bg1.visible=true;
+	      	bg.visible=false;
+			if(!ClientPrefs.lowQuality){
+				for (i in 0 ...images.length){
+					bgItemsL.members[i].visible=true;
+				}
+				brilloBG.visible=true;
+			}else{
+				bg1.visible=true;
+			}
+	     
 	    boyfriend.visible=true;
 		offetsJSON = {
 			xx:[
@@ -4890,7 +4935,7 @@ class PlayState extends MusicBeatState
 	function lightningStrikeShit():Void
 	{
 		FlxG.sound.play(Paths.soundRandom('thunder_', 1, 2));
-		if(!ClientPrefs.lowQuality) halloweenBG.animation.play('halloweem bg lightning strike');
+		if(!ClientPrefs.lowQuality) halloweenBG.animation.play('halloweem bg1 lightning strike');
 
 		lightningStrikeBeat = curBeat;
 		lightningOffset = FlxG.random.int(8, 24);
