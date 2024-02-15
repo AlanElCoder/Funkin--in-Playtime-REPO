@@ -1,4 +1,4 @@
-package;//events
+package;//update
 
 import flixel.graphics.FlxGraphic;
 #if desktop
@@ -2757,78 +2757,59 @@ class PlayState extends MusicBeatState
 		}
 		vocals.play();
 	}
-	var dadCameraX:Dynamic;
-	var dadCameraY:Dynamic;
-	var bfCameraX:Dynamic;
-	var bfCameraY:Dynamic;
-	var gfCameraX:Dynamic;
-	var gfCameraY:Dynamic;
+
 	var cambiarOffets:Int=769;
 	var shakeCoso:Bool=false;
 	var sining:Bool=false;
 	function moveCameraLel(){
 
-		dadCameraX=0;
-		dadCameraY=0;
-		switch(dad.animation.curAnim.name)
-		{
-			case 'singLEFT' | 'singLEFT-alt':
-				dadCameraX-=offetsJSON.ofs[0];
-			case 'singRIGHT' | 'singRIGHT-alt':
-				dadCameraX+=offetsJSON.ofs[0];
-			case 'singUP' | 'singUP-alt':
-				dadCameraY-=offetsJSON.ofs[0];
-			case 'singDOWN' | 'singDOWN-alt':
-				dadCameraX+=offetsJSON.ofs[0];
-		}
-		bfCameraX=0;
-		bfCameraY=0;
-		switch(boyfriend.animation.curAnim.name)
-		{
-			case 'singLEFT' | 'singLEFT-alt':
-				bfCameraX-=offetsJSON.ofs[1];
-			case 'singRIGHT' | 'singRIGHT-alt':
-				bfCameraX+=offetsJSON.ofs[1];
-			case 'singUP' | 'singUP-alt':
-				bfCameraY-=offetsJSON.ofs[1];
-			case 'singDOWN' | 'singDOWN-alt':
-				bfCameraX+=offetsJSON.ofs[1];
-		}
-	
-	
-			gfCameraX=0;
-			gfCameraY=0;
-			switch(gf.animation.curAnim.name)
-			{
-				case 'singLEFT' | 'singLEFT-alt':
-					gfCameraX-=offetsJSON.ofs[2];
-				case 'singRIGHT' | 'singRIGHT-alt':
-					gfCameraX+=offetsJSON.ofs[2];
-				case 'singUP' | 'singUP-alt':
-					gfCameraY-=offetsJSON.ofs[2];
-				case 'singDOWN' | 'singDOWN-alt':
-					gfCameraY+=offetsJSON.ofs[2];
-			}
-		
-		
-		
+
 	  if (generatedMusic && !endingSong && !isCameraOnForcedPos && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
 	  {
 		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
 		{
-			camFollow.set(offetsJSON.xx[0]+ 150 + dadCameraX+dad.cameraPosition[0]+dad.cameraPosition[0]+offetsJSON.ofs[0] , offetsJSON.yy[0]+ 150 + dadCameraY+dad.cameraPosition[1]+dad.cameraPosition[1]+offetsJSON.ofs[0]);
-			defaultCamZoom = offetsJSON.zooms[0];
+			switch(dad.animation.curAnim.name){
+				case 'singLEFT' | 'singLEFT-alt':
+					camFollow.set(offetsJSON.xx[0]-offetsJSON.ofs[0], offetsJSON.yy[0]);
+				case 'singRIGHT' | 'singRIGHT-alt':
+					camFollow.set(offetsJSON.xx[0]+offetsJSON.ofs[0], offetsJSON.yy[0]);
+				case 'singUP' | 'singUP-alt':
+					camFollow.set(offetsJSON.xx[0], offetsJSON.yy[0]-offetsJSON.ofs[0]);
+				case 'singDOWN' | 'singDOWN-alt':
+					camFollow.set(offetsJSON.xx[0], offetsJSON.yy[0]+offetsJSON.ofs[0]);
+				case 'idle'|'anim':
+					camFollow.set(offetsJSON.xx[0], offetsJSON.yy[0]);
+			}
+			//defaultCamZoom = offetsJSON.zooms[0];
 		}else
 		{
-			camFollow.set(offetsJSON.xx[1]+ 150 + bfCameraX+boyfriend.cameraPosition[0]+boyfriend.cameraPosition[0]+offetsJSON.ofs[1] , offetsJSON.yy[1]+ 150 + bfCameraY+boyfriend.cameraPosition[1]+boyfriend.cameraPosition[1]+offetsJSON.ofs[1]);    
-			defaultCamZoom = offetsJSON.zooms[1];
+			switch(boyfriend.animation.curAnim.name){
+				case 'singLEFT' | 'singLEFT-alt':
+					camFollow.set(offetsJSON.xx[1]-offetsJSON.ofs[1], offetsJSON.yy[1]);
+				case 'singRIGHT' | 'singRIGHT-alt':
+					camFollow.set(offetsJSON.xx[1]+offetsJSON.ofs[1], offetsJSON.yy[1]);
+				case 'singUP' | 'singUP-alt':
+					camFollow.set(offetsJSON.xx[1], offetsJSON.yy[1]-offetsJSON.ofs[1]);
+				case 'singDOWN' | 'singDOWN-alt':
+					camFollow.set(offetsJSON.xx[1], offetsJSON.yy[1]+offetsJSON.ofs[1]);
+				case 'idle':
+					camFollow.set(offetsJSON.xx[1], offetsJSON.yy[1]);
+			}
+			//defaultCamZoom = offetsJSON.zooms[1];
 		}
-		
 		if (SONG.notes[curSection].gfSection){
-			camFollow.set(offetsJSON.xx[2]- 150 + gfCameraX,  offetsJSON.yy[2] - 150 + gfCameraY);
-			camFollow.x += gf.cameraPosition[0];
-			camFollow.y += gf.cameraPosition[1];
-			defaultCamZoom = offetsJSON.zooms[2];
+			switch(gf.animation.curAnim.name){
+				case 'singLEFT' | 'singLEFT-alt':
+					camFollow.set(offetsJSON.xx[2]-offetsJSON.ofs[2], offetsJSON.yy[2]);
+				case 'singRIGHT' | 'singRIGHT-alt':
+					camFollow.set(offetsJSON.xx[2]+offetsJSON.ofs[2], offetsJSON.yy[2]);
+				case 'singUP' | 'singUP-alt':
+					camFollow.set(offetsJSON.xx[2], offetsJSON.yy[2]-offetsJSON.ofs[2]);
+				case 'singDOWN' | 'singDOWN-alt':
+					camFollow.set(offetsJSON.xx[2], offetsJSON.yy[2]+offetsJSON.ofs[2]);
+				case 'danceLeft'|'danceRight'|'idle': 
+					camFollow.set(offetsJSON.xx[2], offetsJSON.yy[2]);
+			}
 		}
 	  
 	  } 
