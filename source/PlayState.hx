@@ -348,6 +348,7 @@ class PlayState extends MusicBeatState
 	var bgItemsL:FlxTypedGroup<BGSprite>;
 	var images:Array<String>=[
 		'esta_cosa_',
+		'esta_otra_cosa_',
 		'esta_otras_cosas_',
 		'esta_cortina_',
 		'ana'
@@ -577,6 +578,7 @@ class PlayState extends MusicBeatState
 					}
 					brilloBG = new BGSprite('brillo',0,0,1,1);
 					brilloBG.scale.set(0.65,0.65);
+					brilloBG.screenCenter();
 					brilloBG.visible=false;
 					brilloBG.antialiasing=ClientPrefs.globalAntialiasing;
 				
@@ -2796,7 +2798,7 @@ class PlayState extends MusicBeatState
 		if (curStep==cambiarOffets){
 			FlxG.camera.fade(FlxColor.BLACK, 0.7, true,false);
 	      	bg.visible=false;
-			if(!ClientPrefs.lowQuality){
+			if (!ClientPrefs.lowQuality){
 				for (i in 0 ...images.length){
 					bgItemsL.members[i].visible=true;
 				}
