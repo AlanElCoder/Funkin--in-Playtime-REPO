@@ -2813,7 +2813,8 @@ class PlayState extends MusicBeatState
 	  
 	  } 
 	  if (SONG.song=='Remember'){
-		if (curStep==cambiarOffets&&curStep<1153){
+		if (curStep==cambiarOffets){
+		if (curStep<1153){
 			FlxG.camera.fade(FlxColor.BLACK, 0.7, true,false);
 	      	bg.visible=false;
 			if (!ClientPrefs.lowQuality){
@@ -2849,6 +2850,7 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.shaders){
 			dad.shader=chrom.shader;		
 		}
+	    }
     	}
 	  }
 	
@@ -5169,12 +5171,12 @@ class PlayState extends MusicBeatState
 		{
 			dad.dance();
 		}
-		if (curBeat % boyfriend.danceEveryNumBeats == 0 ){
+		if (curBeat % boyfriend.danceEveryNumBeats == 0 && boyfriend.animation.curAnim != nul){
 			if (bfPatas.visible){
 				bfPatas.dance();
 			}
 		}
-		if (curBeat % dad.danceEveryNumBeats == 0 ){
+		if (curBeat % dad.danceEveryNumBeats == 0 && boyfriend.animation.curAnim != nul){
 			if (hPatas.visible){
 				hPatas.dance();
 			}
