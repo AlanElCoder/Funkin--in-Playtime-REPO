@@ -65,7 +65,13 @@ class SixAMstate extends MusicBeatState
 	var pressStartSprite:FlxSprite;
 	var inicio:Bool=false;
 	var antiperu2:Bool=false;
-
+	var bg:FlxSprite;	
+	var huggylel:FlxSprite;
+	var coso:FlxText;
+	var shader:String='desaturate';
+	var shaderD:FlxRuntimeShader;
+	var negro1:FlxSprite;
+	var negro2:FlxSprite;
 	override public function create():Void
 	{	
 		Paths.clearStoredMemory();
@@ -92,16 +98,21 @@ class SixAMstate extends MusicBeatState
 			antiperu2 = FlxG.save.data.antiperu2;
 		}
 
-		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('bgPlayTime'));
+		bg = new FlxSprite(-80).loadGraphic(Paths.image('bgPlayTime'));
 		bg.scale.set(0.68,0.68);
 		bg.updateHitbox();
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
-		bg.color = 0x484848;
-
+		
+	
+		var bgBlack:FlxSprite=new FlxSprite().makeGraphic(FlxG.width,FlxG.height,FlxColor.BLACK);
+		add(bgBlack);
+		bgBlack.alpha=0.4;
+		shaderD = new FlxRuntimeShader(File.getContent(Paths.shaderFragment(shader)));
+		bg.shader=shaderD;
 		if(antiperu2 == true) { // no te olvides de cambiarlo manuel no te olvides de cambiarlo manuel no te olvides de cambiarlo manuel no te olvides de cambiarlo manuel no te olvides de cambiarlo manuel
-			var huggylel:FlxSprite= new FlxSprite().loadGraphic(Paths.image('golden_huggy'));
+		   huggylel= new FlxSprite().loadGraphic(Paths.image('golden_huggy'));
 			huggylel.scale.set(0.22,0.22);
 			huggylel.screenCenter();
 			huggylel.y-=80;
@@ -110,18 +121,28 @@ class SixAMstate extends MusicBeatState
 			FlxTween.tween(huggylel, {y: tweenlel }, 1.2, {ease: FlxEase.quintOut});
 			huggylel.antialiasing = ClientPrefs.globalAntialiasing;
 			add(huggylel);
+			
+			negro2= new FlxSprite(12).makeGraphic(FlxG.height+200,36,FlxColor.BLACK);
+			negro2.screenCenter();
+			negro2.x+=5;
+			negro2.y+=300;
+			negro2.alpha=0.76;
+			add(negro2);
 
-			var coso:FlxText = new FlxText(12, FlxG.height - 44, 0, "Ollie:", 12);
-			coso.setFormat("VCR OSD Mono", 40, FlxColor.GREEN, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			coso = new FlxText(12, FlxG.height - 44, 0, "Ollie:", 12);
+			coso.setFormat("VCR OSD Mono", 25, FlxColor.GREEN, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			coso.screenCenter();
-			coso.y+=240;
+			coso.x-=400;
+			coso.y+=305;
 			coso.antialiasing = ClientPrefs.globalAntialiasing;
 			add(coso);
 
+		
+
 			var coso2:FlxText = new FlxText(12, FlxG.height - 44, 0, "\n¡You did it! Get this reward i found, a little prize.", 12);
-			coso2.setFormat("VCR OSD Mono", 40, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			coso2.setFormat("VCR OSD Mono", 25, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			coso2.screenCenter();
-			coso2.y+=280;
+			coso2.setPosition(coso.x+100,630);
 			coso2.antialiasing = ClientPrefs.globalAntialiasing;
 			add(coso2);
 		}
@@ -139,14 +160,14 @@ class SixAMstate extends MusicBeatState
 			}
 			#end
 		}
-		/*
+		
 		if(antiperu2 == true) {
 			new FlxTimer().start(0.2, function(tmr:FlxTimer)
 			{
 				MusicBeatState.switchState(new TitleState());
 			});
 		}
-		*/
+		
 		super.create();
 	}	
 	var titleInicied:Bool=false;
@@ -154,8 +175,11 @@ class SixAMstate extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		iTime += elapsed;
+		shaderD.setFloat("iTime", iTime);
+	
 		FlxG.camera.zoom= FlxMath.lerp(1, FlxG.camera.zoom,0.85);
 			if (controls.ACCEPT&&!titleInicied && antiperu2 == true){ //manelmanelmanelmanelmanelmanelmanelmanelmanelmanelmanel
+				
 				antiperu2 = true;
 				FlxG.save.data.antiperu2 = antiperu2;
 				FlxG.save.flush();

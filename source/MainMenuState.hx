@@ -125,14 +125,16 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		//add(versionShit);
 
+		huggylel = new FlxSprite().loadGraphic(Paths.image('golden_huggy'));
+		huggylel.scale.set(0.14,0.14);
+		huggylel.screenCenter();
+		huggylel.x+=540;
+		huggylel.y-=200;
+		huggylel.antialiasing = ClientPrefs.globalAntialiasing;
+		huggylel.visible=false;
+	    add(huggylel);
 		if(antiperu2 == true) {
-			huggylel = new FlxSprite().loadGraphic(Paths.image('golden_huggy'));
-			huggylel.scale.set(0.14,0.14);
-			huggylel.screenCenter();
-			huggylel.x+=540;
-			huggylel.y-=200;
-			huggylel.antialiasing = ClientPrefs.globalAntialiasing;
-			add(huggylel);
+		  huggylel.visible=true;
 		}
 
 		cursorImage = new FlxSprite();
@@ -159,6 +161,7 @@ class MainMenuState extends MusicBeatState
 		
 		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
 	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
+	
 		if (ClientPrefs.shaders)
 		{
 		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
@@ -193,14 +196,21 @@ class MainMenuState extends MusicBeatState
 			alanpuntoecse = true;
 			changeItem();
 		}
-		if (FlxG.mouse.overlaps(huggylel) && FlxG.mouse.justPressed && alanpuntoecse == false) {
-			FlxG.sound.play(Paths.sound('huggyfunnylaugh'));
-			huggylel.scale.set(0.18,0.18);
-			alanpuntoecse = true;
-			FlxTween.tween(huggylel.scale, {x: 0.14, y: 0.14}, 1, {ease: FlxEase.quintOut, onComplete: function(twn:FlxTween) {
-				alanpuntoecse = false;
-			}});
+		
+		if (huggylel.visible){
+			if (FlxG.mouse.overlaps(huggylel) && FlxG.mouse.justPressed && alanpuntoecse == false) {
+				FlxG.sound.play(Paths.sound('huggyfunnylaugh'));
+				huggylel.scale.set(0.18,0.18);
+				alanpuntoecse = true;
+				FlxTween.tween(huggylel.scale, {x: 0.14, y: 0.14}, 1, {ease: FlxEase.quintOut, onComplete: function(twn:FlxTween) {
+					alanpuntoecse = false;
+				}});
+			}
 		}
+			
+		
+	
+		
 		if(FlxG.keys.pressed.N) {
 			new FlxTimer().start(0.2, function(tmr:FlxTimer)
 			{

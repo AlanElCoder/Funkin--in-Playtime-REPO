@@ -644,18 +644,17 @@ class PlayState extends MusicBeatState
 			case 'stress':
 				GameOverSubstate.characterName = 'bf-holding-gf-dead';
 		}
-		chrom  = new ChromaticAberrationEffect(0.0);
-		chromO  = new ChromaticAberrationEffect(0.0);
-
-		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
-	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
-		vignette = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("vignette")));
+		
 		
 		if (ClientPrefs.shaders)
 		{
+		 chrom  = new ChromaticAberrationEffect(0.0);
+		 chromO  = new ChromaticAberrationEffect(0.0);
+		 vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
+	     shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
+		 vignette = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("vignette")));
 		 FlxG.camera.setFilters([new ShaderFilter(vignette),new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
 		 camHUD.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
-		 camOther.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader),new ShaderFilter(chromO.shader)]);
 		}
 
 		if(isPixelStage) {
@@ -1223,8 +1222,6 @@ class PlayState extends MusicBeatState
 			blackBG.screenCenter(Y);
 			blackBG.cameras=[camOther];
 			add(blackBG);
-			// sext
-     
 
 		   intro =new FlxText(0, 0, 1000, SONG.song+'\nby: justLux Feat-End-Sella', 40);
 		   intro.setFormat(Paths.font('PhantomMuff Full Letters 1.1.5.ttf'),40,FlxColor.WHITE, CENTER,FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
@@ -1233,6 +1230,11 @@ class PlayState extends MusicBeatState
 		   intro.cameras=[camOther];
            add(intro);
 
+		   if (ClientPrefs.shaders){
+			intro.shader=shader1;
+			intro.shader=vcrShader;
+			intro.shader=chromO.shader;
+		   }
            camGame.alpha=0;
 		   skipCountdown=true;
 		}
@@ -2775,15 +2777,7 @@ class PlayState extends MusicBeatState
 	
 	    }
 	  }
-	  strumLineNotes.members[0].alpha=0;
-	  strumLineNotes.members[1].alpha=0;
-	  strumLineNotes.members[2].alpha=0;
-	  strumLineNotes.members[3].alpha=0;
-
-	  opponentStrums.members[0].alpha=0;
-	  opponentStrums.members[1].alpha=0;
-	  opponentStrums.members[2].alpha=0;
-	  opponentStrums.members[3].alpha=0;
+	
 	}
 	public var paused:Bool = false;
 	public var canReset:Bool = true;
@@ -2798,21 +2792,21 @@ class PlayState extends MusicBeatState
 	{
 		callOnLuas('onUpdate', [elapsed]);
 		//correBG.x+=.5*(elapsed/(1/120));
-		iTime += elapsed;
-	    vcrShader.setFloat("iTime", iTime);
-		shader1.setFloat("iTime", iTime);
-		vignette.setFloat("iTime",iTime);
-		if (curStep==cambiarOffets||SONG.song=='Remember'){
-			vignette.setFloat("vignetteStrength",1.4);
-			chrom.setChrome(sining ? (camHUD.zoom - 1) * intensity : 0);
+	    if (ClientPrefs.shaders){
+			iTime += elapsed;
+			vcrShader.setFloat("iTime", iTime);
+			shader1.setFloat("iTime", iTime);
+			vignette.setFloat("iTime",iTime);
+			if (curStep==cambiarOffets||SONG.song=='Remember'){
+				vignette.setFloat("vignetteStrength",1.4);
+				chrom.setChrome(sining ? (camHUD.zoom - 1) * intensity : 0);
+			}
+			if (!hPatas.visible){
+			 chromacrap =FlxMath.lerp(chromacrap, 0, CoolUtil.boundTo(elapsed * 1, 0, 1));
+			}
+			chromO.setChrome(chromacrap);
 		}
-		if (ClientPrefs.shaders&&!hPatas.visible){
-		chromacrap =FlxMath.lerp(chromacrap, 0, CoolUtil.boundTo(elapsed * 1, 0, 1));
-		}
-		chromO.setChrome(chromacrap);
-		
 		moveCameraLel();
-
 		if(!inCutscene) {
 			var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4 * cameraSpeed * playbackRate, 0, 1);
 			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
@@ -2829,102 +2823,65 @@ class PlayState extends MusicBeatState
 		for (i in 0...vidalel){
 			switch(songMisses){
 				case 0:
-					vidaItems.members[0].animation.play('idle');
-					vidaItems.members[1].animation.play('idle');
-					vidaItems.members[2].animation.play('idle');
-					vidaItems.members[3].animation.play('idle');
-					vidaItems.members[4].animation.play('idle');
-					vidaItems.members[5].animation.play('idle');
+					for (i in 0...6){
+						vidaItems.members[i].animation.play('idle');
+					}
 				case 1:	
-					vidaItems.members[0].animation.play('idle');
-					vidaItems.members[1].animation.play('idle');
-					vidaItems.members[2].animation.play('idle');
-					vidaItems.members[3].animation.play('idle');
-					vidaItems.members[4].animation.play('idle');
-					vidaItems.members[5].animation.play('idle2');
+					for (i in 0...6){
+						 vidaItems.members[i].animation.play('idle');
+						switch(i){ 
+						   case 5:
+						   vidaItems.members[i].animation.play('idle2');
+						}
+					}
 				case 2:	
-					vidaItems.members[0].animation.play('idle');
-					vidaItems.members[1].animation.play('idle');
-					vidaItems.members[2].animation.play('idle');
-					vidaItems.members[3].animation.play('idle');
-					vidaItems.members[4].animation.play('idle2');
-					vidaItems.members[5].animation.play('idle2');	
+					for (i in 0...6){
+						vidaItems.members[i].animation.play('idle');
+					 switch(i){
+					   case 4|5:
+						vidaItems.members[i].animation.play('idle2');
+					  }	
+				   }	
 				case 3:	
-					vidaItems.members[0].animation.play('idle');
-					vidaItems.members[1].animation.play('idle');
-					vidaItems.members[2].animation.play('idle');
-					vidaItems.members[3].animation.play('idle2');
-					vidaItems.members[4].animation.play('idle2');
-					vidaItems.members[5].animation.play('idle2');
+					for (i in 0...6){
+						vidaItems.members[i].colorTransform.redOffset = 233;
+						vidaItems.members[i].colorTransform.greenOffset = 36;
+						vidaItems.members[i].colorTransform.blueOffset = 36;
+						vidaItems.members[i].animation.play('idle');
+					    switch(i){	
+					      case 3|4|5:
+							vidaItems.members[i].colorTransform.redOffset = 131;
+							vidaItems.members[i].colorTransform.greenOffset = 0;
+							vidaItems.members[i].colorTransform.blueOffset = 0;
+						     vidaItems.members[i].animation.play('idle2');
+						}
+				    }	
 			
 				case 4:	
-				    vidaItems.members[0].animation.play('idle');
-				    vidaItems.members[1].animation.play('idle');
-					vidaItems.members[2].animation.play('idle2');
-					vidaItems.members[3].animation.play('idle2');
-					vidaItems.members[4].animation.play('idle2');
-					vidaItems.members[5].animation.play('idle2');
-					
+					for (i in 0...6){
+						vidaItems.members[i].animation.play('idle');
 
-					vidaItems.members[0].colorTransform.redOffset = 233;
-					vidaItems.members[0].colorTransform.greenOffset = 36;
-					vidaItems.members[0].colorTransform.blueOffset = 36;
-
-
-					vidaItems.members[1].colorTransform.redOffset = 233;
-					vidaItems.members[1].colorTransform.greenOffset = 36;
-					vidaItems.members[1].colorTransform.blueOffset = 36;
-
-
-					vidaItems.members[2].colorTransform.redOffset = 131;
-					vidaItems.members[2].colorTransform.greenOffset = 0;
-					vidaItems.members[2].colorTransform.blueOffset = 0;
-
-					vidaItems.members[3].colorTransform.redOffset = 131;
-					vidaItems.members[3].colorTransform.greenOffset = 0;
-					vidaItems.members[3].colorTransform.blueOffset = 0;
-
-					vidaItems.members[4].colorTransform.redOffset = 131;
-					vidaItems.members[4].colorTransform.greenOffset = 0;
-					vidaItems.members[4].colorTransform.blueOffset = 0;
-
-					vidaItems.members[5].colorTransform.redOffset = 131;
-					vidaItems.members[5].colorTransform.greenOffset = 0;
-					vidaItems.members[5].colorTransform.blueOffset = 0;
+						vidaItems.members[i].colorTransform.redOffset = 233;
+						vidaItems.members[i].colorTransform.greenOffset = 36;
+						vidaItems.members[i].colorTransform.blueOffset = 36;
+					  switch(i){
+						case 2|3|4|5:
+							vidaItems.members[i].animation.play('idle2');
+					  }	
+				    }	
 
 				case 5:	
-					vidaItems.members[0].animation.play('idle');
-					vidaItems.members[1].animation.play('idle2');
-					vidaItems.members[2].animation.play('idle2');
-					vidaItems.members[3].animation.play('idle2');
-					vidaItems.members[4].animation.play('idle2');
-					vidaItems.members[5].animation.play('idle2');	
-					
-					vidaItems.members[0].colorTransform.redOffset = 233;
-					vidaItems.members[0].colorTransform.greenOffset = 36;
-					vidaItems.members[0].colorTransform.blueOffset = 36;
+					for (i in 0...6){
+						vidaItems.members[i].animation.play('idle');
 
-
-					vidaItems.members[1].colorTransform.redOffset = 131;
-					vidaItems.members[1].colorTransform.greenOffset = 0;
-					vidaItems.members[1].colorTransform.blueOffset = 0;
-
-
-					vidaItems.members[2].colorTransform.redOffset = 131;
-					vidaItems.members[2].colorTransform.greenOffset = 0;
-					vidaItems.members[2].colorTransform.blueOffset = 0;
-
-					vidaItems.members[3].colorTransform.redOffset = 131;
-					vidaItems.members[3].colorTransform.greenOffset = 0;
-					vidaItems.members[3].colorTransform.blueOffset = 0;
-
-					vidaItems.members[4].colorTransform.redOffset = 131;
-					vidaItems.members[4].colorTransform.greenOffset = 0;
-					vidaItems.members[4].colorTransform.blueOffset = 0;
-
-					vidaItems.members[5].colorTransform.redOffset = 131;
-					vidaItems.members[5].colorTransform.greenOffset = 0;
-					vidaItems.members[5].colorTransform.blueOffset = 0;
+						vidaItems.members[i].colorTransform.redOffset = 233;
+						vidaItems.members[i].colorTransform.greenOffset = 36;
+						vidaItems.members[i].colorTransform.blueOffset = 36;
+					  switch(i){
+						case 1|2|3|4|5:
+							vidaItems.members[i].animation.play('idle2');
+					  }	
+				    }	
 				case 6:	
 					new FlxTimer().start(0.4, function(tmr:FlxTimer)
 					{
@@ -4870,6 +4827,11 @@ class PlayState extends MusicBeatState
 		callOnLuas('onStepHit', []);
 		if (SONG.song=='Remember'){
 			switch(curStep){
+			   case 0:
+				for (i in 0...4){
+					strumLineNotes.members[i].alpha=0;
+					opponentStrums.members[i].alpha=0;
+				  }
 			   case 6:
 				    FlxTween.tween(intro.scale, { x: 0.55, y: 0.55 }, 1.5, { ease:FlxEase.quadInOut,});
 			   case 12:
@@ -4878,7 +4840,9 @@ class PlayState extends MusicBeatState
 			   case 20:	
 				    FlxTween.tween(camGame,{alpha: 1}, 1.2,{ease:FlxEase.quadInOut,});
 			   case 22:
-				    camOther.setFilters([]);
+				  if (ClientPrefs.shaders){
+					camOther.setFilters([]);
+				  } 
 			   case 750:
 				    FlxTween.tween(camGame,{alpha: 0}, 1.2,{ease:FlxEase.quadInOut,});
 	            case 768:
@@ -4899,7 +4863,7 @@ class PlayState extends MusicBeatState
 						]
 					};	
 				case 1153:
-			       trace('ahi void moment');
+			       //trace('ahi void moment');
 				   correBG.visible=true;
 				   bfPatas.visible=true;
 			       hPatas.visible=true;
@@ -4911,8 +4875,6 @@ class PlayState extends MusicBeatState
 			    	}else{
 					 bg1.visible=false;
 				    }
-
-
 					offetsJSON = {
 						xx:[
 						   800,400,gf.getMidpoint().x,
@@ -4927,10 +4889,6 @@ class PlayState extends MusicBeatState
 						 0.8,0.8,1
 						]
 					};
-
-
-					//FlxTween.tween(upBarr,{y: -400}, 1.2,{ease:FlxEase.quadInOut,});
-					//FlxTween.tween(downBarr,{y: 630}, 1.2,{ease:FlxEase.quadInOut,});
 			}
 		}
 
