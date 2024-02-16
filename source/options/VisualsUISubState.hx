@@ -47,6 +47,13 @@ class VisualsUISubState extends BaseOptionsMenu
 			'bool',
 			false);
 		addOption(option);
+
+		var option:Option = new Option('Show Time',
+		'shows the time.',
+		'showTime',
+		'bool',
+		false);
+     	addOption(option);
 		
 		var option:Option = new Option('Time Bar:',
 			"What should the Time Bar display?",

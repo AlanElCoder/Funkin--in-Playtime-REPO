@@ -1,5 +1,5 @@
-package;//update
-
+package;//update o 
+//timeBar
 import flixel.graphics.FlxGraphic;
 #if desktop
 import Discord.DiscordClient;
@@ -61,7 +61,6 @@ import FunkinLua;
 import DialogueBoxPsych;
 import Conductor.Rating;
 import Shaders;
-
 import flixel.addons.display.FlxBackdrop;
 
 #if !flash 
@@ -359,12 +358,17 @@ class PlayState extends MusicBeatState
 	var correBG:FlxBackdrop;
 	var upBarr:FlxSprite;
 	var downBarr:FlxSprite;
+	var composer:String="";
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
 		Paths.clearStoredMemory();
 
 		// for lua
+		if(SONG.song=='Remember'){
+			composer='Just_Lux FT-END_SELLA';
+		}
+		openfl.Lib.application.window.title="Funkin' In Playtime - " + SONG.song +"-by "+composer;
 		instance = this;
 
 		debugKeysChart = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
@@ -613,6 +617,7 @@ class PlayState extends MusicBeatState
 				bfPatas.visible=false;
 				bfPatas.antialiasing = ClientPrefs.globalAntialiasing;
 				startCharacterPos(bfPatas);
+				startCharacterLua(bfPatas.curCharacter);
 				add(bfPatas);
 
 
@@ -620,7 +625,11 @@ class PlayState extends MusicBeatState
 				hPatas.visible=false;
 				hPatas.antialiasing = ClientPrefs.globalAntialiasing;
 				startCharacterPos(hPatas);
+				startCharacterLua(hPatas.curCharacter);
 				add(hPatas);
+
+
+				GameOverSubstate.characterName = 'bftoy-dead';
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
 		if (!FileSystem.exists(path)){
@@ -866,7 +875,7 @@ class PlayState extends MusicBeatState
 		timeTxt.scrollFactor.set();
 		timeTxt.alpha = 0;
 		timeTxt.borderSize = 2;
-		timeTxt.visible = showTime;
+		timeTxt.visible = showTime&& ClientPrefs.showTime;
 		if(ClientPrefs.downScroll) timeTxt.y = FlxG.height - 44;
 
 		if(ClientPrefs.timeBarType == 'Song Name')
@@ -880,7 +889,7 @@ class PlayState extends MusicBeatState
 		timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
 		timeBarBG.scrollFactor.set();
 		timeBarBG.alpha = 0;
-		timeBarBG.visible = showTime;
+		timeBarBG.visible = showTime&& ClientPrefs.showTime;
 		timeBarBG.color = FlxColor.BLACK;
 		timeBarBG.xAdd = -4;
 		timeBarBG.yAdd = -4;
@@ -892,7 +901,7 @@ class PlayState extends MusicBeatState
 		timeBar.createFilledBar(0xFF000000, 0xFFFFFFFF);
 		timeBar.numDivisions = 800; //How much lag this causes?? Should i tone it down to idk, 400 or 200?
 		timeBar.alpha = 0;
-		timeBar.visible = showTime;
+		timeBar.visible = showTime && ClientPrefs.showTime;
 		add(timeBar);
 		add(timeTxt);
 		timeBarBG.sprTracker = timeBar;
@@ -1216,6 +1225,7 @@ class PlayState extends MusicBeatState
 			add(blackBG);
 			// sext
      
+
 		   intro =new FlxText(0, 0, 1000, SONG.song+'\nby: justLux Feat-End-Sella', 40);
 		   intro.setFormat(Paths.font('PhantomMuff Full Letters 1.1.5.ttf'),40,FlxColor.WHITE, CENTER,FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		   intro.screenCenter(X);
@@ -2765,7 +2775,15 @@ class PlayState extends MusicBeatState
 	
 	    }
 	  }
+	  strumLineNotes.members[0].alpha=0;
+	  strumLineNotes.members[1].alpha=0;
+	  strumLineNotes.members[2].alpha=0;
+	  strumLineNotes.members[3].alpha=0;
 
+	  opponentStrums.members[0].alpha=0;
+	  opponentStrums.members[1].alpha=0;
+	  opponentStrums.members[2].alpha=0;
+	  opponentStrums.members[3].alpha=0;
 	}
 	public var paused:Bool = false;
 	public var canReset:Bool = true;
@@ -2874,8 +2892,6 @@ class PlayState extends MusicBeatState
 					vidaItems.members[5].colorTransform.greenOffset = 0;
 					vidaItems.members[5].colorTransform.blueOffset = 0;
 
-				
-
 				case 5:	
 					vidaItems.members[0].animation.play('idle');
 					vidaItems.members[1].animation.play('idle2');
@@ -2932,7 +2948,7 @@ class PlayState extends MusicBeatState
 		    }
 		}
 		super.update(elapsed);
-
+		cpuControlled=ClientPrefs.botPlay;
 		setOnLuas('curDecStep', curDecStep);
 		setOnLuas('curDecBeat', curDecBeat);
 
@@ -3255,6 +3271,7 @@ class PlayState extends MusicBeatState
 				for (timer in modchartTimers) {
 					timer.active = true;
 				}
+				boyfriend.visible=true;
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 				isDead = true;
 				return true;
@@ -4889,10 +4906,10 @@ class PlayState extends MusicBeatState
 				case 770:
 					offetsJSON = {
 						xx:[
-						   600,850,600,
+						   650,850,600,
 						],
 						yy:[
-						   200,500,0,
+						   200,480,0,
 						],
 						ofs:[
 						   15,15,0

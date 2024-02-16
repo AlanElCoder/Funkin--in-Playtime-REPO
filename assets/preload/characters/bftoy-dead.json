@@ -1,0 +1,56 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				37,
+				11
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "firstDeath",
+			"indices": [],
+			"name": "bf toy muerte0"
+		},
+		{
+			"offsets": [
+				-431,
+				-536
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "deathConfirm",
+			"indices": [],
+			"name": "bf toy muerte enter o nose lol0"
+		},
+		{
+			"offsets": [
+				-433,
+				-535
+			],
+			"indices": [],
+			"fps": 9,
+			"anim": "deathLoop",
+			"loop": true,
+			"name": "bf toy muerte loop"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/when_se_petatean_al_bief_cono",
+	"position": [
+		0,
+		-10
+	],
+	"healthicon": "bf",
+	"flip_x": true,
+	"healthbar_colors": [
+		49,
+		176,
+		209
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

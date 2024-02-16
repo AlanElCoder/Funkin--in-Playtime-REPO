@@ -33,6 +33,8 @@ class ClientPrefs {
 	public static var pauseMusic:String = 'Tea Time';
 	public static var checkForUpdates:Bool = true;
 	public static var comboStacking = true;
+	public static var showTime:Bool=false;
+	public static var botPlay:Bool=false;
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -130,7 +132,8 @@ class ClientPrefs {
 		FlxG.save.data.pauseMusic = pauseMusic;
 		FlxG.save.data.checkForUpdates = checkForUpdates;
 		FlxG.save.data.comboStacking = comboStacking;
-	
+	    FlxG.save.data.showTime=showTime;
+		FlxG.save.data.botPlay=botPlay;
 		FlxG.save.flush();
 
 		var save:FlxSave = new FlxSave();
@@ -263,6 +266,12 @@ class ClientPrefs {
 		if (FlxG.save.data.checkForUpdates != null)
 		{
 			checkForUpdates = FlxG.save.data.checkForUpdates;
+		}
+		if (FlxG.save.data.botPlay!=null){
+			botPlay=FlxG.save.data.botPlay;
+		}
+		if (FlxG.save.data.showTime !=null){
+			showTime=FlxG.save.data.showTime;
 		}
 		if (FlxG.save.data.comboStacking != null)
 			comboStacking = FlxG.save.data.comboStacking;
