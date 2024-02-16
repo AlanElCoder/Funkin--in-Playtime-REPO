@@ -98,7 +98,7 @@ class CreditsState extends MusicBeatState
 			['Double L','double_l','Artist','https://twitter.com/FunniDoubleL','30F6FF'],
 			['ZariDoodles','zari','Main Artist and Main Animator-ola dasito soy fan, te veo desde q era un feto','https://x.com/Zari_DoodlesUvU?t=2esZEjwsOawICn6TR4OgQw&s=09','FFE77C'],
 			['calabazinX','calabazin','BG Artist','https://twitter.com/Megastar713rd','CE3E00'],
-			['justLux','lux','Composer','https://www.youtube.com/@lux_lol','CE00A2'],
+			['justLux','lux','Composer - Say gex (fnfoldcollection lover n1)','https://www.youtube.com/@lux_lol','CE00A2'],
 			['End_Sella','sella','Composer','https://twitter.com/SebastianSB8','008FFF'],
 			['ManuelCrack483','nose_el_nombre_de_este_lul','coder','https://twitter.com/miku_real','9AFF9F'],
 			['senRen','sexren','Charter','https://x.com/Senrenholas?t=D3csbPwAh_rFABKp0Y5QkA&s=09','AE00FF'],
