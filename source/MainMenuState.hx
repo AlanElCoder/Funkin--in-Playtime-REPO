@@ -196,6 +196,20 @@ class MainMenuState extends MusicBeatState
 			}
 			changeCur();
 		}
+		if(FlxG.keys.justPressed.SPACE && curSelected == 4 && alanpuntoecse == false) {
+			alanpuntoecse = true;
+			corky = true;
+			PlayState.SONG = Song.loadFromJson('el-rap-de-huggy-wuggy', 'el-rap-de-huggy-wuggy');
+            PlayState.isStoryMode = false;
+            PlayState.storyDifficulty = 2;
+            PlayState.storyWeek = 1;
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			new FlxTimer().start(0.4, function(tmr:FlxTimer)
+			{
+				LoadingState.loadAndSwitchState(new PlayState());
+			});
+			FlxG.camera.fade(FlxColor.BLACK, 0.4, false);
+		}
 		if(controls.ACCEPT && curSelected <= 3 && alanpuntoecse == false) {
 			alanpuntoecse = true;
 			changeItem();
@@ -205,7 +219,7 @@ class MainMenuState extends MusicBeatState
 			alanpuntoecse = true;
 			changeItem();
 		}
-		
+
 		if (huggylel.visible){
 			if (FlxG.mouse.overlaps(negro2) && FlxG.mouse.justPressed && corky == false) {
 				FlxG.sound.play(Paths.sound('huggyfunnylaugh'));
@@ -215,13 +229,6 @@ class MainMenuState extends MusicBeatState
 					corky = false;
 				}});
 			}
-		}
-		
-		if(FlxG.keys.pressed.N) {
-			new FlxTimer().start(0.2, function(tmr:FlxTimer)
-			{
-				MusicBeatState.switchState(new SixAMstate());
-			});
 		}
 	}
 	var beats:Int;

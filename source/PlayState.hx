@@ -312,6 +312,7 @@ class PlayState extends MusicBeatState
 	var brilloBG:BGSprite;
 	var bfPatas:Character;
 	var hPatas:Character;
+	var hPatasHolder:Bool = false;
 	var correBG:FlxBackdrop;
 	var upBarr:FlxSprite;
 	var downBarr:FlxSprite;
@@ -324,6 +325,9 @@ class PlayState extends MusicBeatState
 		// for lua
 		if(SONG.song=='Remember'){
 			composer='Just_Lux FT-END_SELLA';
+		}
+		if(SONG.song=='el-rap-de-huggy-wuggy'){
+			composer='ALEXANDER';
 		}
 		openfl.Lib.application.window.title="Funkin' In Playtime - " + SONG.song +"-by "+composer;
 		instance = this;
@@ -572,10 +576,7 @@ class PlayState extends MusicBeatState
 				hPatas.antialiasing = ClientPrefs.globalAntialiasing;
 				startCharacterPos(hPatas);
 				startCharacterLua(hPatas.curCharacter);
-				add(hPatas);
-
-
-			
+				add(hPatas);		
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
 		if (!FileSystem.exists(path)){
@@ -724,7 +725,6 @@ class PlayState extends MusicBeatState
 				]
 			};
 		}else{}
-
 
 		switch(curStage)
 		{
@@ -2105,9 +2105,7 @@ class PlayState extends MusicBeatState
 	  
 	  } 
 	  if (SONG.song=='Remember'){
-		if (curStep==cambiarOffets&&!hPatas.visible){
-	
-			
+		if (curStep==cambiarOffets&&!hPatasHolder){
 			FlxG.camera.fade(FlxColor.BLACK, 0.7, true,false);
 	      	bg.visible=false;
 			if (!ClientPrefs.lowQuality){
@@ -2153,8 +2151,8 @@ class PlayState extends MusicBeatState
 				vignette.setFloat("vignetteStrength",1.4);
 				chrom.setChrome(sining ? (camHUD.zoom - 1) * intensity : 0);
 			}
-			if (!hPatas.visible){
-			 chromacrap =FlxMath.lerp(chromacrap, 0, CoolUtil.boundTo(elapsed * 1, 0, 1));
+			if (!hPatasHolder){
+			    chromacrap =FlxMath.lerp(chromacrap, 0, CoolUtil.boundTo(elapsed * 1, 0, 1));
 			}
 			chromO.setChrome(chromacrap);
 		}
@@ -3020,7 +3018,7 @@ class PlayState extends MusicBeatState
 					if(FlxTransitionableState.skipNextTransIn) {
 						CustomFadeTransition.nextCamera = null;
 					}
-					if(!usedPractice) {
+					if(!usedPractice && SONG.song=='Remember') {
 					    MusicBeatState.switchState(new SixAMstate());
 					} else {
 						MusicBeatState.switchState(new MainMenuState());
@@ -3061,13 +3059,12 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				trace('WENT BACK TO FREEPLAY??');
 				WeekData.loadTheFirstEnabledMod();
 				cancelMusicFadeTween();
 				if(FlxTransitionableState.skipNextTransIn) {
 					CustomFadeTransition.nextCamera = null;
 				}
-				MusicBeatState.switchState(new FreeplayState());
+				MusicBeatState.switchState(new MainMenuState());
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 				changedDifficulty = false;
 			}
@@ -3900,6 +3897,7 @@ class PlayState extends MusicBeatState
 				   correBG.visible=true;
 				   bfPatas.visible=true;
 			       hPatas.visible=true;
+				   hPatasHolder = true;
 				   if (!ClientPrefs.lowQuality){
 					for (i in 0 ...images.length){
 						bgItemsL.members[i].visible=false;
@@ -3978,12 +3976,12 @@ class PlayState extends MusicBeatState
 			dad.dance();
 		}
 		if (curBeat % boyfriend.danceEveryNumBeats == 0 && boyfriend.animation.curAnim != null){
-			if (bfPatas.visible){
+			if (hPatasHolder){
 				bfPatas.dance();
 			}
 		}
 		if (curBeat % dad.danceEveryNumBeats == 0 && boyfriend.animation.curAnim != null){
-			if (hPatas.visible){
+			if (hPatasHolder){
 				hPatas.dance();
 			}
 		}
@@ -4024,8 +4022,6 @@ class PlayState extends MusicBeatState
 		
 		setOnLuas('curSection', curSection);
 		callOnLuas('onSectionHit', []);
-
-	
 	}
 
 	public function callOnLuas(event:String, args:Array<Dynamic>, ignoreStops = true, exclusions:Array<String> = null):Dynamic {
