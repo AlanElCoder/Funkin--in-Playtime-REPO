@@ -96,7 +96,7 @@ class CreditsState extends MusicBeatState
 			['gabo','gabo','Concept Artis and Owner','https://twitter.com/gabro1209','5F5F5F'],
 			['AlanCoder.hx','alansin','Main Coder','https://twitter.com/Alanelcoderwe_l','FF0000'],
 			['Double L','double_l','Artist','https://twitter.com/FunniDoubleL','30F6FF'],
-			['ZariDoodles','zari','Main Artist and Main Animator','https://x.com/Zari_DoodlesUvU?t=2esZEjwsOawICn6TR4OgQw&s=09','FFE77C'],
+			['ZariDoodles','zari','Main Artist and Main Animator-ola dasito soy fan, te veo desde q era un feto','https://x.com/Zari_DoodlesUvU?t=2esZEjwsOawICn6TR4OgQw&s=09','FFE77C'],
 			['calabazinX','calabazin','BG Artist','https://twitter.com/Megastar713rd','CE3E00'],
 			['justLux','lux','Composer','https://www.youtube.com/@lux_lol','CE00A2'],
 			['End_Sella','sella','Composer','https://twitter.com/SebastianSB8','008FFF'],
