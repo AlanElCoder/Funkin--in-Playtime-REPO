@@ -578,7 +578,7 @@ class PlayState extends MusicBeatState
 
 				GameOverSubstate.characterName = 'bftoy-dead';
 				GameOverSubstate.deathSoundName = 'GAME_OVER_SFX_FIP_OST';
-				GameOverSubstate.loopSoundName =  'BYE_BYE-FiP_OST';
+				GameOverSubstate.loopSoundName =  'deadSound';
 				GameOverSubstate.endSoundName = 'RETRY_SOUND.ya';
 
 			
@@ -590,7 +590,7 @@ class PlayState extends MusicBeatState
 
 		switch(Paths.formatToSongPath(SONG.song))
 		{
-			case 'Remember':
+			//case 'Remember':
 			
 		}
 		if (ClientPrefs.shaders)
