@@ -10,7 +10,7 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
-
+import WindowsINIT;
 //crash handler stuff
 #if CRASH_HANDLER
 import lime.app.Application;
@@ -41,6 +41,7 @@ class Main extends Sprite
 	public static function main():Void
 	{
 		Lib.current.addChild(new Main());
+		WindowsINIT.setWindowBorderColor(0,0,0);
 	}
 
 	public function new()
