@@ -1,6 +1,7 @@
 package;//update o 
 //timeBar 
-//boyfriend.alpha=0;
+//boyfriend.alpha=0; scoreTxt
+
 import flixel.graphics.FlxGraphic;
 #if desktop
 import Discord.DiscordClient;
@@ -576,7 +577,15 @@ class PlayState extends MusicBeatState
 				hPatas.antialiasing = ClientPrefs.globalAntialiasing;
 				startCharacterPos(hPatas);
 				startCharacterLua(hPatas.curCharacter);
-				add(hPatas);		
+				add(hPatas);
+
+
+				GameOverSubstate.characterName = 'bftoy-dead';
+				GameOverSubstate.deathSoundName = 'GAME_OVER_SFX_FIP_OST';
+				GameOverSubstate.loopSoundName =  'deadSound';
+				GameOverSubstate.endSoundName = 'RETRY_SOUND.ya';
+
+			
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
 		if (!FileSystem.exists(path)){
@@ -585,11 +594,7 @@ class PlayState extends MusicBeatState
 
 		switch(Paths.formatToSongPath(SONG.song))
 		{
-			case 'Remember':
-				GameOverSubstate.characterName = 'bftoy-dead';
-				GameOverSubstate.deathSoundName = 'GAME_OVER_SFX_FIP_OST';
-				GameOverSubstate.loopSoundName =  'BYE_BYE-FiP_OST';
-				GameOverSubstate.endSoundName = 'RETRY_SOUND.ya';
+			//case 'Remember':
 			
 		}
 		if (ClientPrefs.shaders)
@@ -732,7 +737,7 @@ class PlayState extends MusicBeatState
 				if (!ClientPrefs.lowQuality){
 					add(brilloBG);
 				}
-				boyfriend.visible=false;
+				boyfriend.alpha=0;
 		}
 		Conductor.songPosition = -5000 / Conductor.songPosition;
 
@@ -934,6 +939,10 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		scoreTxt.updateHitbox();
 		add(scoreTxt);
+		if (ClientPrefs.downScroll){
+			scoreTxt.y+=150;
+			scoreTxt.x+=365;
+		}
 
 		botplayTxt = new FlxText(0, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -2117,7 +2126,7 @@ class PlayState extends MusicBeatState
 				bg1.visible=true;
 			}
 	     
-	    boyfriend.alpha=1;
+			boyfriend.alpha=1;
 		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
 		{
 		    sining=true;

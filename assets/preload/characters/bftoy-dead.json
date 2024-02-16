@@ -1,26 +1,26 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				37,
-				11
-			],
 			"loop": false,
-			"fps": 24,
-			"anim": "firstDeath",
-			"indices": [],
-			"name": "bf toy muerte0"
-		},
-		{
 			"offsets": [
 				-431,
 				-536
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "deathConfirm",
+			"fps": 24,
+			"name": "bf toy muerte enter o nose lol0",
+			"indices": []
+		},
+		{
+			"offsets": [
+				37,
+				11
+			],
 			"indices": [],
-			"name": "bf toy muerte enter o nose lol0"
+			"fps": 28,
+			"anim": "firstDeath",
+			"loop": false,
+			"name": "bf toy muerte0"
 		},
 		{
 			"offsets": [
@@ -28,7 +28,7 @@
 				-535
 			],
 			"indices": [],
-			"fps": 9,
+			"fps": 24,
 			"anim": "deathLoop",
 			"loop": true,
 			"name": "bf toy muerte loop"
