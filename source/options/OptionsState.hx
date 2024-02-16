@@ -24,6 +24,15 @@ import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
 import Controls;
+#if !flash 
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.filters.ShaderFilter;
+#end
+
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+#end
 
 using StringTools;
 
@@ -53,7 +62,8 @@ class OptionsState extends MusicBeatState
 
 	var selectorLeft:Alphabet;
 	var selectorRight:Alphabet;
-
+	var vcrShader:FlxRuntimeShader;
+	var shader1:FlxRuntimeShader;
 	override function create() {
 		#if desktop
 		DiscordClient.changePresence("Options Menu", null);
@@ -87,15 +97,27 @@ class OptionsState extends MusicBeatState
 		ClientPrefs.saveSettings();
 
 		super.create();
+			
+		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
+	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
+	
+		if (ClientPrefs.shaders)
+		{
+		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
+		}
 	}
+
 
 	override function closeSubState() {
 		super.closeSubState();
 		ClientPrefs.saveSettings();
 	}
-
+	var iTime:Float;
 	override function update(elapsed:Float) {
 		super.update(elapsed);
+		iTime += elapsed;
+	    vcrShader.setFloat("iTime", iTime);
+		shader1.setFloat("iTime", iTime);
 
 		if (controls.UI_UP_P) {
 			changeSelection(-1);

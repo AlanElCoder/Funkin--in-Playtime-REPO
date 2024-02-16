@@ -25,10 +25,20 @@ import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
 import Controls;
 
+#if !flash 
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.filters.ShaderFilter;
+#end
+
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+#end
 using StringTools;
 
 class VisualsUISubState extends BaseOptionsMenu
 {
+	
 	public function new()
 	{
 		title = 'Visuals and UI';

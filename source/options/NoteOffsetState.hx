@@ -13,7 +13,15 @@ import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.ui.FlxBar;
 import flixel.math.FlxPoint;
+#if !flash 
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.filters.ShaderFilter;
+#end
 
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+#end
 using StringTools;
 
 class NoteOffsetState extends MusicBeatState
@@ -40,6 +48,8 @@ class NoteOffsetState extends MusicBeatState
 	var beatTween:FlxTween;
 
 	var changeModeText:FlxText;
+	var vcrShader:FlxRuntimeShader;
+	var shader1:FlxRuntimeShader;
 
 	override public function create()
 	{
@@ -199,6 +209,13 @@ class NoteOffsetState extends MusicBeatState
 		FlxG.sound.playMusic(Paths.music('offsetSong'), 1, true);
 
 		super.create();
+		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
+	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
+	
+		if (ClientPrefs.shaders)
+		{
+		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
+		}
 	}
 
 	var holdTime:Float = 0;
@@ -207,9 +224,12 @@ class NoteOffsetState extends MusicBeatState
 
 	var startMousePos:FlxPoint = new FlxPoint();
 	var startComboOffset:FlxPoint = new FlxPoint();
-
+	var iTime:Float;
 	override public function update(elapsed:Float)
 	{
+		iTime += elapsed;
+	    vcrShader.setFloat("iTime", iTime);
+		shader1.setFloat("iTime", iTime);
 		var addNum:Int = 1;
 		if(FlxG.keys.pressed.SHIFT) addNum = 10;
 

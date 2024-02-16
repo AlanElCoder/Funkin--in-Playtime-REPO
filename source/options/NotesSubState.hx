@@ -24,6 +24,15 @@ import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
 import Controls;
+#if !flash 
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.filters.ShaderFilter;
+#end
+
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+#end
 
 using StringTools;
 
@@ -42,6 +51,8 @@ class NotesSubState extends MusicBeatSubstate
 	var hsbText:Alphabet;
 
 	var posX = 230;
+	var vcrShader:FlxRuntimeShader;
+	var shader1:FlxRuntimeShader;
 	public function new() {
 		super();
 		
@@ -89,10 +100,20 @@ class NotesSubState extends MusicBeatSubstate
 		add(hsbText);
 
 		changeSelection();
+		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
+	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
+	
+		if (ClientPrefs.shaders)
+		{
+		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
+		}
 	}
-
+	var iTime:Float;
 	var changingNote:Bool = false;
 	override function update(elapsed:Float) {
+		iTime += elapsed;
+	    vcrShader.setFloat("iTime", iTime);
+		shader1.setFloat("iTime", iTime);
 		if(changingNote) {
 			if(holdTime < 0.5) {
 				if(controls.UI_LEFT_P) {

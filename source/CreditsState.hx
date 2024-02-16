@@ -18,6 +18,15 @@ import sys.FileSystem;
 import sys.io.File;
 #end
 import lime.utils.Assets;
+#if !flash 
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.filters.ShaderFilter;
+#end
+
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+#end
 
 using StringTools;
 
@@ -36,7 +45,9 @@ class CreditsState extends MusicBeatState
 	var descBox:AttachedSprite;
 
 	var offsetThing:Float = -75;
-
+	var iTime:Float;
+	var vcrShader:FlxRuntimeShader;
+	var shader1:FlxRuntimeShader;
 	override function create()
 	{
 		#if desktop
@@ -82,8 +93,17 @@ class CreditsState extends MusicBeatState
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
 			['FUNKIN DREAM TEAM'],
-			['gabo','gabo','Concept Artis and Owner'],
-			['Alan','AlanElcoder',]
+			['gabo','gabo','Concept Artis and Owner','https://twitter.com/gabro1209',''],
+			['Alan','AlanElcoder','Main Coder','https://twitter.com/Alanelcoderwe_l',''],
+			['Double L','doblel','Artist','https://twitter.com/FunniDoubleL',''],
+			['ZariDoodles','ZariDoodles','Main Artist and Main Animator','',''],
+			['calabazinX','calabazin','BG Artist','https://twitter.com/Megastar713rd',''],
+			['justLux','justLux','Composer','https://www.youtube.com/@lux_lol',''],
+			['End_Sella','endsellital','Composer','https://twitter.com/SebastianSB8',''],
+			['ManuelCrack483','manuel','coder','https://twitter.com/miku_real'],
+			['senRen','senren','Charter','https://x.com/Senrenholas?t=D3csbPwAh_rFABKp0Y5QkA&s=09',''],
+
+
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],
 			['RiverOaken',			'river',			'Main Artist/Animator of Psych Engine',							'https://twitter.com/RiverOaken',		'B42F71'],
@@ -162,12 +182,22 @@ class CreditsState extends MusicBeatState
 		intendedColor = bg.color;
 		changeSelection();
 		super.create();
+		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
+	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
+	
+		if (ClientPrefs.shaders)
+		{
+		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
+		}
 	}
 
 	var quitting:Bool = false;
 	var holdTime:Float = 0;
 	override function update(elapsed:Float)
 	{
+		iTime += elapsed;
+	    vcrShader.setFloat("iTime", iTime);
+		shader1.setFloat("iTime", iTime);
 		if (FlxG.sound.music.volume < 0.7)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
