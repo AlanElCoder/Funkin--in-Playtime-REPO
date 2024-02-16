@@ -1,9 +1,0 @@
-EXEMania Halloween Pack
-Daniii::daniii::Director and Artist::https://twitter.com/danicorelove::0x6D92D4
-Data::data::Director and Coder::https://twitter.com/FixedData::0x6D92D4
-JadePotato::jade::Director and Charter::https://twitter.com/JadePotatoLOL::0x6D92D4
-Infinity::infinity::Musician::https://twitter.com/TheRealInflnlty::0x6D92D4
-Zheiko::zheik::Artist::https://twitter.com/ElZhiz::0x6D92D4
-Trikunari::zheik::Pixel Artist::https://twitter.com/Trikunari::0x6D92D4
-JasperCat::zheik::Pixel Artist::fgd::0x6D92D4
-Luis::luis::Animator::https://twitter.com/2drillyLuis::0x6D92D4

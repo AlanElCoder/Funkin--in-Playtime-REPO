@@ -43,7 +43,7 @@
 				[
 					[
 						"Set Cam Zoom",
-						"0.8",
+						"1",
 						""
 					]
 				]
@@ -53,7 +53,7 @@
 				[
 					[
 						"Set Cam Zoom",
-						"1",
+						"0.8",
 						""
 					]
 				]
@@ -63,7 +63,7 @@
 				[
 					[
 						"Set Cam Zoom",
-						"0.8",
+						"1",
 						""
 					]
 				]
@@ -83,7 +83,7 @@
 					],
 					[
 						"Set Cam Zoom",
-						"1",
+						"0.8",
 						""
 					]
 				]
@@ -1254,6 +1254,16 @@
 				]
 			],
 			[
+				70500,
+				[
+					[
+						"Set Cam Zoom",
+						"1.2",
+						""
+					]
+				]
+			],
+			[
 				72000,
 				[
 					[
@@ -1809,27 +1819,22 @@
 				]
 			],
 			[
+				105176.470588235,
+				[
+					[
+						"Set Cam Zoom",
+						"1.2",
+						""
+					]
+				]
+			],
+			[
 				105529.411764706,
 				[
 					[
 						"blackscreen",
 						"0",
 						"1"
-					]
-				]
-			],
-			[
-				105882.352941176,
-				[
-					[
-						"blackscreen",
-						"0",
-						"0"
-					],
-					[
-						"Add Camera Zoom",
-						"0.015",
-						"0.06"
 					]
 				]
 			],
@@ -1845,6 +1850,21 @@
 						"Change Character",
 						"dad",
 						"cabezaH"
+					]
+				]
+			],
+			[
+				105882.352941176,
+				[
+					[
+						"blackscreen",
+						"0",
+						"0"
+					],
+					[
+						"Set Cam Zoom",
+						"0.8",
+						""
 					]
 				]
 			],
@@ -2409,6 +2429,16 @@
 				]
 			],
 			[
+				125647.058823529,
+				[
+					[
+						"Set Cam Zoom",
+						"1",
+						""
+					]
+				]
+			],
+			[
 				126000,
 				[
 					[
@@ -2485,6 +2515,11 @@
 						"Add Camera Zoom",
 						"0.018",
 						"0.06"
+					],
+					[
+						"Set Cam Zoom",
+						"0.8",
+						""
 					]
 				]
 			],
@@ -2495,6 +2530,11 @@
 						"Add Camera Zoom",
 						"0.018",
 						"0.06"
+					],
+					[
+						"Set Cam Zoom",
+						"1",
+						""
 					]
 				]
 			],
@@ -2815,6 +2855,11 @@
 						"Add Camera Zoom",
 						"0.018",
 						"0.06"
+					],
+					[
+						"Set Cam Zoom",
+						"0.8",
+						""
 					]
 				]
 			],
@@ -3455,6 +3500,31 @@
 						"Add Camera Zoom",
 						"0.018",
 						"0.06"
+					]
+				]
+			],
+			[
+				173647.058823529,
+				[
+					[
+						"Set Cam Zoom",
+						"1",
+						""
+					]
+				]
+			],
+			[
+				176470.588235294,
+				[
+					[
+						"Set Cam Zoom",
+						"0.8",
+						""
+					],
+					[
+						"blackscreen",
+						"0",
+						"1"
 					]
 				]
 			]
@@ -8651,14 +8721,94 @@
 				"bpm": 160
 			},
 			{
-				"gfSection": false,
-				"altAnim": false,
 				"typeOfSection": 0,
 				"sectionNotes": [],
-				"bpm": 160,
 				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 160,
 				"changeBPM": false,
 				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 160,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 160,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 160,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 160,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 160,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"typeOfSection": 0,
+				"sectionNotes": [],
+				"sectionBeats": 4,
+				"altAnim": false,
+				"gfSection": false,
+				"bpm": 160,
+				"changeBPM": false,
+				"mustHitSection": true
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 160
+			},
+			{
+				"sectionBeats": 4,
+				"sectionNotes": [],
+				"typeOfSection": 0,
+				"gfSection": false,
+				"altAnim": false,
+				"mustHitSection": true,
+				"changeBPM": false,
+				"bpm": 160
 			},
 			{
 				"gfSection": false,

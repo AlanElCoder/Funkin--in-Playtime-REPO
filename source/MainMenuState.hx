@@ -51,8 +51,10 @@ class MainMenuState extends MusicBeatState
 	var vcrShader:FlxRuntimeShader;
 	var shader1:FlxRuntimeShader;
 	var alanpuntoecse:Bool = false;
+	var corky:Bool = false;
 	var antiperu2:Bool=false;
 	var huggylel:FlxSprite;
+	var negro2:FlxSprite;
 	private var imageOffsets:Array<Float> = [0, 0];
 	private var char:String = 'pene';
 	override function create():Void
@@ -125,6 +127,13 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		//add(versionShit);
 
+		negro2 = new FlxSprite(12).makeGraphic(240, 620, FlxColor.BLACK);
+		negro2.screenCenter();
+		negro2.x+=540;
+		negro2.y-=360;
+		add(negro2);
+		negro2.visible = false;
+		
 		huggylel = new FlxSprite().loadGraphic(Paths.image('golden_huggy'));
 		huggylel.scale.set(0.14,0.14);
 		huggylel.screenCenter();
@@ -198,18 +207,15 @@ class MainMenuState extends MusicBeatState
 		}
 		
 		if (huggylel.visible){
-			if (FlxG.mouse.overlaps(huggylel) && FlxG.mouse.justPressed && alanpuntoecse == false) {
+			if (FlxG.mouse.overlaps(negro2) && FlxG.mouse.justPressed && corky == false) {
 				FlxG.sound.play(Paths.sound('huggyfunnylaugh'));
 				huggylel.scale.set(0.18,0.18);
-				alanpuntoecse = true;
+				corky = true;
 				FlxTween.tween(huggylel.scale, {x: 0.14, y: 0.14}, 1, {ease: FlxEase.quintOut, onComplete: function(twn:FlxTween) {
-					alanpuntoecse = false;
+					corky = false;
 				}});
 			}
 		}
-			
-		
-	
 		
 		if(FlxG.keys.pressed.N) {
 			new FlxTimer().start(0.2, function(tmr:FlxTimer)
@@ -245,7 +251,7 @@ class MainMenuState extends MusicBeatState
 			curSelected=3;
 		
 		 }
-		 if (!FlxG.mouse.overlaps(menuItems.members[0])&&!FlxG.mouse.overlaps(menuItems.members[1])&&!FlxG.mouse.overlaps(menuItems.members[2])&&!FlxG.mouse.overlaps(menuItems.members[3]) && alanpuntoecse == false){
+		 if (!FlxG.mouse.overlaps(negro2) && !FlxG.mouse.overlaps(menuItems.members[0])&&!FlxG.mouse.overlaps(menuItems.members[1])&&!FlxG.mouse.overlaps(menuItems.members[2])&&!FlxG.mouse.overlaps(menuItems.members[3]) && alanpuntoecse == false){
 			curSelected=4;
 			cursorImage.animation.curAnim.curFrame = 0;
 		 }else{
