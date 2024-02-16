@@ -22,6 +22,7 @@ import editors.MasterEditorMenu;
 import flixel.input.keyboard.FlxKey;
 import flash.system.System;
 import flixel.util.FlxTimer;
+import openfl.Lib;
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
@@ -59,6 +60,7 @@ class MainMenuState extends MusicBeatState
 	private var char:String = 'pene';
 	override function create():Void
 	{		
+		openfl.Lib.application.window.title="Funkin' In Playtime";
 		#if MODS_ALLOWED
 		Paths.pushGlobalMods();
 		#end

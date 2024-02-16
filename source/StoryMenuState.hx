@@ -19,7 +19,9 @@ import lime.net.curl.CURLCode;
 import flixel.graphics.FlxGraphic;
 import WeekData;
 import haxe.Json;
-#if !flash 
+import openfl.Lib;
+#if !flash
+
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
 #end
@@ -63,7 +65,7 @@ class StoryMenuState extends MusicBeatState
 	override function create():Void//ya Void xdxdxd
 	{
 		super.create();
-	
+		openfl.Lib.application.window.title="Funkin' In Playtime";
 
 		PlayState.isStoryMode = true;
 
