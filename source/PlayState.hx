@@ -734,6 +734,12 @@ class PlayState extends MusicBeatState
 				}
 				boyfriend.visible=false;
 		}
+				boyfriend.alpha=0;
+	
+		}
+
+
+	
 
 		Conductor.songPosition = -5000 / Conductor.songPosition;
 
