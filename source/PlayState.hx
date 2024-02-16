@@ -579,13 +579,10 @@ class PlayState extends MusicBeatState
 				startCharacterLua(hPatas.curCharacter);
 				add(hPatas);
 
-
 				GameOverSubstate.characterName = 'bftoy-dead';
 				GameOverSubstate.deathSoundName = 'GAME_OVER_SFX_FIP_OST';
 				GameOverSubstate.loopSoundName =  'deadSound';
 				GameOverSubstate.endSoundName = 'RETRY_SOUND.ya';
-
-			
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
 		if (!FileSystem.exists(path)){
