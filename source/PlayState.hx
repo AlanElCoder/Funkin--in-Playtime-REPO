@@ -1,6 +1,7 @@
 package;//update o 
 //timeBar 
 //boyfriend.alpha=0;
+
 import flixel.graphics.FlxGraphic;
 #if desktop
 import Discord.DiscordClient;
@@ -575,6 +576,11 @@ class PlayState extends MusicBeatState
 				add(hPatas);
 
 
+				GameOverSubstate.characterName = 'bftoy-dead';
+				GameOverSubstate.deathSoundName = 'GAME_OVER_SFX_FIP_OST';
+				GameOverSubstate.loopSoundName =  'BYE_BYE-FiP_OST';
+				GameOverSubstate.endSoundName = 'RETRY_SOUND.ya';
+
 			
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
@@ -585,10 +591,6 @@ class PlayState extends MusicBeatState
 		switch(Paths.formatToSongPath(SONG.song))
 		{
 			case 'Remember':
-				GameOverSubstate.characterName = 'bftoy-dead';
-				GameOverSubstate.deathSoundName = 'GAME_OVER_SFX_FIP_OST';
-				GameOverSubstate.loopSoundName =  'BYE_BYE-FiP_OST';
-				GameOverSubstate.endSoundName = 'RETRY_SOUND.ya';
 			
 		}
 		if (ClientPrefs.shaders)
@@ -732,7 +734,7 @@ class PlayState extends MusicBeatState
 				if (!ClientPrefs.lowQuality){
 					add(brilloBG);
 				}
-				boyfriend.visible=false;
+				boyfriend.alpha=0;
 		}
 		Conductor.songPosition = -5000 / Conductor.songPosition;
 
@@ -2119,7 +2121,7 @@ class PlayState extends MusicBeatState
 				bg1.visible=true;
 			}
 	     
-	    boyfriend.alpha=1;
+			boyfriend.alpha=1;
 		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
 		{
 		    sining=true;
