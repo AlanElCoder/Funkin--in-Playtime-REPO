@@ -327,7 +327,7 @@ class PlayState extends MusicBeatState
 		if(SONG.song=='Remember'){
 			composer='Just_Lux FT-END_SELLA';
 		}
-		if(SONG.song=='el-rap-de-huggy-wuggy'){
+		if(SONG.song=='el-rap-de-huggy-wuggy'||SONG.song=='El Rap De Huggy Wuggy'){
 			composer='ALEXANDER';
 		}
 		openfl.Lib.application.window.title="Funkin' In Playtime - " + SONG.song +"-by "+composer;
@@ -727,6 +727,10 @@ class PlayState extends MusicBeatState
 				]
 			};
 		}else{}
+		if(SONG.song=='El Rap De Huggy Wuggy'){
+			defaultCamZoom =3; 
+
+		}
 
 		switch(curStage)
 		{

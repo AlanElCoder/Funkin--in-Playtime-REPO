@@ -6,7 +6,7 @@ function onCreate()
 
 makeLuaSprite('black', '', 0, 0);
 
-makeGraphic('black', 2500, 2500, '000000');
+makeGraphic('black', 4500, 4500, '000000');
 
 --setScrollFactor('black', 0, 0);
 setObjectCamera('black', 'game');
@@ -20,7 +20,7 @@ screenCenter('black');
 addLuaSprite('black', true);
 
 
-	setProperty('skipCountdown', true)
+	--setProperty('skipCountdown', true)
 
 	makeLuaSprite('videoSprite','',0,0)
 	addLuaSprite('videoSprite')
@@ -38,29 +38,29 @@ addLuaSprite('black', true);
 	]])
 end
 
-function onUpdatePost()
-	triggerEvent('Camera Follow Pos', '640', '360')
+function onUpdatePost(elapsed)
+--	triggerEvent('Camera Follow Pos', '-540', '0')
 
 	runHaxeCode([[
 		var video = getVar('video');
 		game.getLuaObject('videoSprite').loadGraphic(video.bitmapData);
-		video.volume = FlxG.sound.volume + 100;	
+		video.volume = FlxG.sound.volume - 100;	
 		if(game.paused)video.pause();
 	]])
 end
-
-
 function onResume()
 	runHaxeCode([[
 		var video = getVar('video');
 		video.resume();
 	]])
 end
+
+
 function onCreatePost()
 	getObjectOrder('videoSprite')
 	setObjectOrder('videoSprite', 100000)
 end
-
 function onUpdate()
-	triggerEvent('Camera Follow Pos', '640', '360')
+	triggerEvent('Camera Follow Pos', '210', '100')
+	setProperty("defaultCamZoom",3.2)
 end

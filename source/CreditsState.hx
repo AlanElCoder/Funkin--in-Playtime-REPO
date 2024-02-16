@@ -93,15 +93,15 @@ class CreditsState extends MusicBeatState
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
 			['FUNKIN DREAM TEAM'],
-			['gabo','gabo','Concept Artis and Owner','https://twitter.com/gabro1209',''],
-			['Alan','AlanElcoder','Main Coder','https://twitter.com/Alanelcoderwe_l',''],
-			['Double L','doblel','Artist','https://twitter.com/FunniDoubleL',''],
-			['ZariDoodles','ZariDoodles','Main Artist and Main Animator','',''],
-			['calabazinX','calabazin','BG Artist','https://twitter.com/Megastar713rd',''],
-			['justLux','justLux','Composer','https://www.youtube.com/@lux_lol',''],
-			['End_Sella','endsellital','Composer','https://twitter.com/SebastianSB8',''],
-			['ManuelCrack483','manuel','coder','https://twitter.com/miku_real'],
-			['senRen','senren','Charter','https://x.com/Senrenholas?t=D3csbPwAh_rFABKp0Y5QkA&s=09',''],
+			['gabo','gabo','Concept Artis and Owner','https://twitter.com/gabro1209','5F5F5F'],
+			['AlanCoder.hx','alansin','Main Coder','https://twitter.com/Alanelcoderwe_l','FF0000'],
+			['Double L','double_l','Artist','https://twitter.com/FunniDoubleL','30F6FF'],
+			['ZariDoodles','zari','Main Artist and Main Animator','https://x.com/Zari_DoodlesUvU?t=2esZEjwsOawICn6TR4OgQw&s=09','FFE77C'],
+			['calabazinX','calabazin','BG Artist','https://twitter.com/Megastar713rd','CE3E00'],
+			['justLux','lux','Composer','https://www.youtube.com/@lux_lol','CE00A2'],
+			['End_Sella','sella','Composer','https://twitter.com/SebastianSB8','008FFF'],
+			['ManuelCrack483','nose_el_nombre_de_este_lul','coder','https://twitter.com/miku_real','9AFF9F'],
+			['senRen','sexren','Charter','https://x.com/Senrenholas?t=D3csbPwAh_rFABKp0Y5QkA&s=09','AE00FF'],
 
 
 			['Psych Engine Team'],
