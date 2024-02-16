@@ -3891,7 +3891,7 @@ class PlayState extends MusicBeatState
 				case 770:
 					offetsJSON = {
 						xx:[
-						   650,850,600,
+						   850,850,600,
 						],
 						yy:[
 						   200,480,0,
@@ -3921,7 +3921,7 @@ class PlayState extends MusicBeatState
 						   800,400,gf.getMidpoint().x,
 						],
 						yy:[
-						   350,200,gf.getMidpoint().y,
+						   350,300,gf.getMidpoint().y,
 						],
 						ofs:[
 						   25,25,0
