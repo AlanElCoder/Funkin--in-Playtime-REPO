@@ -1,6 +1,6 @@
 package;//update o 
 //timeBar 
-//boyfriend.alpha=0;
+//boyfriend.alpha=0; scoreTxt
 
 import flixel.graphics.FlxGraphic;
 #if desktop
@@ -936,6 +936,10 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		scoreTxt.updateHitbox();
 		add(scoreTxt);
+		if (ClientPrefs.downScroll){
+			scoreTxt.y+=150;
+			scoreTxt.x+=365;
+		}
 
 		botplayTxt = new FlxText(0, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
