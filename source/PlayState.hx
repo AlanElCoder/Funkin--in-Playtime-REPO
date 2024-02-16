@@ -1,5 +1,6 @@
 package;//update o 
-//timeBar
+//timeBar 
+//boyfriend.alpha=0;
 import flixel.graphics.FlxGraphic;
 #if desktop
 import Discord.DiscordClient;
@@ -574,7 +575,7 @@ class PlayState extends MusicBeatState
 				add(hPatas);
 
 
-				GameOverSubstate.characterName = 'bftoy-dead';
+			
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
 		if (!FileSystem.exists(path)){
@@ -583,11 +584,13 @@ class PlayState extends MusicBeatState
 
 		switch(Paths.formatToSongPath(SONG.song))
 		{
-			case 'stress':
-				GameOverSubstate.characterName = 'bf-holding-gf-dead';
+			case 'Remember':
+				GameOverSubstate.characterName = 'bftoy-dead';
+				GameOverSubstate.deathSoundName = 'GAME_OVER_SFX_FIP_OST';
+				GameOverSubstate.loopSoundName =  'BYE_BYE-FiP_OST';
+				GameOverSubstate.endSoundName = 'RETRY_SOUND.ya';
+			
 		}
-
-
 		if (ClientPrefs.shaders)
 		{
 		 chrom  = new ChromaticAberrationEffect(0.0);
@@ -731,6 +734,32 @@ class PlayState extends MusicBeatState
 				}
 				boyfriend.visible=false;
 		}
+				boyfriend.alpha=0;
+			case 'limo':
+				resetFastCar();
+				addBehindGF(fastCar);
+
+			case 'schoolEvil':
+				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+				addBehindDad(evilTrail);
+		}
+
+		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
+		if (OpenFlAssets.exists(file)) {
+			dialogueJson = DialogueBoxPsych.parseDialogue(file);
+		}
+
+		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai dialogue
+		if (OpenFlAssets.exists(file)) {
+			dialogue = CoolUtil.coolTextFile(file);
+		}
+		var doof:DialogueBox = new DialogueBox(false, dialogue);
+		// doof.x += 70;
+		// doof.y = FlxG.height * 0.5;
+		doof.scrollFactor.set();
+		doof.finishThing = startCountdown;
+		doof.nextDialogueThing = startNextDialogue;
+		doof.skipDialogueThing = skipDialogue;
 
 		Conductor.songPosition = -5000 / Conductor.songPosition;
 
@@ -1094,9 +1123,8 @@ class PlayState extends MusicBeatState
            add(intro);
 
 		   if (ClientPrefs.shaders){
-			intro.shader=shader1;
-			intro.shader=vcrShader;
-			intro.shader=chromO.shader;
+			camOther.setFilters([new ShaderFilter(chromO.shader),new ShaderFilter(vcrShader),new ShaderFilter(shader1)]);
+
 		   }
            camGame.alpha=0;
 		   skipCountdown=true;
@@ -2119,7 +2147,7 @@ class PlayState extends MusicBeatState
 				bg1.visible=true;
 			}
 	     
-	    boyfriend.visible=true;
+	    boyfriend.alpha=1;
 		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
 		{
 		    sining=true;
@@ -2531,6 +2559,12 @@ class PlayState extends MusicBeatState
 		setOnLuas('cameraY', camFollowPos.y);
 		setOnLuas('botplay', botplay);
 		callOnLuas('onUpdatePost', [elapsed]);
+	 if (SONG.song=='Remember'){
+		for (i in 0...4){
+			strumLineNotes.members[i].alpha=0;
+			opponentStrums.members[i].alpha=0;
+		}
+	 }
 	}
 
 	function openPauseMenu()
@@ -2581,7 +2615,8 @@ class PlayState extends MusicBeatState
 				for (timer in modchartTimers) {
 					timer.active = true;
 				}
-				boyfriend.visible=true;
+				
+		    	//boyfriend.visible=true;
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 				isDead = true;
 				return true;
