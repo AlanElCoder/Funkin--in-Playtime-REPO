@@ -51,6 +51,8 @@ class MainMenuState extends MusicBeatState
 	var vcrShader:FlxRuntimeShader;
 	var shader1:FlxRuntimeShader;
 	var alanpuntoecse:Bool = false;
+	var antiperu2:Bool=false;
+	var huggylel:FlxSprite;
 	private var imageOffsets:Array<Float> = [0, 0];
 	private var char:String = 'pene';
 	override function create():Void
@@ -78,6 +80,10 @@ class MainMenuState extends MusicBeatState
 		transOut = FlxTransitionableState.defaultTransOut;
 
 		persistentUpdate = persistentDraw = true;
+
+		if(FlxG.save.data.antiperu2 != null) {
+			antiperu2 = FlxG.save.data.antiperu2;
+		}
 
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('bgPlayTime'));
 		bg.scale.set(0.68,0.68);
@@ -118,6 +124,16 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		//add(versionShit);
+
+		if(antiperu2 == true) {
+			huggylel = new FlxSprite().loadGraphic(Paths.image('golden_huggy'));
+			huggylel.scale.set(0.14,0.14);
+			huggylel.screenCenter();
+			huggylel.x+=540;
+			huggylel.y-=200;
+			huggylel.antialiasing = ClientPrefs.globalAntialiasing;
+			add(huggylel);
+		}
 
 		cursorImage = new FlxSprite();
 		cursorImage.loadGraphic(Paths.image('cursor'));
@@ -176,6 +192,20 @@ class MainMenuState extends MusicBeatState
 			curSelected = 0;
 			alanpuntoecse = true;
 			changeItem();
+		}
+		if (FlxG.mouse.overlaps(huggylel) && FlxG.mouse.justPressed && alanpuntoecse == false) {
+			FlxG.sound.play(Paths.sound('huggyfunnylaugh'));
+			huggylel.scale.set(0.18,0.18);
+			alanpuntoecse = true;
+			FlxTween.tween(huggylel.scale, {x: 0.14, y: 0.14}, 1, {ease: FlxEase.quintOut, onComplete: function(twn:FlxTween) {
+				alanpuntoecse = false;
+			}});
+		}
+		if(FlxG.keys.pressed.N) {
+			new FlxTimer().start(0.2, function(tmr:FlxTimer)
+			{
+				MusicBeatState.switchState(new SixAMstate());
+			});
 		}
 	}
 	var beats:Int;

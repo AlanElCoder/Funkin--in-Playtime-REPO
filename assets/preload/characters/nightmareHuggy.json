@@ -1,65 +1,65 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "Hugo Pesadilla IDLE",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Hugo Pesadilla IDLE"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				79,
 				50
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "Hugo Pesadilla LEFT",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Hugo Pesadilla LEFT"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				11,
 				-170
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "Hugo Pesadilla DOWN",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Hugo Pesadilla DOWN"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-72,
 				130
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "Hugo Pesadilla UP",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Hugo Pesadilla UP"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-46,
 				-53
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "Hugo Pesadilla RIGHT",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Hugo Pesadilla RIGHT"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/Hugo_Pesadilla",
 	"position": [
-		330,
+		320,
 		-160
 	],
 	"healthicon": "face",
