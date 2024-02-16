@@ -1,5 +1,6 @@
 package;//update o 
-//timeBar
+//timeBar 
+//boyfriend.alpha=0;
 import flixel.graphics.FlxGraphic;
 #if desktop
 import Discord.DiscordClient;
@@ -629,7 +630,7 @@ class PlayState extends MusicBeatState
 				add(hPatas);
 
 
-				GameOverSubstate.characterName = 'bftoy-dead';
+			
 		}
 		var path:String = Paths.json('stages/offest-stages/'+curStage+'-OffestCam.json');
 		if (!FileSystem.exists(path)){
@@ -643,8 +644,13 @@ class PlayState extends MusicBeatState
 		{
 			case 'stress':
 				GameOverSubstate.characterName = 'bf-holding-gf-dead';
+			case 'Remember':
+				GameOverSubstate.characterName = 'bftoy-dead';
+				GameOverSubstate.deathSoundName = 'GAME_OVER_SFX_FIP_OST';
+				GameOverSubstate.loopSoundName =  'BYE_BYE-FiP_OST';
+				GameOverSubstate.endSoundName = 'RETRY_SOUND.ya';
+			
 		}
-		
 		
 		if (ClientPrefs.shaders)
 		{
@@ -835,7 +841,7 @@ class PlayState extends MusicBeatState
 				if (!ClientPrefs.lowQuality){
 					add(brilloBG);
 				}
-				boyfriend.visible=false;
+				boyfriend.alpha=0;
 			case 'limo':
 				resetFastCar();
 				addBehindGF(fastCar);
@@ -1231,9 +1237,8 @@ class PlayState extends MusicBeatState
            add(intro);
 
 		   if (ClientPrefs.shaders){
-			intro.shader=shader1;
-			intro.shader=vcrShader;
-			intro.shader=chromO.shader;
+			camOther.setFilters([new ShaderFilter(chromO.shader),new ShaderFilter(vcrShader),new ShaderFilter(shader1)]);
+
 		   }
            camGame.alpha=0;
 		   skipCountdown=true;
@@ -2767,7 +2772,7 @@ class PlayState extends MusicBeatState
 				bg1.visible=true;
 			}
 	     
-	    boyfriend.visible=true;
+	    boyfriend.alpha=1;
 		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
 		{
 		    sining=true;
@@ -3178,6 +3183,12 @@ class PlayState extends MusicBeatState
 		setOnLuas('cameraY', camFollowPos.y);
 		setOnLuas('botPlay', cpuControlled);
 		callOnLuas('onUpdatePost', [elapsed]);
+	 if (SONG.song=='Remember'){
+		for (i in 0...4){
+			strumLineNotes.members[i].alpha=0;
+			opponentStrums.members[i].alpha=0;
+		}
+	 }
 	}
 
 	function openPauseMenu()
@@ -3228,7 +3239,8 @@ class PlayState extends MusicBeatState
 				for (timer in modchartTimers) {
 					timer.active = true;
 				}
-				boyfriend.visible=true;
+				
+		    	//boyfriend.visible=true;
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 				isDead = true;
 				return true;
