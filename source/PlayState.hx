@@ -327,7 +327,7 @@ class PlayState extends MusicBeatState
 		if(SONG.song=='Remember'){
 			composer='Just_Lux FT-END_SELLA';
 		}
-		if(SONG.song=='El Rap De Huggy Wuggy'){
+		if(SONG.song=='el-rap-de-huggy-wuggy'){
 			composer='ALEXANDER';
 		}
 		openfl.Lib.application.window.title="Funkin' In Playtime - " + SONG.song +"-by "+composer;

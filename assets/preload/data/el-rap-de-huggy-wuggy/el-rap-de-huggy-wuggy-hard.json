@@ -635,7 +635,7 @@
 		"gfVersion": "gf",
 		"bpm": 150,
 		"arrowSkin": "",
-		"needsVoices": true,
-		"song": "El Rap De Huggy Wuggy"
+		"needsVoices": false,
+		"song": "el-rap-de-huggy-wuggy"
 	}
 }
