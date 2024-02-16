@@ -64,6 +64,7 @@ class SixAMstate extends MusicBeatState
 	var bars:FlxSprite;
 	var pressStartSprite:FlxSprite;
 	var inicio:Bool=false;
+	var wea:Bool=false;
 	var antiperu2:Bool=false;
 	var bg:FlxSprite;	
 	var huggylel:FlxSprite;
@@ -97,6 +98,11 @@ class SixAMstate extends MusicBeatState
 		if(FlxG.save.data.antiperu2 != null) {
 			antiperu2 = FlxG.save.data.antiperu2;
 		}
+		blackBG = new FlxSprite();
+		blackBG.makeGraphic(FlxG.width,FlxG.height,FlxColor.BLACK);
+		blackBG.screenCenter();
+		blackBG.antialiasing = ClientPrefs.globalAntialiasing;
+		add(blackBG);
 
 		bg = new FlxSprite(-80).loadGraphic(Paths.image('bgPlayTime'));
 		bg.scale.set(0.68,0.68);
@@ -104,15 +110,18 @@ class SixAMstate extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
-		
-	
+
 		var bgBlack:FlxSprite=new FlxSprite().makeGraphic(FlxG.width,FlxG.height,FlxColor.BLACK);
 		add(bgBlack);
 		bgBlack.alpha=0.4;
 		shaderD = new FlxRuntimeShader(File.getContent(Paths.shaderFragment(shader)));
 		bg.shader=shaderD;
-		if(antiperu2 == true) { // no te olvides de cambiarlo manuel no te olvides de cambiarlo manuel no te olvides de cambiarlo manuel no te olvides de cambiarlo manuel no te olvides de cambiarlo manuel
-		   huggylel= new FlxSprite().loadGraphic(Paths.image('golden_huggy'));
+		if(antiperu2 == true) {
+			bg.visible = false;
+		}
+
+		if(antiperu2 == false) {
+		    huggylel= new FlxSprite().loadGraphic(Paths.image('golden_huggy'));
 			huggylel.scale.set(0.22,0.22);
 			huggylel.screenCenter();
 			huggylel.y-=80;
@@ -122,11 +131,10 @@ class SixAMstate extends MusicBeatState
 			huggylel.antialiasing = ClientPrefs.globalAntialiasing;
 			add(huggylel);
 			
-			negro2= new FlxSprite(12).makeGraphic(FlxG.height+200,36,FlxColor.BLACK);
+			negro2= new FlxSprite(12).makeGraphic(FlxG.height+220,32,FlxColor.BLACK);
 			negro2.screenCenter();
-			negro2.x+=5;
-			negro2.y+=300;
-			negro2.alpha=0.76;
+			negro2.y+=306;
+			negro2.alpha=0.72;
 			add(negro2);
 
 			coso = new FlxText(12, FlxG.height - 44, 0, "Ollie:", 12);
@@ -136,8 +144,6 @@ class SixAMstate extends MusicBeatState
 			coso.y+=305;
 			coso.antialiasing = ClientPrefs.globalAntialiasing;
 			add(coso);
-
-		
 
 			var coso2:FlxText = new FlxText(12, FlxG.height - 44, 0, "\n¡You did it! Get this reward i found, a little prize.", 12);
 			coso2.setFormat("VCR OSD Mono", 25, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -160,14 +166,11 @@ class SixAMstate extends MusicBeatState
 			}
 			#end
 		}
-		
-		if(antiperu2 == true) {
-			new FlxTimer().start(0.2, function(tmr:FlxTimer)
-			{
-				MusicBeatState.switchState(new TitleState());
-			});
+
+		if(antiperu2 == true && wea == false) {
+			MusicBeatState.switchState(new TitleState());
 		}
-		
+
 		super.create();
 	}	
 	var titleInicied:Bool=false;
@@ -178,8 +181,8 @@ class SixAMstate extends MusicBeatState
 		shaderD.setFloat("iTime", iTime);
 	
 		FlxG.camera.zoom= FlxMath.lerp(1, FlxG.camera.zoom,0.85);
-			if (controls.ACCEPT&&!titleInicied && antiperu2 == true){ //manelmanelmanelmanelmanelmanelmanelmanelmanelmanelmanel
-				
+			if (controls.ACCEPT&&!titleInicied && antiperu2 == false){
+				wea = true;
 				antiperu2 = true;
 				FlxG.save.data.antiperu2 = antiperu2;
 				FlxG.save.flush();

@@ -34,9 +34,9 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		title = 'Gameplay Settings';
 		rpcTitle = 'Gameplay Settings Menu'; //for Discord Rich Presence
 
-		var option:Option = new Option('botPlay',
-		 'play bot',
-		 'botPlay',
+		var option:Option = new Option('BotPlay',
+		 'Check this to enable botplay',
+		 'botplay',
 	  	 'bool',
 		 false);
      	addOption(option);

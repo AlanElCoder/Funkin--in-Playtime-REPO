@@ -25,7 +25,6 @@ import sys.io.File;
 #end
 import Type.ValueType;
 import Controls;
-import DialogueBoxPsych;
 
 #if desktop
 import Discord;
