@@ -732,9 +732,9 @@ class PlayState extends MusicBeatState
 				if (!ClientPrefs.lowQuality){
 					add(brilloBG);
 				}
-				boyfriend.visible=false;
-		}
 				boyfriend.alpha=0;
+		
+				
 			case 'limo':
 				resetFastCar();
 				addBehindGF(fastCar);
