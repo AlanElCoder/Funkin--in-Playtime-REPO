@@ -106,7 +106,7 @@ class TitleState extends MusicBeatState
 			var logoLEl:FlxSprite= new FlxSprite().loadGraphic(Paths.image('logoP'));
 			logoLEl.scale.set(0.23,0.23);
 			logoLEl.screenCenter();
-			logoLEl.y-=200;
+			logoLEl.y-=160;
 			logoLEl.antialiasing = ClientPrefs.globalAntialiasing;
 			add(logoLEl);
 	

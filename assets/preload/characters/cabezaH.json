@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": true,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "hugo pesadillas cabeza"
+			"fps": 24,
+			"name": "hugo pesadillas cabeza",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				40,
-				-20
+				-16
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "cabeza LEFT"
+			"fps": 24,
+			"name": "cabeza LEFT",
+			"indices": []
 		},
 		{
-			"offsets": [
-				20,
-				-11
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				18,
+				-14
+			],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "cabeza DOWN"
-		},
-		{
-			"offsets": [
-				-39,
-				0
-			],
-			"loop": false,
 			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "cabeza UP"
+			"name": "cabeza DOWN",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-18,
-				-12
+				6
 			],
-			"loop": false,
+			"anim": "singUP",
 			"fps": 24,
+			"name": "cabeza UP",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-26,
+				-16
+			],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "cabeza RIGHT"
+			"fps": 24,
+			"name": "cabeza RIGHT",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,

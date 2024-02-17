@@ -64,7 +64,6 @@ class SixAMstate extends MusicBeatState
 	var bars:FlxSprite;
 	var pressStartSprite:FlxSprite;
 	var inicio:Bool=false;
-	var wea:Bool=false;
 	var antiperu2:Bool=false;
 	var bg:FlxSprite;	
 	var huggylel:FlxSprite;
@@ -118,6 +117,7 @@ class SixAMstate extends MusicBeatState
 		bg.shader=shaderD;
 		if(antiperu2 == true) {
 			bg.visible = false;
+			MusicBeatState.switchState(new MainMenuState());
 		}
 
 		if(antiperu2 == false) {
@@ -167,10 +167,6 @@ class SixAMstate extends MusicBeatState
 			#end
 		}
 
-		if(antiperu2 == true && wea == false) {
-			MusicBeatState.switchState(new TitleState());
-		}
-
 		super.create();
 	}	
 	var titleInicied:Bool=false;
@@ -182,7 +178,6 @@ class SixAMstate extends MusicBeatState
 	
 		FlxG.camera.zoom= FlxMath.lerp(1, FlxG.camera.zoom,0.85);
 			if (controls.ACCEPT&&!titleInicied && antiperu2 == false){
-				wea = true;
 				antiperu2 = true;
 				FlxG.save.data.antiperu2 = antiperu2;
 				FlxG.save.flush();
@@ -193,7 +188,7 @@ class SixAMstate extends MusicBeatState
 				FlxG.camera.zoom+=0.1;
 				new FlxTimer().start(1.2, function(tmr:FlxTimer)
 				{
-					MusicBeatState.switchState(new TitleState());
+					MusicBeatState.switchState(new MainMenuState());
 				});
 			}
 		super.update(elapsed);

@@ -3891,7 +3891,7 @@ class PlayState extends MusicBeatState
 				case 770:
 					offetsJSON = {
 						xx:[
-						   850,850,600,
+						   820,850,600,
 						],
 						yy:[
 						   200,480,0,
@@ -3900,7 +3900,7 @@ class PlayState extends MusicBeatState
 						   15,15,0
 						],
 						zooms:[
-						 0.7,0.9,1
+						 0.6,1,1
 						]
 					};	
 				case 1153:
@@ -3931,8 +3931,8 @@ class PlayState extends MusicBeatState
 						]
 					};
 				case 1948:
-					FlxTween.tween(dad,{x: dad.x - 500}, 0.5,{ease:FlxEase.quintIn,});
-					FlxTween.tween(hPatas,{x: hPatas.x - 500}, 0.5,{ease:FlxEase.quintIn,});
+					FlxTween.tween(dad,{x: dad.x - 560}, 0.5,{ease:FlxEase.quintIn,});
+					FlxTween.tween(hPatas,{x: hPatas.x - 560}, 0.5,{ease:FlxEase.quintIn,});
 			}
 		}
 
