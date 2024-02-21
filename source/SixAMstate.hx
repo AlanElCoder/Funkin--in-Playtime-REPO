@@ -2,68 +2,43 @@ package;
 
 #if desktop
 import Discord.DiscordClient;
-import sys.thread.Thread;
 #end
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
-import flixel.FlxState;
-import flixel.input.keyboard.FlxKey;
-import flixel.addons.display.FlxGridOverlay;
-import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
+import flixel.FlxCamera;
 import flixel.addons.transition.FlxTransitionableState;
-import flixel.addons.transition.TransitionData;
-import haxe.Json;
-import openfl.display.Bitmap;
-import openfl.display.BitmapData;
-#if MODS_ALLOWED
-import sys.FileSystem;
-import sys.io.File;
-#end
-import options.GraphicsSettingsSubState;
-//import flixel.graphics.FlxGraphic;
+import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.graphics.frames.FlxFrame;
-import flixel.group.FlxGroup;
-import flixel.input.gamepad.FlxGamepad;
-import flixel.math.FlxMath;
-import flixel.math.FlxPoint;
-import flixel.math.FlxRect;
-import flixel.system.FlxSound;
-import flixel.system.ui.FlxSoundTray;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
+import flixel.math.FlxMath;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
 import lime.app.Application;
-import openfl.Assets;
-import flixel.math.FlxRandom;
+import Achievements;
+import editors.MasterEditorMenu;
+import flixel.input.keyboard.FlxKey;
+import flash.system.System;
 import flixel.util.FlxTimer;
-import flixel.util.FlxSave;
+import options.GraphicsSettingsSubState;
+import openfl.Lib;
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
 #end
 
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+#end
 using StringTools;
 
 class SixAMstate extends MusicBeatState
 {
-	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
-	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
-	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
-	public static var initialized:Bool = false;
-	public static var closedState:Bool = false;
-	var curWacky:Array<String> = [];
-	var warningBG:FlxSprite;
 	var blackBG:FlxSprite;
-	var assets:Array<String>=[];
-	var randomInt:Int;
-	var backgroundSprite:FlxSprite;
 	var logoBl:FlxSprite;
-	var bars:FlxSprite;
-	var pressStartSprite:FlxSprite;
-	var inicio:Bool=false;
 	var antiperu2:Bool=false;
 	var bg:FlxSprite;	
 	var huggylel:FlxSprite;
@@ -84,16 +59,10 @@ class SixAMstate extends MusicBeatState
 		WeekData.loadTheFirstEnabledMod();
 	
 		FlxG.game.focusLostFramerate = 60;
-		FlxG.sound.muteKeys = muteKeys;
-		FlxG.sound.volumeDownKeys = volumeDownKeys;
-		FlxG.sound.volumeUpKeys = volumeUpKeys;
 		FlxG.keys.preventDefaultKeys = [TAB];
-	
-		PlayerSettings.init();
-	
-		FlxG.save.bind('funkin', 'ninjamuffin99');
-		ClientPrefs.loadPrefs();
-		Highscore.load();
+
+		persistentUpdate = persistentDraw = true;
+
 		if(FlxG.save.data.antiperu2 != null) {
 			antiperu2 = FlxG.save.data.antiperu2;
 		}
@@ -119,7 +88,9 @@ class SixAMstate extends MusicBeatState
 			bg.visible = false;
 			MusicBeatState.switchState(new MainMenuState());
 		}
-
+		if(FlxG.sound.music == null) {
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+		}
 		if(antiperu2 == false) {
 		    huggylel= new FlxSprite().loadGraphic(Paths.image('golden_huggy'));
 			huggylel.scale.set(0.22,0.22);
@@ -152,27 +123,13 @@ class SixAMstate extends MusicBeatState
 			coso2.antialiasing = ClientPrefs.globalAntialiasing;
 			add(coso2);
 		}
-		if(!inicio)
-		{
-			persistentUpdate = true;
-			persistentDraw = true;
-			#if desktop
-			if (!DiscordClient.isInitialized)
-			{
-				DiscordClient.initialize();
-				Application.current.onExit.add (function (exitCode) {
-					DiscordClient.shutdown();
-				});
-			}
-			#end
-		}
-
 		super.create();
 	}	
 	var titleInicied:Bool=false;
 	var iTime:Float;
 	override function update(elapsed:Float)
 	{
+		if (FlxG.sound.music != null) Conductor.songPosition = FlxG.sound.music.time;
 		iTime += elapsed;
 		shaderD.setFloat("iTime", iTime);
 	

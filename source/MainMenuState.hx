@@ -22,6 +22,7 @@ import editors.MasterEditorMenu;
 import flixel.input.keyboard.FlxKey;
 import flash.system.System;
 import flixel.util.FlxTimer;
+import options.GraphicsSettingsSubState;
 import openfl.Lib;
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
