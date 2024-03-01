@@ -89,10 +89,11 @@ class TitleState extends MusicBeatState
 	
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 		ClientPrefs.loadPrefs();
-		Highscore.load();
+
 		if(FlxG.save.data.antiperu != null) {
 			antiperu = FlxG.save.data.antiperu;
 		}
+		Highscore.load();
 
 		//
 		blackBG = new FlxSprite();

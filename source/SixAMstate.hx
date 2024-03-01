@@ -60,12 +60,13 @@ class SixAMstate extends MusicBeatState
 	
 		FlxG.game.focusLostFramerate = 60;
 		FlxG.keys.preventDefaultKeys = [TAB];
-
-		persistentUpdate = persistentDraw = true;
-
+		ClientPrefs.loadPrefs();
 		if(FlxG.save.data.antiperu2 != null) {
 			antiperu2 = FlxG.save.data.antiperu2;
 		}
+
+		persistentUpdate = persistentDraw = true;
+
 		blackBG = new FlxSprite();
 		blackBG.makeGraphic(FlxG.width,FlxG.height,FlxColor.BLACK);
 		blackBG.screenCenter();
@@ -84,12 +85,12 @@ class SixAMstate extends MusicBeatState
 		bgBlack.alpha=0.4;
 		shaderD = new FlxRuntimeShader(File.getContent(Paths.shaderFragment(shader)));
 		bg.shader=shaderD;
+		if(FlxG.sound.music == null) {
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+		}
 		if(antiperu2 == true) {
 			bg.visible = false;
 			MusicBeatState.switchState(new MainMenuState());
-		}
-		if(FlxG.sound.music == null) {
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 		}
 		if(antiperu2 == false) {
 		    huggylel= new FlxSprite().loadGraphic(Paths.image('golden_huggy'));

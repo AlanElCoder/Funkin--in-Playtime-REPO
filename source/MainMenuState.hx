@@ -76,6 +76,11 @@ class MainMenuState extends MusicBeatState
 		camGame = new FlxCamera();
 		camAchievement = new FlxCamera();
 		camAchievement.bgColor.alpha = 0;
+		ClientPrefs.loadPrefs();
+
+		if(FlxG.save.data.antiperu2 != null) {
+			antiperu2 = FlxG.save.data.antiperu2;
+		}
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camAchievement, false);
@@ -85,10 +90,6 @@ class MainMenuState extends MusicBeatState
 		transOut = FlxTransitionableState.defaultTransOut;
 
 		persistentUpdate = persistentDraw = true;
-
-		if(FlxG.save.data.antiperu2 != null) {
-			antiperu2 = FlxG.save.data.antiperu2;
-		}
 
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('bgPlayTime'));
 		bg.scale.set(0.68,0.68);
@@ -145,9 +146,6 @@ class MainMenuState extends MusicBeatState
 		huggylel.antialiasing = ClientPrefs.globalAntialiasing;
 		huggylel.visible=false;
 	    add(huggylel);
-		if(antiperu2 == true) {
-		  huggylel.visible=true;
-		}
 
 		cursorImage = new FlxSprite();
 		cursorImage.loadGraphic(Paths.image('cursor'));
@@ -170,7 +168,9 @@ class MainMenuState extends MusicBeatState
 
 		cursorImage.setPosition(FlxG.mouse.getPosition().x-50,FlxG.mouse.getPosition().y-70);
 
-		
+		if(antiperu2 == true) {
+			huggylel.visible=true;
+		}
 		vcrShader = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("tvcrt")));
 	    shader1 = new FlxRuntimeShader(File.getContent(Paths.shaderFragment("shader1")));
 	
