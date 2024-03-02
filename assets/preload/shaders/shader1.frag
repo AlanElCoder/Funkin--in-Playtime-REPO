@@ -1,23 +1,18 @@
-//SHADERTOY PORT FIX (thx bb)
+//https://shadertoy.com/view/XtBXDt
 #pragma header
-vec2 uv = openfl_TextureCoordv.xy;
-vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
-vec2 iResolution = openfl_TextureSize;
-uniform float iTime;
-#define iChannel0 bitmap
-#define texture flixel_texture2D
-#define fragColor gl_FragColor
-#define mainImage main
-//SHADERTOY PORT FIX
-// Fork of "20151110_VHS" by FMS_Cat. https://shadertoy.com/view/XtBXDt
-// 2020-03-25 02:11:48
 
+#define round(a) floor(a + 0.5)
+#define texture flixel_texture2D
+#define iResolution openfl_TextureSize
+#define iChannel0 bitmap
+
+uniform float iTime;
 #define time iTime
 #define resolution ( iResolution.xy )
 #define PI 3.14159265
 
 vec3 tex2D( sampler2D _tex, vec2 _p ){
-  vec3 col = texture2D( _tex, _p ).xyz;
+  vec3 col = texture( _tex, _p ).xyz;
   if ( 0.5 < abs( _p.x - 0.5 ) ) {
     col = vec3( 0.1 );
   }
@@ -46,12 +41,10 @@ float noise( vec2 _v ){
   return sum;
 }
 
-void main(){
-  vec2 fragCoord = openfl_TextureCoordv * iResolution;
+void mainImage( out vec4 fragColor, in vec2 fragCoord ){
   vec2 uv = gl_FragCoord.xy / resolution;
   vec2 uvn = uv;
   vec3 col = vec3( 0.0 );
-  vec4 color = texture2D(bitmap, uv);
 
   // tape wave
   uvn.x += ( noise( vec2( uvn.y, time ) ) - 0.5 )* 0.005;
@@ -67,7 +60,7 @@ void main(){
   uvn.y += snPhase * 0.3;
   uvn.x += snPhase * ( ( noise( vec2( uv.y * 100.0, time * 10.0 ) ) - 0.5 ) * 0.2 );
     
-  col = tex2D( bitmap, uvn );
+  col = tex2D( iChannel0, uvn );
   col *= 1.0 - tcPhase;
   col = mix(
     col,
@@ -78,18 +71,19 @@ void main(){
   // bloom
   for( float x = -4.0; x < 2.5; x += 1.0 ){
     col.xyz += vec3(
-      tex2D( bitmap, uvn + vec2( x - 0.0, 0.0 ) * 7E-3 ).x,
-      tex2D( bitmap, uvn + vec2( x - 2.0, 0.0 ) * 7E-3 ).y,
-      tex2D( bitmap, uvn + vec2( x - 4.0, 0.0 ) * 7E-3 ).z
+      tex2D( iChannel0, uvn + vec2( x - 0.0, 0.0 ) * 7E-3 ).x,
+      tex2D( iChannel0, uvn + vec2( x - 2.0, 0.0 ) * 7E-3 ).y,
+      tex2D( iChannel0, uvn + vec2( x - 4.0, 0.0 ) * 7E-3 ).z
     ) * 0.1;
   }
   col *= 0.6;
 
   // ac beat
   col *= 1.0 + clamp( noise( vec2( 0.0, uv.y + time * 0.2 ) ) * 0.6 - 0.25, 0.0, 0.1 );
-  
-  if (color.a < 0.1)
-        discard;
 
-  gl_FragColor = vec4( col, 1.0 );
+  fragColor = vec4( col,texture(iChannel0, uv).a);
+}
+void main() {
+	mainImage(gl_FragColor, openfl_TextureCoordv*openfl_TextureSize);
+
 }

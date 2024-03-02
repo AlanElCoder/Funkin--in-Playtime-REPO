@@ -3880,7 +3880,7 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(blackBG,{alpha: 0}, 1.2,{ease:FlxEase.quadInOut,});
 			   case 20:	
 				    FlxTween.tween(camGame,{alpha: 1}, 1.2,{ease:FlxEase.quadInOut,});
-			   case 22:
+			   case 30:
 				  if (ClientPrefs.shaders){
 					camOther.setFilters([]);
 				  } 
