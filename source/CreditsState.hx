@@ -33,6 +33,7 @@ using StringTools;
 class CreditsState extends MusicBeatState
 {
 	var curSelected:Int = -1;
+	var pisspoop:Array<Array<String>>;
 
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private var iconArray:Array<AttachedSprite> = [];
@@ -91,21 +92,26 @@ class CreditsState extends MusicBeatState
 		}
 		#end
 
-		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
+		pisspoop= [ //Name - Icon name - Description - Link - BG Color
 			['FUNKIN DREAM TEAM'],
 			['gabo','gabo','Concept Artis and Owner','https://twitter.com/gabro1209','5F5F5F'],
 			['AlanCoder.hx','alansin','Main Coder','https://twitter.com/Alanelcoderwe_l','FF0000'],
+			['ManuelCrack483','les recuerdo q zari se olvido de mi nombre -manu','Coder - Hey muy buenas a todos guapisimos','https://twitter.com/miku_real','9AFF9F'],
+			['ZariDoodles','zari','Main Artist and Main Animator','https://x.com/Zari_DoodlesUvU?t=2esZEjwsOawICn6TR4OgQw&s=09','FFE77C'],
 			['Double L','double_l','Artist','https://twitter.com/FunniDoubleL','30F6FF'],
-			['ZariDoodles','zari','Main Artist and Main Animator-ola dasito soy fan, te veo desde q era un feto','https://x.com/Zari_DoodlesUvU?t=2esZEjwsOawICn6TR4OgQw&s=09','FFE77C'],
 			['calabazinX','calabazin','BG Artist','https://twitter.com/Megastar713rd','CE3E00'],
 			['justLux','lux','Composer - Say gex (fnfoldcollection lover n1)','https://www.youtube.com/@lux_lol','CE00A2'],
 			['End_Sella','sella','Composer','https://twitter.com/SebastianSB8','008FFF'],
-			['ManuelCrack483','nose_el_nombre_de_este_lul','coder','https://twitter.com/miku_real','9AFF9F'],
 			['senRen','sexren','Charter','https://x.com/Senrenholas?t=D3csbPwAh_rFABKp0Y5QkA&s=09','AE00FF'],
+			['Fizz','pobresito','Chromatic scales maker','https://x.com/Senrenholas?t=D3csbPwAh_rFABKp0Y5QkA&s=09','AE00FF'],
             [''],
-			['THANKS ALL PSYCH ENGINE TEAM']
+			['THANKS TO PSYCH ENGINE TEAM'],
+			[''],
+			[''],
+			[''],
+			['EL HUGGY WUGGY TETAS','huggy_tetas','(es manu denuevo)','https://www.youtube.com/watch?v=zu2Eaw6Ohxc','E2F3FF']
 		];
-		
+
 		for(i in pisspoop){
 			creditsStuff.push(i);
 		}
@@ -169,6 +175,7 @@ class CreditsState extends MusicBeatState
 	}
 
 	var quitting:Bool = false;
+	var norepeats:Bool = false;
 	var holdTime:Float = 0;
 	override function update(elapsed:Float)
 	{
@@ -178,6 +185,14 @@ class CreditsState extends MusicBeatState
 		if (FlxG.sound.music.volume < 0.7)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
+		}
+
+		if(curSelected == 16 && norepeats == false) {
+			FlxG.sound.play(Paths.sound('vineboom'));
+			norepeats = true;
+		}
+		if(curSelected == 10) {
+			norepeats = false;
 		}
 
 		if(!quitting)
@@ -255,7 +270,7 @@ class CreditsState extends MusicBeatState
 		do {
 			curSelected += change;
 			if (curSelected < 0)
-				curSelected = creditsStuff.length - 1;
+				curSelected = 10;
 			if (curSelected >= creditsStuff.length)
 				curSelected = 0;
 		} while(unselectableCheck(curSelected));
