@@ -94,7 +94,7 @@ class CreditsState extends MusicBeatState
 
 		pisspoop= [ //Name - Icon name - Description - Link - BG Color
 			['FUNKIN DREAM TEAM'],
-			['gabo','gabo','Concept Artis and Owner','https://twitter.com/gabro1209','5F5F5F'],
+			['gabo','gabo','Concept Artist and Owner','https://twitter.com/gabro1209','5F5F5F'],
 			['AlanCoder.hx','alansin','Main Coder','https://twitter.com/Alanelcoderwe_l','FF0000'],
 			['ManuelCrack483','les recuerdo q zari se olvido de mi nombre -manu','Coder - Hey muy buenas a todos guapisimos','https://twitter.com/miku_real','9AFF9F'],
 			['ZariDoodles','zari','Main Artist and Main Animator','https://x.com/Zari_DoodlesUvU?t=2esZEjwsOawICn6TR4OgQw&s=09','FFE77C'],
