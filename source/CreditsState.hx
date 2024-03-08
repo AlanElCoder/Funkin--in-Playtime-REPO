@@ -109,7 +109,7 @@ class CreditsState extends MusicBeatState
 			[''],
 			[''],
 			[''],
-			['EL HUGGY WUGGY TETAS','huggy_tetas','(es manu denuevo)','https://www.youtube.com/watch?v=zu2Eaw6Ohxc','E2F3FF']
+			['EL HUGGY WUGGY TETAS','huggy_tetas','hola es manu denuevo no me hagan caso','https://www.youtube.com/watch?v=zu2Eaw6Ohxc','E2F3FF']
 		];
 
 		for(i in pisspoop){
