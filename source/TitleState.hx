@@ -64,7 +64,7 @@ class TitleState extends MusicBeatState
 	var bars:FlxSprite;
 	var pressStartSprite:FlxSprite;
 	var inicio:Bool=false;
-	var antiperu:Bool=false;
+	var peru:Bool=false;
 
 	var vcrShader:FlxRuntimeShader;
 	var shader1:FlxRuntimeShader;
@@ -90,8 +90,8 @@ class TitleState extends MusicBeatState
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 		ClientPrefs.loadPrefs();
 
-		if(FlxG.save.data.antiperu != null) {
-			antiperu = FlxG.save.data.antiperu;
+		if(FlxG.save.data.peru != null) {
+			peru = FlxG.save.data.peru;
 		}
 		Highscore.load();
 
@@ -103,7 +103,7 @@ class TitleState extends MusicBeatState
 		add(blackBG);
 		//
 
-		if(antiperu == false) {
+		if(peru == false) {
 			var logoLEl:FlxSprite= new FlxSprite().loadGraphic(Paths.image('logoP'));
 			logoLEl.scale.set(0.23,0.23);
 			logoLEl.screenCenter();
@@ -144,7 +144,7 @@ class TitleState extends MusicBeatState
 		{
 		 FlxG.camera.setFilters([new ShaderFilter(shader1),new ShaderFilter(vcrShader)]);
 		}
-		if(antiperu == true) {
+		if(peru == true) {
 			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 			new FlxTimer().start(0.2, function(tmr:FlxTimer)
@@ -163,9 +163,9 @@ class TitleState extends MusicBeatState
 	    vcrShader.setFloat("iTime", iTime);
 		shader1.setFloat("iTime", iTime);
 		FlxG.camera.zoom= FlxMath.lerp(1, FlxG.camera.zoom,0.85);
-			if (controls.ACCEPT&&!titleInicied && antiperu == false){
-				antiperu = true;
-				FlxG.save.data.antiperu = antiperu;
+			if (controls.ACCEPT&&!titleInicied && peru == false){
+				peru = true;
+				FlxG.save.data.peru = peru;
 				FlxG.save.flush();
 
 				titleInicied=true;
