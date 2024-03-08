@@ -103,7 +103,7 @@ class CreditsState extends MusicBeatState
 			['justLux','lux','Composer - Say gex (fnfoldcollection lover n1)','https://www.youtube.com/@lux_lol','CE00A2'],
 			['End_Sella','sella','Composer','https://twitter.com/SebastianSB8','008FFF'],
 			['senRen','sexren','Charter','https://x.com/Senrenholas?t=D3csbPwAh_rFABKp0Y5QkA&s=09','AE00FF'],
-			['Fizz','pobresito','Chromatic scales maker','https://x.com/Senrenholas?t=D3csbPwAh_rFABKp0Y5QkA&s=09','AE00FF'],
+			['Fizz','pobresito','Chromatic scales maker','https://twitter.com/Fizz_Cr','AE00FF'],
             [''],
 			['THANKS TO PSYCH ENGINE TEAM'],
 			[''],
