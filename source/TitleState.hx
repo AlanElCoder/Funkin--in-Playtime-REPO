@@ -166,7 +166,6 @@ class TitleState extends MusicBeatState
 			if (controls.ACCEPT&&!titleInicied && peru == false){
 				peru = true;
 				FlxG.save.data.peru = peru;
-				FlxG.save.flush();
 
 				titleInicied=true;
 				FlxG.camera.zoom+=0.1;
@@ -175,6 +174,7 @@ class TitleState extends MusicBeatState
 				FlxG.sound.music.fadeIn(4, 0, 0.7);
 				new FlxTimer().start(1.2, function(tmr:FlxTimer)
 				{
+					FlxG.save.flush();
 					MusicBeatState.switchState(new MainMenuState());
 				});
 			}

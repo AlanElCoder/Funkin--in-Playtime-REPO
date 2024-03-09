@@ -314,6 +314,7 @@ class PlayState extends MusicBeatState
 	var bfPatas:Character;
 	var hPatas:Character;
 	var hPatasHolder:Bool = false;
+	var patastween:Bool = false;
 	var correBG:FlxBackdrop;
 	var upBarr:FlxSprite;
 	var downBarr:FlxSprite;
@@ -330,7 +331,7 @@ class PlayState extends MusicBeatState
 		if(SONG.song=='el-rap-de-huggy-wuggy'||SONG.song=='El Rap De Huggy Wuggy'){
 			composer='ALEXANDER';
 		}
-		openfl.Lib.application.window.title="Funkin' In Playtime - " + SONG.song +"-by "+composer;
+		openfl.Lib.application.window.title="Funkin' In Playtime - " + SONG.song +" - by "+composer;
 		instance = this;
 
 		debugKeysChart = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
@@ -2180,6 +2181,11 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		if(patastween) {
+			FlxTween.tween(dad,{x: dad.x - 100}, 2, {ease:FlxEase.quadIn, type: PINGPONG});
+			FlxTween.tween(hPatas,{x: hPatas.x - 100}, 2, {ease:FlxEase.quadIn, type: PINGPONG});
+		}
+
 		for (i in 0...vidalel){
 			switch(songMisses){
 				case 0:
@@ -2241,13 +2247,7 @@ class PlayState extends MusicBeatState
 						case 1|2|3|4|5:
 							vidaItems.members[i].animation.play('idle2');
 					  }	
-				    }	
-				case 6:	
-					new FlxTimer().start(0.4, function(tmr:FlxTimer)
-					{
-						health=0;		
-					});
-				
+				    }
 					if (!si){
 						vidaBG.animation.play('idle2');
 						if (!ClientPrefs.downScroll){
@@ -2258,6 +2258,17 @@ class PlayState extends MusicBeatState
 							vidaBG.x += 8;
 						}
 					
+						FlxG.camera.fade(FlxColor.RED, 0.4, true,false);
+						FlxG.camera.shake(0.06,0.1);
+						si=true;
+					}
+
+				case 6:	
+					new FlxTimer().start(0.3, function(tmr:FlxTimer)
+					{
+						health=0;
+					});
+					if (!si){
 						FlxG.camera.fade(FlxColor.RED, 0.6, true,false);
 						FlxG.camera.shake(0.012,0.2);
 						si=true;
@@ -3908,6 +3919,7 @@ class PlayState extends MusicBeatState
 				   bfPatas.visible=true;
 			       hPatas.visible=true;
 				   hPatasHolder = true;
+				   patastween = true;
 				   if (!ClientPrefs.lowQuality){
 					for (i in 0 ...images.length){
 						bgItemsL.members[i].visible=false;
@@ -3931,6 +3943,7 @@ class PlayState extends MusicBeatState
 						]
 					};
 				case 1948:
+					patastween = false;
 					FlxTween.tween(dad,{x: dad.x - 560}, 0.5,{ease:FlxEase.quintIn,});
 					FlxTween.tween(hPatas,{x: hPatas.x - 560}, 0.5,{ease:FlxEase.quintIn,});
 			}

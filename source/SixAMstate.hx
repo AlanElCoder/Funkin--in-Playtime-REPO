@@ -138,7 +138,6 @@ class SixAMstate extends MusicBeatState
 			if (controls.ACCEPT&&!titleInicied && antiperu2 == false){
 				antiperu2 = true;
 				FlxG.save.data.antiperu2 = antiperu2;
-				FlxG.save.flush();
 
 				titleInicied=true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
@@ -146,6 +145,7 @@ class SixAMstate extends MusicBeatState
 				FlxG.camera.zoom+=0.1;
 				new FlxTimer().start(1.2, function(tmr:FlxTimer)
 				{
+					FlxG.save.flush();
 					MusicBeatState.switchState(new MainMenuState());
 				});
 			}
